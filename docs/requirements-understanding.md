@@ -160,20 +160,63 @@ Once the client confirms or corrects this document, we would like to produce:
 
 ## Appendix — open questions, consolidated
 
-| # | Question | Blocks |
-|---|----------|--------|
-| Q1 | Confirm brand spelling is *lully* (double L). Rename repo? | Repo rename, all copy |
-| Q2 | ~~Target languages~~ — **Decided 2026-04-16: PT + EN, PT default, `/pt/` and `/en/` subpaths.** | Content scoping, CMS setup |
-| Q3 | Platform: Shopify (as hinted) or headless alternative? | Architecture, cost, timeline |
-| Q4 | Payment providers on launch (Multibanco mandatory — which gateway)? | Checkout setup |
-| Q5 | Click-and-collect: ordering cutoffs, live stock vs. form-to-staff? | Backend scope |
-| Q6 | Reservations: The Fork, alternative, or placeholder at launch? | Integration |
-| Q7 | B2B scope: showcase only, or wholesale ordering portal? | Phase 1/2 split |
-| Q8 | Recruitment: integrate an ATS, or email-based? | Scope |
-| Q9 | Brand guidelines PDF (color, type, logo variants) available? | Design kickoff |
-| Q10 | Vector logo + final asset pack? | Design kickoff |
-| Q11 | First-outlet launch status + desired website go-live date? | Timeline |
-| Q12 | Who produces product photography and final copy? | Resourcing |
-| Q13 | Meunier / Pâtissière / Caffetier — section labels or archival art only? | Navigation |
-| Q14 | Ambient audio on the site? | UX decision |
-| Q15 | Dedicated Events section (e.g. guest-chef luncheons)? | Sitemap |
+Client answered round 1 in Google Docs on **2026-04-16**. Summary of each answer and status below; follow-up questions for round 2 are listed in the next section.
+
+| # | Status | Client answer (verbatim, trimmed) | Our interpretation |
+|---|--------|-----------------------------------|-------------------|
+| Q1 | ✅ Resolved | "Brand is Lully 1661 / URL is correct" | Rename GitHub repo `lullly-1661` → `lully-1661`; domain `www.Lully1661.com`. |
+| Q2 | ✅ Resolved | Confirmed 2026-04-16 | PT + EN, PT default, `/pt/` + `/en/` subpaths. |
+| Q3 | ⚠ Deferred to us | "Open to alternatives" | Client has no preference — **we must recommend**. Default plan: Shopify-powered with headless front-end only if budget/timeline justify. |
+| Q4 | ✅ Resolved | "Multibanco is the default… open to others to accept credit cards not linked to multibanco" | Multibanco + standard credit-card (Visa/Mastercard). Gateway choice still ours (Stripe probably best; confirms both). |
+| Q5 | 🟡 Partial | "Same day ideal, inventory updated by staff" | Staff-reconciled inventory (option b). **Follow-up:** same-day cutoff time? (e.g. order before 14:00 for same-day pickup, else next-day). |
+| Q6 | ✅ Resolved | "The Fork if possible, if not a email exchange would work. The benefit with the Fork is their marketing" | Integrate The Fork; fall back to email if integration blocks. |
+| Q7 | ✅ Resolved | "A page with text describing how we work and who we work with on B2B with an email form" | Showcase + enquiry form. No portal. |
+| Q8 | ✅ Resolved | "Email at this stage only" | Simple careers page with email-based applications. |
+| Q9 | ✅ Resolved (no guidelines) | "Nothing much beside the images I have shared with you" | No formal guidelines; we propose color palette, typography, and logo-usage rules during design. |
+| Q10 | ✅ Resolved | "Yes, sending now" — 2 `.ai` files delivered 2026-04-16 | `logo-lully-1661-vector-black.ai` + `…-grey.ai`. Primary wordmark in vector. **Follow-up (minor):** vector of the three sub-marks (Meunier / Pâtissière / Caffetier) still only raster JPEG. |
+| Q11 | 🟡 Partial | "We now have 3 stores operating 6 days a week Tue–Sunday included. Website live asap." | Three Lisbon stores already operating — **major change** from our assumption of "first outlet imminent". **Follow-ups:** addresses, neighborhoods, opening hours per store; "ASAP" = target week/month? |
+| Q12 | ✅ Resolved | "Copy and images by us" | Client supplies photography and final PT + EN copy. |
+| Q13 | ✅ Resolved (with a twist) | "Only for reference as a style for the pages, though these can be used in some, maybe as per the example of the flyer I sent you" | Primary nav uses **conventional labels** (Breads / Pastries / Drinks). Meunier / Pâtissière / Caffetier illustrations are a **design motif** — we can compose them with the wordmark in the Gareth × Sezin flyer style for hero sections, event posters, packaging mock-ups. |
+| Q14 | ✅ Resolved | "understood" | Proceed with user-triggered ambient toggle; off during shop/checkout. |
+| Q15 | 🟡 Reinterpreted | "A section where we describe the kind of festive products we can offer as well as events we can organize or supply goods for." | Reframes from "Events" to **"Festive & Events"** — catering/festive product catalogue *and* events (both ones Lully hosts and ones Lully supplies). **Follow-up:** is this the same as the "Special Orders" node in the sitemap, or separate? They sound overlapping. |
+
+## Round 2 — follow-up questions for the client
+
+These came up from Round 1 answers. Small number, but important for scoping.
+
+| # | Topic | Question |
+|---|-------|----------|
+| F1 | Stores | Please share the three store **addresses**, **opening hours** per store, and any short description (neighborhood, vibe). The website should show a store locator. |
+| F2 | Go-live | "ASAP" — can we target a specific **month** (e.g., June / July 2026)? Is there a press moment, anniversary, or campaign the site must launch alongside? |
+| F3 | Click & collect cutoff | What's the **latest order time for same-day pickup**? (Typical bakery pattern: order before noon / 14:00 for same-day; after that → next-day.) Do bread and pastries share a cutoff, or do breads need an earlier cutoff? |
+| F4 | Festive & Events vs Special Orders | Are "Special Orders" (from original brief) and "Festive products + events" (Q15 answer) the **same section**, or two separate sections? Our reading: merge into a single "Festive & Bespoke Orders" section. Please confirm. |
+| F5 | Vector sub-marks | Are vector versions of **Meunier / Pâtissière / Caffetier** illustrations available? Raster JPEGs limit how flexibly we can compose them in the Gareth × Sezin flyer style. |
+| F6 | Existing web presence | Any current website, Instagram, or press links we should migrate content from or link to? |
+| F7 | B2B partners to feature | Any **existing B2B partners / chefs** you'd like named on the Lully Inside page at launch, or should the page launch as descriptive-only until first deals close? |
+
+## What Round 1 unblocks (we can now proceed with)
+
+- Rename repo to `lully-1661`.
+- Draft **scope & sitemap v1** (revised sitemap below, incorporating Q13 and Q15).
+- Draft **platform recommendation** (since Q3 deferred to us).
+- Begin **wireframes** for Home and Shop flow.
+
+## Revised sitemap (Round 1 applied)
+
+```
+Home
+├─ History / About
+├─ Shop  (click & collect; live-ordering with staff-reconciled inventory)
+│   ├─ Breads
+│   ├─ Pastries
+│   ├─ Desserts
+│   ├─ Snacks
+│   ├─ Brunch
+│   └─ Drinks
+├─ Festive & Bespoke Orders         (merged Special Orders + Events + Catering)
+├─ Reservations                     (The Fork embed; email fallback)
+├─ Lully Inside (B2B)               (text + partner logos + enquiry form)
+├─ Stores                           (3 locations: addresses, hours, map)
+├─ Careers                          (email applications)
+└─ Legal / Contact
+```

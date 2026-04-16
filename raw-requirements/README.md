@@ -15,7 +15,9 @@ Original client-supplied materials for the **lully 1661** website project, renam
 
 | File | Content |
 |------|---------|
-| `logo-lully-1661-internal.png` | Primary wordmark: cursive "lully 1661" |
+| `logo-lully-1661-internal.png` | Primary wordmark (raster): cursive "lully 1661" |
+| `logo-lully-1661-vector-black.ai` | Primary wordmark (vector, black), exported at 35×25 mm — supplied by client 2026-04-16 in response to Q10 |
+| `logo-lully-1661-vector-grey.ai` | Primary wordmark (vector, grey variant), exported at 35×25 mm — supplied 2026-04-16 |
 | `logo-sub-meunier.jpeg` | Sub-mark — *Meunier* (miller / bread pillar), Baroque engraving + gold knot + wordmark |
 | `logo-sub-caffetier.jpeg` | Sub-mark — *Caffetier* (coffee pillar), engraving + wordmark |
 | `logo-sub-patissiere.jpeg` | Sub-mark — *Pâtissière* (pastry pillar), engraving + wordmark |
@@ -35,6 +37,8 @@ Original client-supplied materials for the **lully 1661** website project, renam
 ## Original Filename Mapping
 
 ```
+logo lully 35x25 mm.ai                            → logo-lully-1661-vector-black.ai
+logo lully 35x25 mm gris.ai                       → logo-lully-1661-vector-grey.ai
 Website Brief.docx                                → brief-website.docx
 INTRODUCTORY_OMERTA_JUNE22.docx                   → brief-brand-introduction-2022.docx
 Deck.Lully.Bread.Pitt.V2.pdf                      → deck-brand-motto-v2-2026-01.pdf
