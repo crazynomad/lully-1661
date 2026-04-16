@@ -141,18 +141,45 @@ PT URL slugs are indicative — final wording to be confirmed with the client du
 - **Newsletter signup** — single-field block in footer; integrated with Klaviyo or Mailchimp (TBD).
 - **Cookie banner** — GDPR-compliant, tiered consent (PT requires explicit consent).
 
-## What's blocked in phase 1
+## Round-2 updates (2026-04-16)
 
-| Page | Waiting on | Follow-up item |
-|------|------------|----------------|
-| Shop (checkout pickup-time UX) | Same-day cutoff | F3 |
-| Stores | 3 store addresses + hours | F1 |
-| Lully Inside | Partner names (not strictly blocking — we can launch descriptive-only) | F7 |
-| Reservations | The Fork partnership status | (to add to F1 follow-up round) |
-| Hero / Festive sections | Vector sub-marks for Meunier / Pâtissière / Caffetier | F5 |
-| Timeline | "ASAP" = which month? | F2 |
+All 7 follow-ups answered. Summary of impact on this sitemap:
 
-None of these block the Week-1 setup work. All need to be answered by mid-Week 2 to stay on the 4–6 week timeline.
+- **Launch deadline locked: 2026-05-15** (F2) — brunch-menu launch event. Plan is now split into **v1.0 (May 15, event day)** and **v1.1 (10–14 days later)**. See `platform-recommendation.md` for the full timeline + scope split.
+- **3 store addresses confirmed** (F1) — Anjos (flagship), Campo de Ourique, Beato. Hours per store still pending; will ask inline.
+- **Pickup cutoff**: **14:00 same-day** (F3). Some products have earlier cutoffs (TBD which).
+- **Festive & Bespoke Orders merge confirmed** (F4). Section name locked.
+- **No vector sub-marks available** (F5) — design task: manually vectorize or commission. Parallel track in Week 1.
+- **Press & social**: link Instagram `@lully1661_lisboa`; we curate press list ourselves.
+- **B2B "Lully Inside"** launches descriptive-only; partner logos come later.
+
+### Priority for the launch event
+
+The event is a **brunch-menu press & influencer launch**, not an e-commerce push. The site's v1.0 job is to make the brunch experience feel real, the stores findable, and the reservation flow frictionless. Ranked priority:
+
+1. **Home** — brunch hero, story, 3 stores, reservations CTA
+2. **Brunch / Shop — brunch collection** — rich product pages for every brunch dish (photo, description, allergens, per-store availability)
+3. **Stores** — map + 3 store cards with addresses, hours, and a store-specific reservation CTA
+4. **Reservations** — The Fork widget(s); email fallback
+5. **About / History** — the Lully story (for press to reference)
+6. **Festive & Bespoke** — teaser + enquiry form (press may ask about catering)
+7. Everything else (full Shop commerce flow, Lully Inside, Careers, Legal) as time allows
+
+## What's blocked / pending per page
+
+| Page | Status | Pending input |
+|------|--------|---------------|
+| Home | 🟢 Can design now | Brunch hero copy + photography (client) |
+| Brunch / Shop | 🟡 Catalogue buildable; cart/checkout may slip to v1.1 | M3 — per-category cutoffs |
+| Stores | 🟡 Addresses in; can build page | M1 — hours per store; M2 — dine-in vs pickup-only per store |
+| Reservations | 🟡 Structure clear | M4 — The Fork status per store |
+| Hero / Festive sections | 🟡 Need vectorized or re-drawn sub-marks | Design task (our side) |
+| Lully Inside | 🟢 Descriptive-only ships now | F7 — partner logos "later" |
+| Festive & Bespoke | 🟢 Structure locked | Client copy + seasonal photos |
+| Careers | 🟢 Ships | List of open positions |
+| Legal | 🟢 Template ready | Client / counsel for final legal text |
+
+Micro-gaps (**M1–M4** — hours per store, dine-in vs pickup, per-category cutoffs, The Fork status per store) go out as a single short ping, not a new Google Doc.
 
 ## What is Phase 2 (for clarity)
 

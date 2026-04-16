@@ -180,19 +180,43 @@ Client answered round 1 in Google Docs on **2026-04-16**. Summary of each answer
 | Q14 | ✅ Resolved | "understood" | Proceed with user-triggered ambient toggle; off during shop/checkout. |
 | Q15 | 🟡 Reinterpreted | "A section where we describe the kind of festive products we can offer as well as events we can organize or supply goods for." | Reframes from "Events" to **"Festive & Events"** — catering/festive product catalogue *and* events (both ones Lully hosts and ones Lully supplies). **Follow-up:** is this the same as the "Special Orders" node in the sitemap, or separate? They sound overlapping. |
 
-## Round 2 — follow-up questions for the client
+## Round 2 — follow-up questions, answered 2026-04-16
 
-These came up from Round 1 answers. Small number, but important for scoping.
+| # | Status | Client answer (verbatim) | Our interpretation |
+|---|--------|-------------------------|-------------------|
+| F1 | 🟡 Mostly resolved | "Flagship is **Anjos** — Rua do Forno do Tijolo 46, 1170-134 Lisboa. The other 2: **Campo de Ourique** — Rua 4 de Infantaria 43, 1350-135 Lisboa; **Beato** — Rua do Grilo 12, 1950-109 Lisboa." | 3 stores mapped. **Gap:** opening hours per store and which stores offer dine-in/brunch vs pickup-only. Will ask inline in next review. |
+| F2 | 🔴 **Hard constraint** | "**Ideally before May 15** as we will officially launch our brunch menu with a major event with media and influencers." | **Launch on or before 2026-05-15** (29 days from 2026-04-16). Major press / influencer event attached. Compresses our 4–6 week plan into a hard 4-week sprint. |
+| F3 | 🟡 Partial | "14:00 works for us for same day pick-up and no all products have the same cut-off" | Default cutoff: **14:00 for same-day pickup**. Not all products share that cutoff (assumed typo "no(t) all products"). **Gap:** which product categories need earlier/different cutoffs, and what are they (likely breads earlier, bespoke orders 24–48h notice). |
+| F4 | ✅ Resolved | "Ok for the moment" | Merge confirmed: one "Festive & Bespoke Orders" section. |
+| F5 | ✅ Resolved (negative) | "No such files available" | No vector sub-marks. We will either (a) carefully up-res and mask the raster JPEGs, (b) manually vectorize them, or (c) commission a designer to re-draw in SVG. Planning for (b)+(c) to be safe, given their hero-level usage. |
+| F6 | ✅ Resolved | "Instagram **@lully1661_lisboa**. Press coverage can be found on Google search typing lully 1661." | Link IG from footer. We'll compile a press shortlist ourselves from Google and propose "as seen in" citations. |
+| F7 | 🟡 Deferred | "We have a few, can I provide a list later on?" | Launch the Lully Inside page **descriptive-only** with a "Partners to be announced" slot; client sends logos + names before or after launch. |
 
-| # | Topic | Question |
-|---|-------|----------|
-| F1 | Stores | Please share the three store **addresses**, **opening hours** per store, and any short description (neighborhood, vibe). The website should show a store locator. |
-| F2 | Go-live | "ASAP" — can we target a specific **month** (e.g., June / July 2026)? Is there a press moment, anniversary, or campaign the site must launch alongside? |
-| F3 | Click & collect cutoff | What's the **latest order time for same-day pickup**? (Typical bakery pattern: order before noon / 14:00 for same-day; after that → next-day.) Do bread and pastries share a cutoff, or do breads need an earlier cutoff? |
-| F4 | Festive & Events vs Special Orders | Are "Special Orders" (from original brief) and "Festive products + events" (Q15 answer) the **same section**, or two separate sections? Our reading: merge into a single "Festive & Bespoke Orders" section. Please confirm. |
-| F5 | Vector sub-marks | Are vector versions of **Meunier / Pâtissière / Caffetier** illustrations available? Raster JPEGs limit how flexibly we can compose them in the Gareth × Sezin flyer style. |
-| F6 | Existing web presence | Any current website, Instagram, or press links we should migrate content from or link to? |
-| F7 | B2B partners to feature | Any **existing B2B partners / chefs** you'd like named on the Lully Inside page at launch, or should the page launch as descriptive-only until first deals close? |
+## What Round 2 unblocks
+
+- **Stores page**: we can start building now with the 3 confirmed addresses; add hours when client sends.
+- **Reservations page**: can start — we still need to verify The Fork partnership status for each of the 3 stores.
+- **Sitemap**: locked at v1 (see `sitemap-v1.md`).
+- **Festive & Bespoke Orders**: merge confirmed; content block layout can proceed.
+
+## What Round 2 changes
+
+- **Timeline**: our 4–6 week estimate in `platform-recommendation.md` now **collapses to a 4-week sprint** with a fixed deadline of **2026-05-15**. Two implications:
+  1. No slack for a separate soft-launch week — go-live IS the event.
+  2. Scope at launch should be optimized for the event's focus: **brunch menu discovery, the 3 stores, reservations, and the festive teaser**. Cart / Multibanco checkout / live pickup orders can ship as a **v1.1 two weeks after the event** if QA is under pressure — see updated phase plan in `platform-recommendation.md`.
+- **Sub-mark art**: no vectors means a **design task** we now own (vectorizing the 3 Baroque engravings or commissioning new SVGs). Budget implication.
+- **B2B page**: launches without featured partners — acceptable per client.
+
+## Remaining micro-gaps (to resolve inline, not a new round)
+
+| # | Gap | Ask |
+|---|-----|-----|
+| M1 | Hours per store | "What are opening hours for Anjos / Campo de Ourique / Beato?" |
+| M2 | Store type per location | "Which stores have dine-in + brunch service? Which are pickup/retail only?" |
+| M3 | Per-category cutoffs | "For F3: which products need an earlier cutoff than 14:00, and what are those times?" |
+| M4 | The Fork status per store | "Is The Fork live on each of the 3 stores today, or only some?" |
+
+These can go out as a single short email or a WhatsApp-style ping, not another Google Doc.
 
 ## What Round 1 unblocks (we can now proceed with)
 

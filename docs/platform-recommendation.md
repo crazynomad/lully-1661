@@ -68,20 +68,60 @@ Why this, in one paragraph: the client wants to launch **ASAP**, already runs th
 - Editorial "Journal" / recipe content if content volume grows.
 - Optional Hydrogen migration if the team decides the Liquid ceiling is blocking design ambition.
 
-## Estimated timeline (4–6 weeks to launch)
+## Timeline — hard deadline 2026-05-15 (brunch menu launch + media event)
 
-| Week | Milestones |
+**Client confirmed (F2):** the website must be live before the May-15 brunch-menu launch event (media + influencers). Today is 2026-04-16 → **29 days**. This collapses the earlier 4–6 week plan into a fixed 4-week sprint and forces a scope split.
+
+### Scope split for the deadline
+
+| | **v1.0 — live on 2026-05-15** | **v1.1 — 10–14 days after launch** |
+|---|---|---|
+| Home | ✅ Full design | — |
+| About / History | ✅ | — |
+| Brunch / menu | ✅ **Priority for event** — readable catalogue with PT + EN, prices, allergens, per-store availability | — |
+| Shop — Breads / Pastries / Desserts / Snacks / Drinks | ✅ Readable product pages (browsable catalogue) | — |
+| **Cart + checkout + pickup slot selector** | ⚠️ Target for v1.0 if QA allows; fallback to v1.1 | ✅ If pushed, ship as a low-risk add-on with Multibanco + cards |
+| Stores (3 locations locator) | ✅ | — |
+| Reservations (The Fork embed) | ✅ where The Fork is live; email fallback on the rest | — |
+| Festive & Bespoke Orders | ✅ (static + enquiry form) | — |
+| Lully Inside (B2B) | ✅ (descriptive-only, partners TBA) | — |
+| Careers | ✅ | — |
+| Legal / Contact | ✅ | — |
+| Analytics + UTM for event traffic | ✅ | — |
+
+Why this split is safe: the event's purpose is to **drive brunch + press coverage**, not to drive e-commerce revenue on day 1. A readable menu + reservations + store locator covers 100% of the event narrative. Click-&-collect adds real commercial value but is not on the event's critical path, and the downside of shipping it broken on Day 1 is much worse than shipping it 10 days later.
+
+### 4-week sprint calendar
+
+| Week | Dates | Milestones |
+|------|-------|-----------|
+| 1 | 2026-04-16 → 2026-04-22 | Shopify + Markets + Stripe provisioning · Theme base selected · Brand kit (colors / type / vectorized sub-marks) · IA locked · Domain + DNS pointed · Content ingest begins (client brunch copy + product photos) |
+| 2 | 2026-04-23 → 2026-04-29 | Home + About + Brunch sections designed and built · Product data model + Shopify collections · Store locator data in from client · The Fork embed(s) verified |
+| 3 | 2026-04-30 → 2026-05-06 | Shop collection + product templates · Festive & Bespoke · Lully Inside · Careers · Legal · Full PT translation pass · Cart/checkout spike (for decision on v1.0 vs v1.1) |
+| 4 | 2026-05-07 → 2026-05-13 | QA, accessibility pass, Lighthouse pass, multibanco sandbox, analytics wiring, staging freeze **2026-05-13** |
+|  | 2026-05-14 | Client sign-off + DNS cutover |
+|  | **2026-05-15** | **Go-live + brunch-menu event** |
+| +1 | 2026-05-16 → 2026-05-29 | **v1.1** — ship cart + pickup flow if it didn't make v1.0. Post-event content refresh (press coverage, event photos). |
+
+### Risks against the deadline
+
+| Risk | Mitigation |
 |------|-----------|
-| 1 | Theme setup, brand kit (colors / type / icon set from the Baroque illustrations), IA finalization, domain + DNS, Shopify + Markets + Stripe provisioning |
-| 2 | Home + History wireframes → design. Product data model (bread/pastry/drink — attributes like "contains gluten", "organic", "available at: stores") |
-| 3 | Shop + Product + Collection page design + build. Store locator page. Reservations + The Fork integration |
-| 4 | Festive & Bespoke + Lully Inside + Careers pages. Content load (client-supplied copy & images — PT + EN) |
-| 5 | QA, checkout smoke tests on Multibanco + cards, accessibility pass, Lighthouse pass, analytics wiring |
-| 6 | Soft-launch + client review → production launch |
+| Client content slips (copy or photos for brunch items) | Hard content deadline **2026-05-01** (end of Week 2). Anything not in by then uses placeholders and updates post-launch. |
+| Vectorizing 3 Baroque sub-marks takes longer than expected | Parallel track in Week 1 — either vectorize manually or commission a designer up-front. High-res raster is an acceptable fallback for hero use with careful masking. |
+| The Fork integration not live on all 3 stores | Email-fallback block ships for stores without the widget; swap in the widget post-launch per store. |
+| Cart/checkout QA incomplete by 2026-05-13 | Ship v1.0 without cart; ship v1.1 on ~2026-05-25 with cart. Event narrative is unaffected. |
+| Translation quality (PT) | Use native Portuguese translator on the team for the hero and legal copy; machine translation for shop/product copy as first pass, native reviewer on week 3. |
 
-Buffers: holidays, translation pass, third-party delivery app sandboxing (if attempted in phase 1).
+### Gating content deliveries (client-owned)
 
-Gating on content: if client copy+photo readiness slips, launch slips. Flag in next client meeting.
+| Due date | Deliverable | Owner |
+|----------|-------------|-------|
+| 2026-04-23 | Final logo pack decision (keep raster sub-marks or commission vector) | Us → client |
+| 2026-04-29 | Brunch copy (PT + EN), brunch product photography, 3 store photos | Client |
+| 2026-05-01 | All remaining copy (PT + EN), all product photography | Client |
+| 2026-05-06 | Legal text (T&Cs, privacy, cookies, complaints book link) | Client / their counsel |
+| 2026-05-13 | Client sign-off on staging | Client |
 
 ## Estimated cost shape (rough, for internal discussion)
 
