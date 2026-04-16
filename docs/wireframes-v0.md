@@ -232,7 +232,7 @@ The **single most important page** for the 5/15 event. Every press link points h
 
 1. **Hero** — long-form plate photograph, "Launching May 2026" badge visible pre-event.
    - Primary CTA: **Reserve a table** → `/reservations`.
-   - Secondary (small): "See press coverage" → anchors to a small "As seen in" row (if we have any by launch) or omitted.
+   - No "As seen in" / press block (decision 2026-04-16: we don't curate press quotes for v1.0).
 
 2. **Menu grouped by course** — sections match how guests order:
    - Eggs · Toasts & Greens · Sandwiches · Soups & Sweets · Drinks (add at v1.0 if drinks copy ready)
@@ -357,14 +357,14 @@ Brand-new page prompted by Q11 (3 stores already operating).
    - Services tags (M2 pending): Bakery · Pastry · Brunch · Dine-in · Pickup.
    - 2–3 photographs (client-supplied, per F12).
    - 1–2 lines of atmosphere copy (client or us).
-   - 3 CTAs: **Get directions** (Google Maps URL), **Reserve a table** (The Fork or email — varies per store per M4), **Order for pickup** (Shop landing scoped to that store if we implement store-scoped pickup, or generic /shop in v1.0).
+   - 3 CTAs: **Get directions** (Google Maps URL), **Reserve a table** (The Fork or email — varies per store per M4), **Order for pickup** (generic `/shop` link in v1.0; store-scoped pickup deferred to v1.1 along with cart).
 
 3. **Can't come in today?** — bridges to Shop.
 
 ### Phase notes
 - Page itself is 🟢.
 - Interactive map with clickable pins can be 🟡 — static map + list is enough for v1.0.
-- Store-scoped pickup (select pickup store on the product page) depends on Shopify's Local Pickup setup — we configure this by default, so it's 🟢 as long as cart ships.
+- Store-scoped pickup (select pickup store on the product page) is 🔵 v1.1 — configured together with cart/checkout, not pre-wired in v1.0.
 
 ---
 
@@ -433,12 +433,12 @@ Brand-new page prompted by Q11 (3 stores already operating).
 
 ---
 
-## Cross-cutting open questions for internal review
+## Cross-cutting decisions (resolved 2026-04-16)
 
-1. **Pillar naming on Home** — we wrote "Drinks & Brunch" on the third card to acknowledge that brunch is the event priority. Is that the right label, or should the third card be "Brunch" (with drinks rolled under shop) until after the event?
-2. **Store-scoped pickup** — do we ship Shopify Local Pickup per store from day 1 (even if cart is v1.1), or wait? Recommendation: configure it now so when cart ships the plumbing is ready.
-3. **"As seen in"** — only worth a block on Home/Brunch if we curate 3+ press quotes by 2026-05-10. Deadline to abort: Week 3 end.
-4. **Mobile sticky CTA** — "Reserve a table" sticky or "Order for pickup" sticky? Recommendation: **Reserve**, since the launch event is about brunch.
+1. **Home third pillar** — "Drinks & Brunch" (keep as drafted). Brunch gets visible weight on Home without a dedicated pillar card.
+2. **Store-scoped pickup** — deferred to **v1.1**, shipped together with cart/checkout. v1.0 store cards link to generic `/shop`.
+3. **"As seen in" / press block** — dropped. We do not curate press quotes for v1.0; no scraping needed.
+4. **Mobile sticky CTA** — **Reserve a table**. Launch event is brunch-focused.
 
 ---
 
