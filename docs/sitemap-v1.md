@@ -85,14 +85,14 @@ PT URL slugs are indicative — final wording to be confirmed with the client du
 
 ### Reservations — `/reservas` / `/reservations`
 
-**Purpose:** restaurant reservations across the 3 stores (if more than one has a dine-in restaurant — to clarify).
+**Purpose:** book a table at **Anjos only** — the only store with dine-in + brunch service (M2, M4).
 
 **Blocks:**
-1. **Brief intro** — hours, "how to book".
-2. **The Fork widget** — their embeddable reservation widget, one per store.
-3. **Fallback** — "No availability via The Fork? Write to reservations@…"
+1. **Brief intro** — Anjos address, hours, "how to book".
+2. **Reservation form** — email-fallback in v1.0 (The Fork not set up yet per M4). Client sets up The Fork → Anjos post-launch; widget swap-in is a one-section replacement.
+3. **Groups / private events** — bridges to `/festive-orders`.
 
-**Phase:** 1. Blocked on The Fork account setup — confirm client has the partnership live, otherwise we launch with email-only and swap in the widget later.
+**Phase:** 1 — ships with email-only fallback. Widget swap-in is v1.1+ when client provides The Fork confirmation link.
 
 ### Lully Inside (B2B) — `/lully-inside`
 
@@ -170,16 +170,17 @@ The event is a **brunch-menu press & influencer launch**, not an e-commerce push
 | Page | Status | Pending input |
 |------|--------|---------------|
 | Home | 🟢 Can design now | Brunch hero copy + photography (client) |
-| Brunch / Shop | 🟡 Catalogue buildable; cart/checkout may slip to v1.1 | M3 — per-category cutoffs |
-| Stores | 🟡 Addresses in; can build page | M1 — hours per store; M2 — dine-in vs pickup-only per store |
-| Reservations | 🟡 Structure clear | M4 — The Fork status per store |
+| Brunch | 🟢 Anjos-only, dine-in-only (M2) — editorial menu, no pickup v1.0 | Brunch copy + photos (client, by 2026-04-29) |
+| Shop (breads / pastries / etc.) | 🟡 Catalogue buildable; cart/checkout slips to v1.1 | Product photos + copy |
+| Stores | 🟢 Addresses + hours + services all confirmed | Store photos (client, per F12) |
+| Reservations | 🟢 Anjos-only, email-fallback (M4 — Fork not live yet) | Reservation inbox address |
 | Hero / Festive sections | 🟡 Need vectorized or re-drawn sub-marks | Design task (our side) |
 | Lully Inside | 🟢 Descriptive-only ships now | F7 — partner logos "later" |
 | Festive & Bespoke | 🟢 Structure locked | Client copy + seasonal photos |
 | Careers | 🟢 Ships | List of open positions |
 | Legal | 🟢 Template ready | Client / counsel for final legal text |
 
-Micro-gaps (**M1–M4** — hours per store, dine-in vs pickup, per-category cutoffs, The Fork status per store) go out as a single short ping, not a new Google Doc.
+**M1–M4 resolved 2026-04-16** — see `requirements-understanding.md` for details. Net effect: Reservations page collapses to single-store (Anjos, email-only); Brunch is Anjos-only dine-in menu display; Beato runs Tue–Sat only.
 
 ## What is Phase 2 (for clarity)
 

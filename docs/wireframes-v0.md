@@ -162,6 +162,8 @@ Notes:
 
 The **single most important page** for the 5/15 event. Every press link points here.
 
+**Scope clarification (per M2):** Brunch is served **at Anjos only**, and is **dine-in only** in v1.0 (no pickup for brunch items yet). This page is an editorial menu + reservations bridge, not part of the commerce flow. Shop > Brunch collection does **not** carry "add to pickup order" at launch. Callouts and the hero CTA make "only at Anjos" clear.
+
 ### Sketch
 
 ```
@@ -310,30 +312,35 @@ Brand-new page prompted by Q11 (3 stores already operating).
 │   │  ANJOS                                                                   │
 │   │  Rua do Forno do Tijolo 46, 1170-134 Lisboa                              │
 │   │                                                                          │
-│   │  Tuesday – Sunday   〈hours〉   (M1)                                     │
-│   │  Bakery · Pastry · Brunch · Dine-in · Pickup                 (M2)        │
+│   │  Tue–Sat  08:30 – 19:00                                                  │
+│   │  Sunday   08:30 – 17:00                                                  │
+│   │  Monday   closed                                                         │
+│   │  Bakery · Pastry · Brunch · Dine-in                                      │
 │   │                                                                          │
 │   │  ┌────┐ ┌────┐ ┌────┐                                                    │
 │   │  │〈📷1〉│ │〈📷2〉│ │〈📷3〉│   Atmosphere / a line about the oven           │
 │   │  └────┘ └────┘ └────┘                                                    │
 │   │                                                                          │
-│   │  [ Get directions ]   [ Reserve a table ]   [ Order for pickup ]         │
+│   │  [ Get directions ]   [ Reserve a table ]                                │
 │   └──────────────────────────────────────────────────────────────────────┘   │
 │                                                                              │
 │   ┌──────────────────────────────────────────────────────────────────────┐   │
 │   │  CAMPO DE OURIQUE                                                    │   │
 │   │  Rua 4 de Infantaria 43, 1350-135 Lisboa                             │   │
-│   │  〈hours〉 (M1) · 〈services〉 (M2)                                    │   │
+│   │  Tue–Sat  08:00 – 19:00                                              │   │
+│   │  Sunday   08:00 – 15:00 · Monday closed                              │   │
+│   │  Bakery · Pastry                                                     │   │
 │   │  〈photos〉                                                            │   │
-│   │  [ Directions ]   [ Reserve ]   [ Pickup ]                           │   │
+│   │  [ Get directions ]                                                  │   │
 │   └──────────────────────────────────────────────────────────────────────┘   │
 │                                                                              │
 │   ┌──────────────────────────────────────────────────────────────────────┐   │
 │   │  BEATO                                                               │   │
 │   │  Rua do Grilo 12, 1950-109 Lisboa                                    │   │
-│   │  〈hours〉 (M1) · 〈services〉 (M2)                                    │   │
+│   │  Tue–Sat  08:00 – 15:00 · Sun–Mon closed                             │   │
+│   │  Bakery · Pastry                                                     │   │
 │   │  〈photos〉                                                            │   │
-│   │  [ Directions ]   [ Reserve ]   [ Pickup ]                           │   │
+│   │  [ Get directions ]                                                  │   │
 │   └──────────────────────────────────────────────────────────────────────┘   │
 │                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────┤
@@ -353,11 +360,13 @@ Brand-new page prompted by Q11 (3 stores already operating).
 2. **Store cards** — 3 stacked (flagship first), each with:
    - Name + **FLAGSHIP** badge (Anjos only).
    - Full address (as given by client, pre-formatted for copy-to-clipboard).
-   - Hours (M1 pending).
-   - Services tags (M2 pending): Bakery · Pastry · Brunch · Dine-in · Pickup.
+   - Hours — per M1 (Beato is **Tue–Sat only**; Campo de Ourique and Anjos run Tue–Sun, closed Mon).
+   - Services tags — per M2: Anjos = Bakery · Pastry · Brunch · Dine-in; Campo de Ourique and Beato = Bakery · Pastry only.
    - 2–3 photographs (client-supplied, per F12).
    - 1–2 lines of atmosphere copy (client or us).
-   - 3 CTAs: **Get directions** (Google Maps URL), **Reserve a table** (The Fork or email — varies per store per M4), **Order for pickup** (generic `/shop` link in v1.0; store-scoped pickup deferred to v1.1 along with cart).
+   - CTAs vary per store:
+     - **Anjos**: Get directions · Reserve a table (→ /reservations)
+     - **Campo de Ourique** and **Beato**: Get directions only (no reservations, no pickup in v1.0 — pickup arrives with cart in v1.1)
 
 3. **Can't come in today?** — bridges to Shop.
 
@@ -377,29 +386,36 @@ Brand-new page prompted by Q11 (3 stores already operating).
 │                             [Top nav]                                        │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │   RESERVE A TABLE                                                            │
-│   We'd love to feed you. Pick a store, pick a time.                          │
+│   Brunch is served at our Anjos flagship. Write to us to book.               │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │   ANJOS   — flagship                                                         │
-│   Rua do Forno do Tijolo 46 · Tue–Sun · 〈hours〉                             │
+│   Rua do Forno do Tijolo 46, 1170-134 Lisboa                                 │
+│   Tue–Sat 08:30 – 19:00 · Sun 08:30 – 17:00 · Mon closed                     │
 │                                                                              │
 │   ┌──────────────────────────────────────────────────────────────────────┐   │
 │   │                                                                      │   │
-│   │        〈The Fork reservation widget — iframe〉                        │   │
-│   │        Calendar · guest count · time slots · "Book"                  │   │
+│   │   REQUEST A RESERVATION                                              │   │
+│   │   ─────────────────────────────                                      │   │
+│   │   Name       [____________________]                                  │   │
+│   │   Email      [____________________]                                  │   │
+│   │   Date       [ 📅 ]    Time  [ 🕐 ]                                  │   │
+│   │   Guests     [  ▼ 2 ]                                                │   │
+│   │   Note       [____________________]                                  │   │
 │   │                                                                      │   │
+│   │                     [  Send request  ]                               │   │
+│   │                                                                      │   │
+│   │   We reply within 24h to confirm. Or email us directly:              │   │
+│   │   reservations@lully1661.com                                         │   │
 │   └──────────────────────────────────────────────────────────────────────┘   │
 │                                                                              │
-│   Not available via The Fork? → reservations@lully1661.com                   │
+│   (When The Fork is live for Anjos, this block is replaced by the widget.)   │
 │                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│   CAMPO DE OURIQUE                                                           │
-│   Rua 4 de Infantaria 43 · Tue–Sun · 〈hours〉                                │
-│   〈Fork widget OR email fallback depending on M4〉                            │
-├──────────────────────────────────────────────────────────────────────────────┤
-│   BEATO                                                                      │
-│   Rua do Grilo 12 · Tue–Sun · 〈hours〉                                       │
-│   〈Fork widget OR email fallback depending on M4〉                            │
+│   OTHER STORES                                                               │
+│   Our Campo de Ourique and Beato stores are bakery & pastry retail —         │
+│   no reservations needed. Come in during opening hours.                      │
+│                    [ See all three stores → ]                                │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │   GROUPS, PRIVATE EVENTS & CATERING                                          │
 │   More than 8 guests, a private evening, or catering off-site?               │
@@ -407,7 +423,7 @@ Brand-new page prompted by Q11 (3 stores already operating).
 ├──────────────────────────────────────────────────────────────────────────────┤
 │   GOOD TO KNOW                                                               │
 │   · Please arrive within 15 minutes of your booking.                         │
-│   · To cancel, use The Fork app or email us 24h ahead.                       │
+│   · Cancellations: email us 24h ahead.                                       │
 │   · Brunch is served 〈hours〉 — last orders at 〈time〉.                      │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                              [Footer]                                        │
@@ -416,20 +432,19 @@ Brand-new page prompted by Q11 (3 stores already operating).
 
 ### Block-by-block
 
-1. **Hero** — title + 1-line intro (no image — this is a utility page, keep it fast).
+1. **Hero** — title + 1-line intro (no image — this is a utility page, keep it fast). Copy makes it explicit: reservations are for **Anjos only**.
 
-2. **Store block × 3** — one per store, each either:
-   - **A.** The Fork embed widget (iframe) + small email fallback link, OR
-   - **B.** Email-only fallback block ("Write to reservations@… with your preferred date, time, and guest count; we reply within 24h.") — used for stores where The Fork isn't live.
-   - Pending M4 to choose A vs B per store.
+2. **Anjos reservation block** — email-backed form in v1.0 (The Fork isn't live yet per M4). Form posts to `reservations@lully1661.com` (or similar; client to confirm). When client finishes The Fork onboarding, the form block swaps out for the widget — structure is designed to make that a single-section replacement.
 
-3. **Groups / private events** — bridges to `/festive-orders` enquiry form.
+3. **Other stores note** — small block that redirects to `/stores` for Campo de Ourique + Beato, explaining no reservations are needed there.
 
-4. **Good to know** — short policy notes.
+4. **Groups / private events** — bridges to `/festive-orders` enquiry form.
+
+5. **Good to know** — short policy notes.
 
 ### Phase notes
-- All 🟢.
-- If The Fork onboarding for a store takes >1 week, that store ships with block B and we swap in block A post-launch.
+- All 🟢 (email form + static copy — no external dependency).
+- The Fork widget is **not required for v1.0** (client confirmed not set up yet per M4). Planned for v1.1+ once client completes Anjos listing on The Fork.
 
 ---
 

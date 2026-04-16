@@ -207,16 +207,48 @@ Client answered round 1 in Google Docs on **2026-04-16**. Summary of each answer
 - **Sub-mark art**: no vectors means a **design task** we now own (vectorizing the 3 Baroque engravings or commissioning new SVGs). Budget implication.
 - **B2B page**: launches without featured partners — acceptable per client.
 
-## Remaining micro-gaps (to resolve inline, not a new round)
+## Remaining micro-gaps — resolved 2026-04-16
 
-| # | Gap | Ask |
-|---|-----|-----|
-| M1 | Hours per store | "What are opening hours for Anjos / Campo de Ourique / Beato?" |
-| M2 | Store type per location | "Which stores have dine-in + brunch service? Which are pickup/retail only?" |
-| M3 | Per-category cutoffs | "For F3: which products need an earlier cutoff than 14:00, and what are those times?" |
-| M4 | The Fork status per store | "Is The Fork live on each of the 3 stores today, or only some?" |
+All four answered by client via WhatsApp (verbatim quotes preserved).
 
-These can go out as a single short email or a WhatsApp-style ping, not another Google Doc.
+### M1 — Hours per store
+
+| Store | Tue–Sat | Sun | Mon |
+|-------|---------|-----|-----|
+| **Anjos** (flagship) | 08:30 – 19:00 | 08:30 – 17:00 | closed |
+| **Campo de Ourique** | 08:00 – 19:00 | 08:00 – 15:00 | closed |
+| **Beato** | 08:00 – 15:00 | closed | closed |
+
+Note: Beato is a **5-day operation** (Tue–Sat only). Prior sitemap text saying "Tue–Sun all three stores" is wrong and needs correction.
+
+### M2 — Brunch / dine-in / pickup per store
+
+- **Only Anjos serves brunch.** Campo de Ourique and Beato are bakery/pastry retail only.
+- **No pickup for brunch items yet.** Brunch is dine-in only at Anjos.
+- Implication: brunch is a **single-store, dine-in-only** product in v1.0. Shop > Brunch collection is **editorial/menu-display only** on Day 1 (no "add to pickup order"). Revisit post-launch if client wants to enable brunch-to-go.
+
+### M3 — Per-category cutoffs
+
+Client's verbatim answer: *"no all products have the same cut-off time"* — read as **uniform 14:00 same-day cutoff across all pickup products** (no per-category variation). This slightly contradicts Round 2 F3 ("not all products share that cutoff"); we interpret M3 as the latest word and the simpler policy.
+
+- **Non-blocking for v1.0**: cart/checkout ships in v1.1, so pickup cutoff UX is a v1.1 concern. If per-category cutoffs re-surface during cart implementation we revisit then — no need to re-ask now.
+
+### M4 — The Fork status + reservations scope
+
+- **The Fork is not set up yet.** Client "would only need to list the Anjos store" when they do set it up.
+- **Only Anjos needs reservations.** Campo de Ourique and Beato are retail-only — no reservation flow at all.
+- Launch behaviour: **v1.0 Reservations page = single Anjos block, email-fallback only.** Swap in The Fork widget for Anjos when (and if) the client completes their The Fork onboarding.
+
+### Combined impact on v1.0 scope
+
+| Before | After M1–M4 |
+|--------|-------------|
+| Reservations page with 3 store blocks + 3 Fork widgets | **1 Anjos block, email-only** |
+| Brunch = Shop collection w/ pickup | **Brunch = Anjos-only dine-in, menu display** |
+| 3 stores blocked by "hours per store" | **Hours confirmed, Beato 5-day schedule** |
+| M3 cutoff variation → cart UX complication | **Uniform 14:00 (simpler); cart is v1.1 regardless** |
+
+Net effect: Reservations and Brunch both get simpler. One fewer The Fork integration to ship. No new blockers.
 
 ## What Round 1 unblocks (we can now proceed with)
 
