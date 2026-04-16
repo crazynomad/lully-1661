@@ -61,7 +61,9 @@ Home
 
 **`[CLARIFY] / [ASSUMPTION]`**
 - The brief mentions a **mood board and music** ("mood board and music" line near the top). We interpret this as a *page or hero treatment*, not a separate site. Should there be a dedicated "Ambience" / audio-visual section showcasing Baroque music + boutique photography?
-- The sample menu includes items in Portuguese and English; the brand story is told in French and English. **Is the site trilingual (PT / EN / FR) or bilingual (PT / EN)?**
+- **Languages: Portuguese + English** (confirmed 2026-04-16). French brand copy will be translated/adapted into EN; no French on the public site.
+  - **`[CLARIFY]`** Which locale is the *default* at `/` — PT (local-first) or EN (expat-first)? We recommend **PT default with automatic EN offer** based on browser language.
+  - **`[CLARIFY]`** URL strategy — subpath (`/pt/…`, `/en/…`) or subdomain (`pt.`, `en.`)? Subpath is simpler for SEO on a single domain; we recommend it.
 - Should **events** (e.g. the *Gareth × Sezin* guest-chef luncheon visual we received) have their own section, or live under News / Journal?
 
 ## 5. eCommerce scope
@@ -161,7 +163,7 @@ Once the client confirms or corrects this document, we would like to produce:
 | # | Question | Blocks |
 |---|----------|--------|
 | Q1 | Confirm brand spelling is *lully* (double L). Rename repo? | Repo rename, all copy |
-| Q2 | Target languages: PT / EN / FR, or subset? | Content scoping, CMS setup |
+| Q2 | ~~Target languages~~ — **Decided 2026-04-16: PT + EN.** Remaining: default locale + URL strategy (subpath vs subdomain). | Content scoping, CMS setup |
 | Q3 | Platform: Shopify (as hinted) or headless alternative? | Architecture, cost, timeline |
 | Q4 | Payment providers on launch (Multibanco mandatory — which gateway)? | Checkout setup |
 | Q5 | Click-and-collect: ordering cutoffs, live stock vs. form-to-staff? | Backend scope |
