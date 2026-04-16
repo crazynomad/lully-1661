@@ -251,7 +251,17 @@
     padding: 28px;
     text-align: center;
   }
-  .sm img { max-width: 100%; height: auto; display: block; margin: 0 auto 20px; }
+  .sm img {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 20px;
+    background: #FFFBF0;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(26,22,19,0.06);
+  }
   .sm h4 {
     font-family: var(--font-display);
     font-weight: 400;
