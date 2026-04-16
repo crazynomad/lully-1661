@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lully 1661 — Visual Direction v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:   #F4EEDF;
+    --paper-2: #EAE2CE;
+    --wheat:   #E6D9BE;
+    --ink:     #1A1613;
+    --ink-2:   #3C342E;
+    --stone:   #7A746B;
+    --gold:    #A68A3E;
+    --gold-2:  #C7A64E;
+    --ember:   #B8563D;
+    --ember-2: #9B4431;
+    --font-display: "Fraunces", Georgia, serif;
+    --font-serif-accent: "Instrument Serif", "Fraunces", Georgia, serif;
+    --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --rule: 1px solid rgba(26,22,19,0.14);
+    --rule-strong: 1px solid rgba(26,22,19,0.28);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1120px; margin: 0 auto; padding: 80px 56px; }
+  .rule { height: 1px; background: rgba(26,22,19,0.18); margin: 80px 0; }
+
+  /* ---------- Masthead ---------- */
+  .mast {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding-bottom: 32px; border-bottom: var(--rule-strong);
+  }
+  .mast .wordmark {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 44px;
+    font-variation-settings: "opsz" 120, "SOFT" 80;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .mast .wordmark em {
+    font-style: italic;
+    font-family: var(--font-serif-accent);
+    font-weight: 400;
+    color: var(--gold);
+  }
+  .mast .meta {
+    text-align: right;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+    line-height: 1.8;
+  }
+  .mast .meta strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Section headings ---------- */
+  .section-label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 48px;
+    font-variation-settings: "opsz" 96, "SOFT" 60;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin: 0 0 24px;
+    max-width: 22ch;
+  }
+  h2.section-title em {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    color: var(--ember);
+    font-weight: 400;
+  }
+  .lead {
+    max-width: 62ch;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .lead + .lead { margin-top: 14px; }
+
+  /* ---------- Thesis block ---------- */
+  .thesis {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+    align-items: start;
+  }
+  .thesis .quote {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.35;
+    color: var(--ink);
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+  }
+  .thesis .quote span { color: var(--ember); }
+
+  /* ---------- Reference cards ---------- */
+  .refs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .ref {
+    background: var(--paper-2);
+    border: var(--rule);
+    padding: 24px;
+  }
+  .ref h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    font-variation-settings: "opsz" 48;
+    margin: 0 0 8px;
+  }
+  .ref p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+  .ref .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 12px;
+  }
+
+  /* ---------- Palette ---------- */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .swatch {
+    aspect-ratio: 3 / 4;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 16px;
+    border: var(--rule);
+  }
+  .swatch .name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    font-variation-settings: "opsz" 36;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .swatch .hex {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .swatch .use {
+    font-size: 12px;
+    margin-top: 8px;
+    line-height: 1.4;
+    opacity: 0.85;
+  }
+  .sw-paper  { background: var(--paper-2); color: var(--ink); }
+  .sw-ink    { background: var(--ink);     color: var(--paper); }
+  .sw-gold   { background: var(--gold);    color: var(--paper); }
+  .sw-ember  { background: var(--ember);   color: var(--paper); }
+  .sw-stone  { background: var(--stone);   color: var(--paper); }
+
+  /* ---------- Type specimens ---------- */
+  .typestack { display: grid; gap: 48px; }
+  .type-row { display: grid; grid-template-columns: 160px 1fr; gap: 40px; align-items: baseline; }
+  .type-row .label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--stone);
+    padding-top: 12px;
+  }
+  .type-row .spec {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 12px;
+  }
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 88px;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
+    color: var(--ink);
+  }
+  .t-display em {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    color: var(--ember);
+    font-weight: 400;
+  }
+  .t-accent {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    font-size: 34px;
+    line-height: 1.25;
+    color: var(--gold);
+  }
+  .t-body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 58ch;
+    color: var(--ink-2);
+  }
+  .t-ui {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* ---------- Sub-marks ---------- */
+  .submarks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .sm {
+    background: var(--paper-2);
+    border: var(--rule);
+    padding: 28px;
+    text-align: center;
+  }
+  .sm img { max-width: 100%; height: auto; display: block; margin: 0 auto 20px; }
+  .sm h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 22px;
+    font-variation-settings: "opsz" 72;
+    margin: 0 0 6px;
+  }
+  .sm .role {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 12px;
+  }
+  .sm .status {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+  }
+  .sm .status.todo { color: var(--ember); border-color: var(--ember); }
+  .sm p.note { font-size: 13px; color: var(--ink-2); margin: 12px 0 0; line-height: 1.5; }
+
+  /* ---------- Browser mockup frame ---------- */
+  .mockup {
+    margin-top: 32px;
+    border: 1px solid rgba(26,22,19,0.18);
+    background: var(--paper);
+    box-shadow: 0 30px 80px rgba(26,22,19,0.12);
+    overflow: hidden;
+  }
+  .mockup .chrome {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px;
+    background: #E4DCC6;
+    border-bottom: var(--rule);
+  }
+  .mockup .chrome .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(26,22,19,0.18);
+  }
+  .mockup .chrome .url {
+    flex: 1; margin-left: 12px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--stone);
+    padding: 5px 12px;
+    background: var(--paper);
+    border: var(--rule);
+    border-radius: 4px;
+  }
+
+  /* --- Page nav (inside mockup) --- */
+  .pg-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 40px;
+    border-bottom: var(--rule);
+  }
+  .pg-nav .brand {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 24px;
+    font-variation-settings: "opsz" 96, "SOFT" 80;
+    letter-spacing: -0.01em;
+  }
+  .pg-nav .brand em { font-family: var(--font-serif-accent); font-style: italic; color: var(--gold); font-weight: 400; }
+  .pg-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 28px; }
+  .pg-nav ul li {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .pg-nav ul li.active { color: var(--ember); }
+  .pg-nav .lang {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .pg-nav .lang b { color: var(--ink); }
+
+  /* --- Hero (Home) --- */
+  .pg-hero {
+    display: grid; grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    padding: 80px 40px 72px;
+    border-bottom: var(--rule);
+    align-items: center;
+  }
+  .pg-hero h1 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 76px;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    margin: 0 0 20px;
+  }
+  .pg-hero h1 em {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    color: var(--ember);
+    font-weight: 400;
+  }
+  .pg-hero p.kicker {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold);
+    margin: 0 0 28px;
+  }
+  .pg-hero .lede {
+    font-size: 17px;
+    max-width: 50ch;
+    color: var(--ink-2);
+    margin: 0 0 36px;
+  }
+  .pg-hero .ctas { display: flex; gap: 12px; }
+  .btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.ghost   { background: transparent; color: var(--ink); }
+  .btn.ember   { background: var(--ember); color: var(--paper); border-color: var(--ember); }
+  .pg-hero figure {
+    margin: 0; text-align: center;
+  }
+  .pg-hero figure img { max-width: 100%; height: auto; }
+
+  /* --- Pillars (Home) --- */
+  .pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-bottom: var(--rule);
+  }
+  .pillar {
+    padding: 48px 32px;
+    text-align: center;
+    border-right: var(--rule);
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar img { width: 120px; height: auto; margin: 0 auto 16px; display: block; }
+  .pillar h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 26px;
+    font-variation-settings: "opsz" 72;
+    margin: 0 0 8px;
+  }
+  .pillar p { font-size: 14px; color: var(--ink-2); margin: 0 0 14px; line-height: 1.5; }
+  .pillar .lnk {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* --- This week (Home) --- */
+  .tw {
+    padding: 64px 40px;
+    border-bottom: var(--rule);
+  }
+  .tw-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 32px;
+  }
+  .tw-head h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 44px;
+    font-variation-settings: "opsz" 96, "SOFT" 80;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .tw-head h2 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+  .tw-head .small {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone);
+  }
+  .tw-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .tw-item { background: var(--paper-2); border: var(--rule); padding: 20px; }
+  .tw-item .cat {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .tw-item h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    font-variation-settings: "opsz" 48;
+    margin: 0 0 6px;
+    line-height: 1.2;
+  }
+  .tw-item p { font-size: 13px; margin: 0; color: var(--ink-2); line-height: 1.5; }
+  .tw-item .price {
+    margin-top: 14px;
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ember);
+  }
+
+  /* --- Stores (Home) --- */
+  .stores {
+    padding: 64px 40px;
+    border-bottom: var(--rule);
+  }
+  .stores h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 44px;
+    font-variation-settings: "opsz" 96, "SOFT" 80;
+    letter-spacing: -0.015em;
+    margin: 0 0 28px;
+  }
+  .stores h2 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+  .stores-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .store {
+    border: var(--rule);
+    padding: 24px;
+  }
+  .store .tag {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .store h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 22px;
+    font-variation-settings: "opsz" 60;
+    margin: 0 0 4px;
+  }
+  .store .addr { font-size: 13px; color: var(--ink-2); margin: 0 0 12px; line-height: 1.5; }
+  .store .hrs {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink-2);
+    border-top: var(--rule);
+    padding-top: 10px;
+    line-height: 1.7;
+  }
+  .store .hrs b { color: var(--ink); font-weight: 600; }
+  .store-cta {
+    margin-top: 14px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .store-cta a {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 8px 12px; border: 1px solid var(--ink); color: var(--ink);
+    text-decoration: none;
+  }
+  .store-cta a.ember { background: var(--ember); color: var(--paper); border-color: var(--ember); }
+
+  /* --- Footer (Home) --- */
+  .pg-foot {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 56px 40px 32px;
+  }
+  .pg-foot-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.2fr; gap: 40px;
+    margin-bottom: 32px;
+  }
+  .pg-foot .brand {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 32px;
+    font-variation-settings: "opsz" 120, "SOFT" 80;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .pg-foot .brand em { font-family: var(--font-serif-accent); font-style: italic; color: var(--gold-2); font-weight: 400; }
+  .pg-foot .tag {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    color: var(--gold-2);
+    font-size: 17px;
+    margin-top: 10px;
+    max-width: 28ch;
+  }
+  .pg-foot h5 {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-2);
+    margin: 0 0 14px;
+  }
+  .pg-foot ul { list-style: none; padding: 0; margin: 0; }
+  .pg-foot ul li { font-size: 13px; line-height: 1.9; color: rgba(244,238,223,0.82); }
+  .pg-foot input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(244,238,223,0.4);
+    color: var(--paper);
+    padding: 8px 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    width: 100%;
+    margin-top: 6px;
+  }
+  .pg-foot input::placeholder { color: rgba(244,238,223,0.45); }
+  .pg-foot .legal {
+    font-size: 11px; letter-spacing: 0.1em;
+    color: rgba(244,238,223,0.45);
+    border-top: 1px solid rgba(244,238,223,0.14);
+    padding-top: 20px;
+    display: flex; justify-content: space-between;
+  }
+
+  /* --- Brunch page overrides --- */
+  .brunch-hero {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    padding: 72px 40px;
+    border-bottom: var(--rule);
+    align-items: center;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    background: var(--ember); color: var(--paper);
+    padding: 6px 12px;
+    margin-bottom: 20px;
+  }
+  .brunch-hero h1 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 68px;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    margin: 0 0 18px;
+  }
+  .brunch-hero h1 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--gold); font-weight: 400; }
+  .brunch-hero p { font-size: 17px; color: var(--ink-2); max-width: 48ch; margin: 0; }
+  .brunch-hero figure { margin: 0; text-align: center; }
+  .brunch-hero figure img { max-width: 100%; height: auto; }
+
+  .why-brunch {
+    padding: 56px 40px;
+    border-bottom: var(--rule);
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px;
+  }
+  .why-brunch h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 28px;
+    font-variation-settings: "opsz" 72;
+    margin: 0;
+  }
+  .why-brunch p { font-size: 16px; color: var(--ink-2); margin: 0 0 12px; line-height: 1.6; }
+
+  .menu {
+    padding: 64px 40px;
+    border-bottom: var(--rule);
+  }
+  .menu h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 40px;
+    font-variation-settings: "opsz" 96, "SOFT" 80;
+    letter-spacing: -0.015em;
+    margin: 0 0 40px;
+  }
+  .menu h2 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+  .course + .course { margin-top: 40px; }
+  .course-label {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: var(--rule);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+  .dish {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(26,22,19,0.14);
+    align-items: baseline;
+  }
+  .dish:last-child { border-bottom: none; }
+  .dish .name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 21px;
+    font-variation-settings: "opsz" 48;
+    margin: 0 0 4px;
+  }
+  .dish .name em { font-family: var(--font-serif-accent); font-style: italic; color: var(--gold); font-weight: 400; }
+  .dish .desc { font-size: 14px; color: var(--ink-2); margin: 0; line-height: 1.5; }
+  .dish .price {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ember);
+  }
+
+  .brunch-cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 40px;
+    text-align: center;
+  }
+  .brunch-cta h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 44px;
+    font-variation-settings: "opsz" 120, "SOFT" 100;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .brunch-cta h3 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--gold-2); font-weight: 400; }
+  .brunch-cta p {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    color: var(--gold-2);
+    font-size: 18px;
+    margin: 0 0 28px;
+  }
+
+  /* --- Caveats / signoff --- */
+  .caveats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  }
+  .caveats .col { border: var(--rule); padding: 28px; background: var(--paper-2); }
+  .caveats h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 22px;
+    font-variation-settings: "opsz" 60;
+    margin: 0 0 16px;
+  }
+  .caveats ul { list-style: none; padding: 0; margin: 0; }
+  .caveats li {
+    font-size: 14px; color: var(--ink-2);
+    padding: 8px 0 8px 22px;
+    border-bottom: 1px dashed rgba(26,22,19,0.14);
+    position: relative;
+  }
+  .caveats li:last-child { border-bottom: none; }
+  .caveats li::before {
+    content: "·"; position: absolute; left: 6px; top: 6px;
+    font-family: var(--font-serif-accent); font-style: italic;
+    color: var(--gold); font-size: 22px;
+  }
+  .caveats .excl li::before { content: "—"; font-size: 14px; top: 10px; color: var(--ember); }
+
+  .signoff {
+    text-align: center;
+    padding: 48px 0 12px;
+    border-top: var(--rule-strong);
+    margin-top: 56px;
+  }
+  .signoff .word {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 40px;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .signoff .word em { font-family: var(--font-serif-accent); font-style: italic; color: var(--gold); font-weight: 400; }
+  .signoff .meta {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ================= MASTHEAD ================= -->
+  <header class="mast">
+    <div class="wordmark">lully <em>1661</em></div>
+    <div class="meta">
+      <strong>Visual Direction v1</strong><br>
+      Prepared 2026-04-16<br>
+      For client review · Attachment to SOW
+    </div>
+  </header>
+
+  <!-- ================= THESIS ================= -->
+  <section style="margin-top: 72px;">
+    <span class="section-label">01 · The thesis</span>
+    <h2 class="section-title">Baroque copperplate, <em>with a modern hand.</em></h2>
+    <div class="thesis" style="margin-top: 32px;">
+      <div class="quote">
+        Period engravings from the 17th&nbsp;century — miller, pastry-cook, café-maker — rendered with ornamental gold and a contemporary ink script laid over top. <span>Tradition, re-signed in 2026.</span>
+      </div>
+      <div>
+        <p class="lead">The brand already owns three Baroque sub-marks — Le Meunier, La Pâtissière, Le Caffetier — drawn in the copperplate style of Jean-Baptiste Lully's era. Two of the three are <em>already</em> treated with a gold ornamental frame and a loose, almost graffiti-like "lully 1661" ink signature.</p>
+        <p class="lead">That treatment is the whole direction: <b>refined base, irreverent overlay</b>. Heritage without the dust. The website picks up that same gesture — long-form editorial serif for display, a cursive italic for the sentimental line, and clean sans for everything practical.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= REFERENCES ================= -->
+  <section>
+    <span class="section-label">02 · References the mood points to</span>
+    <h2 class="section-title">Neighbours in tone, <em>not templates.</em></h2>
+    <p class="lead">These are reference points for the feeling, not the layout. The site should read like it belongs in this room, but with lully's own voice.</p>
+    <div class="refs">
+      <div class="ref">
+        <span class="tag">Reference 1</span>
+        <h4>Liberté — Paris</h4>
+        <p>Patisserie with a serif-led editorial presence. Large-format photography, generous whitespace, assertive typographic hierarchy. Lesson: let the product speak; frame it with calm.</p>
+      </div>
+      <div class="ref">
+        <span class="tag">Reference 2</span>
+        <h4>The French Bastards</h4>
+        <p>Same craft pedigree, looser tone. Shows how a heritage bakery can talk to a younger audience without diluting the craft story. Lesson: the brand can be playful.</p>
+      </div>
+      <div class="ref">
+        <span class="tag">Reference 3</span>
+        <h4>Lully's own sub-marks</h4>
+        <p>The miller + café-maker already have a gold-flourish + ink-script treatment that is completely on-voice. Lesson: the direction is already inside the brand — we amplify it.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= PALETTE ================= -->
+  <section>
+    <span class="section-label">03 · Colour</span>
+    <h2 class="section-title">Paper, ink, <em>and a little gold.</em></h2>
+    <p class="lead">Five colours, held loosely. Paper cream carries the page; ink is near-black rather than pure black so the page reads warm, not cold; gold is ornamental only; ember is reserved for editorial moments (seasonal callouts, CTAs); stone does the quiet UI work.</p>
+    <div class="palette">
+      <div class="swatch sw-paper">
+        <div class="name">Paper Cream</div>
+        <div class="hex">#F4EEDF</div>
+        <div class="use">Background. Calm, warm, flour-dusted.</div>
+      </div>
+      <div class="swatch sw-ink">
+        <div class="name">Ink</div>
+        <div class="hex">#1A1613</div>
+        <div class="use">Body text, dark sections, wordmark.</div>
+      </div>
+      <div class="swatch sw-gold">
+        <div class="name">Ornamental Gold</div>
+        <div class="hex">#A68A3E</div>
+        <div class="use">Accents, flourishes, sub-mark framing.</div>
+      </div>
+      <div class="swatch sw-ember">
+        <div class="name">Oven Ember</div>
+        <div class="hex">#B8563D</div>
+        <div class="use">Editorial highlight, primary CTA.</div>
+      </div>
+      <div class="swatch sw-stone">
+        <div class="name">Mill Stone</div>
+        <div class="hex">#7A746B</div>
+        <div class="use">Secondary UI, metadata, dividers.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= TYPOGRAPHY ================= -->
+  <section>
+    <span class="section-label">04 · Typography</span>
+    <h2 class="section-title">Two serifs, <em>one sans.</em></h2>
+    <p class="lead">Fraunces carries display and product names — a variable serif with an optical-size axis that lets headlines feel almost woodcut while small sizes stay clean. Instrument Serif Italic is reserved for the brand's sentimental line. Instrument Sans handles everything operational. All three are free and already on Google Fonts — zero licence risk.</p>
+    <div class="typestack" style="margin-top: 48px;">
+      <div class="type-row">
+        <div class="label">Display</div>
+        <div>
+          <div class="t-display">Bakery, <em>reinvented.</em></div>
+          <div class="spec">Fraunces · opsz 144 · wght 300 · SOFT 100</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="label">Accent</div>
+        <div>
+          <div class="t-accent">Maintenant, toujours mieux qu'avant.</div>
+          <div class="spec">Instrument Serif Italic · 34 / 42</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="label">Body</div>
+        <div>
+          <p class="t-body">Our sourdough is mixed at five in the morning, folded four times, and rested for forty-eight hours before it sees the oven. The flour is stone-milled in the Mâconnais, where Jean-Baptiste Lully was born in 1632. Everything else follows from there.</p>
+          <div class="spec">Instrument Sans · 17 / 27</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="label">UI labels</div>
+        <div>
+          <div class="t-ui">Order for pickup · Reserve a table · Find a store</div>
+          <div class="spec">Instrument Sans · 13 · tracking 0.18em</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= SUB-MARKS ================= -->
+  <section>
+    <span class="section-label">05 · Sub-marks</span>
+    <h2 class="section-title">Three characters, <em>one signature.</em></h2>
+    <p class="lead">The three craft sub-marks are the brand's primary illustration system. Meunier and Caffetier already carry the full treatment — gold ornamental flourish around a period engraving, with the "lully 1661" signature laid over in casual ink. Pâtissière is the week-1 design task: apply the same treatment so the set is coherent.</p>
+    <div class="submarks" style="margin-top: 36px;">
+      <div class="sm">
+        <img src="./assets/sub-meunier.jpg" alt="Le Meunier sub-mark">
+        <h4>Le Meunier</h4>
+        <div class="role">The miller</div>
+        <span class="status">Brand treatment applied</span>
+        <p class="note">Used for: breads, grain story, origin-of-the-flour moments.</p>
+      </div>
+      <div class="sm">
+        <img src="./assets/sub-patissiere.jpg" alt="La Pâtissière sub-mark">
+        <h4>La Pâtissière</h4>
+        <div class="role">The pastry-maker</div>
+        <span class="status todo">Needs branded version</span>
+        <p class="note">Week 1 design task: add ornamental gold frame + ink signature to match the set.</p>
+      </div>
+      <div class="sm">
+        <img src="./assets/sub-caffetier.jpg" alt="Le Caffetier sub-mark">
+        <h4>Le Caffetier</h4>
+        <div class="role">The café-maker</div>
+        <span class="status">Brand treatment applied</span>
+        <p class="note">Used for: drinks, brunch, counter service, café moments.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= HOME MOCKUP ================= -->
+  <section>
+    <span class="section-label">06 · Home — sample page</span>
+    <h2 class="section-title">What a visitor sees <em>on the first scroll.</em></h2>
+    <p class="lead">A realistic sample of the homepage at launch (2026-05-15). Hero built around Le Meunier; three pillar cards anchored by the sub-marks; a "This week at lully" module editable by the client; three store cards with real addresses and hours; dark ink footer.</p>
+
+    <div class="mockup">
+      <div class="chrome">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="url">lully1661.com</div>
+      </div>
+
+      <nav class="pg-nav">
+        <div class="brand">lully <em>1661</em></div>
+        <ul>
+          <li>Shop</li>
+          <li>Brunch</li>
+          <li>Stores</li>
+          <li>Reservations</li>
+          <li>About</li>
+        </ul>
+        <div class="lang"><b>PT</b> · EN</div>
+      </nav>
+
+      <section class="pg-hero">
+        <div>
+          <p class="kicker">Maintenant, toujours mieux qu'avant.</p>
+          <h1>Bakery, <em>reinvented.</em></h1>
+          <p class="lede">An organic bakery born in Lisbon in 2022 — stone-milled flour from the Mâconnais, 48&nbsp;hours of fermentation, an oven at the heart of every boutique. Three stores across the city, one philosophy: tradition, re-signed.</p>
+          <div class="ctas">
+            <a class="btn primary" href="#">Reserve a table</a>
+            <a class="btn ghost" href="#">See the brunch →</a>
+          </div>
+        </div>
+        <figure>
+          <img src="./assets/sub-meunier.jpg" alt="Le Meunier — the miller">
+        </figure>
+      </section>
+
+      <section class="pillars">
+        <div class="pillar">
+          <img src="./assets/sub-meunier.jpg" alt="Breads">
+          <h3>Pães</h3>
+          <p>Sourdough, rye, 48-hour fermentation, stone-milled flour.</p>
+          <div class="lnk">Shop breads →</div>
+        </div>
+        <div class="pillar">
+          <img src="./assets/sub-patissiere.jpg" alt="Pastries & brunch">
+          <h3>Pastelaria &amp; brunch</h3>
+          <p>Viennoiseries, tarts, seasonal cakes, and now — brunch at Anjos.</p>
+          <div class="lnk">See the menu →</div>
+        </div>
+        <div class="pillar">
+          <img src="./assets/sub-caffetier.jpg" alt="Drinks">
+          <h3>Bebidas</h3>
+          <p>Espresso, filter, matcha, hot chocolate — and the Lully house blend.</p>
+          <div class="lnk">Shop drinks →</div>
+        </div>
+      </section>
+
+      <section class="tw">
+        <div class="tw-head">
+          <h2>This week <em>at lully</em></h2>
+          <div class="small">Updated every Monday</div>
+        </div>
+        <div class="tw-grid">
+          <div class="tw-item">
+            <div class="cat">New</div>
+            <h4>Brunch des Fleurs</h4>
+            <p>Launching 15 May at Anjos — a menu built around eggs, seasonal greens, and our own breads.</p>
+            <div class="price">From €9</div>
+          </div>
+          <div class="tw-item">
+            <div class="cat">Bread</div>
+            <h4>Pão 48h</h4>
+            <p>Our signature long-fermented sourdough. Baked every morning in all three stores.</p>
+            <div class="price">€5.50</div>
+          </div>
+          <div class="tw-item">
+            <div class="cat">Pastry</div>
+            <h4>Tarte au citron confit</h4>
+            <p>Candied Amalfi lemon, crème légère, shortcrust. Available Tue–Sun.</p>
+            <div class="price">€6.80</div>
+          </div>
+          <div class="tw-item">
+            <div class="cat">Festive</div>
+            <h4>Easter boxes</h4>
+            <p>Pre-order a curated box for the long weekend — pickup from your nearest store.</p>
+            <div class="price">€34</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stores">
+        <h2>Three stores <em>in Lisbon.</em></h2>
+        <div class="stores-grid">
+          <div class="store">
+            <div class="tag">Flagship · Brunch · Reservations</div>
+            <h4>Anjos</h4>
+            <p class="addr">Rua do Forno do Tijolo 46 · 1170-135 Lisboa</p>
+            <div class="hrs">
+              <b>Tue – Sat</b> 8:30 – 19:00<br>
+              <b>Sun</b> 8:30 – 17:00<br>
+              <b>Mon</b> Closed
+            </div>
+            <div class="store-cta">
+              <a href="#">Get directions</a>
+              <a class="ember" href="#">Reserve a table</a>
+            </div>
+          </div>
+          <div class="store">
+            <div class="tag">Boutique</div>
+            <h4>Campo de Ourique</h4>
+            <p class="addr">Rua 4 de Infantaria 43 · 1350-267 Lisboa</p>
+            <div class="hrs">
+              <b>Tue – Sat</b> 8:00 – 19:00<br>
+              <b>Sun</b> 8:00 – 15:00<br>
+              <b>Mon</b> Closed
+            </div>
+            <div class="store-cta">
+              <a href="#">Get directions</a>
+            </div>
+          </div>
+          <div class="store">
+            <div class="tag">Boutique · 5-day</div>
+            <h4>Beato</h4>
+            <p class="addr">Rua do Grilo 12 · 1950-144 Lisboa</p>
+            <div class="hrs">
+              <b>Tue – Sat</b> 8:00 – 15:00<br>
+              <b>Sun &amp; Mon</b> Closed
+            </div>
+            <div class="store-cta">
+              <a href="#">Get directions</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="pg-foot">
+        <div class="pg-foot-grid">
+          <div>
+            <div class="brand">lully <em>1661</em></div>
+            <div class="tag">Tradition, re-signed in 2026.</div>
+          </div>
+          <div>
+            <h5>Visit</h5>
+            <ul>
+              <li>Anjos</li>
+              <li>Campo de Ourique</li>
+              <li>Beato</li>
+              <li>Reservations</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Discover</h5>
+            <ul>
+              <li>Shop</li>
+              <li>Brunch</li>
+              <li>Festive &amp; Bespoke</li>
+              <li>Lully Inside (B2B)</li>
+              <li>About</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Newsletter</h5>
+            <p style="font-size: 13px; color: rgba(244,238,223,0.75); margin: 0;">Occasional letters — new breads, seasonal menus, early access to festive orders.</p>
+            <input placeholder="your email address" />
+          </div>
+        </div>
+        <div class="legal">
+          <span>© 2026 lully 1661 · Lisbon · Livro de Reclamações</span>
+          <span>Privacy · Terms · Cookies</span>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= BRUNCH MOCKUP ================= -->
+  <section>
+    <span class="section-label">07 · Brunch — sample page</span>
+    <h2 class="section-title">The page the launch is <em>actually for.</em></h2>
+    <p class="lead">The brunch-menu page is the whole point of the 15 May event. Anjos-only, dine-in only (no pickup in v1.0). This is an editorial menu, not a shop page — the brunch coming to life is the job.</p>
+
+    <div class="mockup">
+      <div class="chrome">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="url">lully1661.com/brunch</div>
+      </div>
+
+      <nav class="pg-nav">
+        <div class="brand">lully <em>1661</em></div>
+        <ul>
+          <li>Shop</li>
+          <li class="active">Brunch</li>
+          <li>Stores</li>
+          <li>Reservations</li>
+          <li>About</li>
+        </ul>
+        <div class="lang"><b>PT</b> · EN</div>
+      </nav>
+
+      <section class="brunch-hero">
+        <div>
+          <div class="badge">Launching · 15 Maio 2026</div>
+          <h1>Our brunch. <em>Served at Anjos,</em> all morning.</h1>
+          <p>A menu built around our own breads and pastries, stone-milled flours, free-range eggs, and what the market gives us that week. Tue–Sun, from 8:30 to 12:30. Reservation recommended.</p>
+          <div class="ctas" style="margin-top: 28px; display: flex; gap: 12px;">
+            <a class="btn ember" href="#">Reserve a table</a>
+            <a class="btn ghost" href="#">Find Anjos →</a>
+          </div>
+        </div>
+        <figure>
+          <img src="./assets/sub-patissiere.jpg" alt="La Pâtissière">
+        </figure>
+      </section>
+
+      <section class="why-brunch">
+        <h3>Why brunch, <em style="font-family: var(--font-serif-accent); font-style: italic; color: var(--ember);">now.</em></h3>
+        <div>
+          <p>Four years of bread and pastry. A flagship in Anjos with a proper kitchen, a proper pass, and the oven right there at the heart of the room. The next natural step.</p>
+          <p>Brunch is how we want you to meet the full range of what we bake — on a plate, with an egg on top, next to something we just pulled from the oven. Every dish on the menu uses something made in-house.</p>
+        </div>
+      </section>
+
+      <section class="menu">
+        <h2>The menu, <em>in four movements.</em></h2>
+
+        <div class="course">
+          <div class="course-label">I · Eggs</div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Œufs mollet, <em>sauce nantua</em></h4>
+              <p class="desc">Soft-boiled eggs on sourdough toast, crayfish butter, chervil.</p>
+            </div>
+            <div class="price">€9</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Shakshuka baroque</h4>
+              <p class="desc">Slow-roasted tomatoes, Aleppo pepper, merguez, two eggs, focaccia.</p>
+            </div>
+            <div class="price">€14</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Omelette <em>au lard fumé</em></h4>
+              <p class="desc">Three-egg omelette, smoked bacon, aged comté, parsley.</p>
+            </div>
+            <div class="price">€13</div>
+          </div>
+        </div>
+
+        <div class="course">
+          <div class="course-label">II · Toasts &amp; greens</div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Toast de abacate</h4>
+              <p class="desc">Avocado, lemon, chilli oil, soft-boiled egg, seeded sourdough.</p>
+            </div>
+            <div class="price">€11</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Toast de salmão <em>fumado</em></h4>
+              <p class="desc">House-cured salmon, crème fraîche, dill, rye toast.</p>
+            </div>
+            <div class="price">€15</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Green plate</h4>
+              <p class="desc">Seasonal greens, roasted beets, goat's curd, hazelnuts, pão 48h.</p>
+            </div>
+            <div class="price">€13</div>
+          </div>
+        </div>
+
+        <div class="course">
+          <div class="course-label">III · Sandwiches</div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Croque Anjos</h4>
+              <p class="desc">Cured ham, gruyère, béchamel, on our own brioche.</p>
+            </div>
+            <div class="price">€14</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Tuna &amp; <em>anchoïade</em></h4>
+              <p class="desc">Line-caught tuna, olives, capers, pickled onion, baguette tradition.</p>
+            </div>
+            <div class="price">€15</div>
+          </div>
+        </div>
+
+        <div class="course">
+          <div class="course-label">IV · Soups &amp; sweet</div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Soupe du jour</h4>
+              <p class="desc">Whatever the market and the season give us. With bread, always.</p>
+            </div>
+            <div class="price">€8</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Tarte <em>au citron confit</em></h4>
+              <p class="desc">Candied Amalfi lemon, crème légère, shortcrust.</p>
+            </div>
+            <div class="price">€8</div>
+          </div>
+          <div class="dish">
+            <div>
+              <h4 class="name">Granola &amp; iogurte</h4>
+              <p class="desc">House granola, Greek yogurt, seasonal fruit, honey.</p>
+            </div>
+            <div class="price">€9</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="brunch-cta">
+        <h3>Join us for <em>the first brunch.</em></h3>
+        <p>15 Maio 2026 · Anjos · from 8:30</p>
+        <a class="btn ember" href="#">Reserve a table</a>
+      </section>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ================= CAVEATS ================= -->
+  <section>
+    <span class="section-label">08 · Scope of this direction</span>
+    <h2 class="section-title">What this direction commits to, <em>and what it doesn't.</em></h2>
+    <p class="lead">This document exists to de-risk the 2026-05-15 launch: enough direction to start building, not so much that we freeze decisions that should stay open.</p>
+    <div class="caveats" style="margin-top: 36px;">
+      <div class="col">
+        <h4>v1.0 commits to:</h4>
+        <ul>
+          <li>Type system (Fraunces + Instrument Serif + Instrument Sans) — already installed via Google Fonts.</li>
+          <li>A 5-colour palette with clear roles (paper / ink / gold / ember / stone).</li>
+          <li>An editorial rhythm: long-form serif display, cursive italic accent, clean sans for UI and body.</li>
+          <li>Three sub-marks as the primary illustration system — one treatment to be extended to Pâtissière in week 1.</li>
+          <li>Two fully-composed sample pages (Home + Brunch) the client can react to before we build.</li>
+        </ul>
+      </div>
+      <div class="col excl">
+        <h4>v1.0 does <em style="color: var(--ember); font-family: var(--font-serif-accent); font-style: italic;">not</em> include:</h4>
+        <ul>
+          <li>Motion-design specification (hover states, transitions, scroll behaviour) — lives in the Shopify theme build, not here.</li>
+          <li>Photography art direction — we reference product photography but do not commission a shoot in this phase.</li>
+          <li>A full PDF style guide — this HTML document is the working reference through v1.0.</li>
+          <li>Custom illustration beyond the three sub-marks — if more are needed later, that's a scoped follow-up.</li>
+          <li>Final PT copy — all text here is placeholder in the right tone; client's editorial pass is separate.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIGN-OFF ================= -->
+  <div class="signoff">
+    <div class="word">lully <em>1661</em></div>
+    <div class="meta">Visual Direction v1 · 2026-04-16 · Signed on acceptance of SOW</div>
+  </div>
+
+</div>
+</body>
+</html>
