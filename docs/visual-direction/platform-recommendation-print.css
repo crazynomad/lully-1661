@@ -15,31 +15,29 @@
 
 @page {
   size: A4;
-  margin: 22mm 18mm 20mm 18mm;
-  @bottom-center {
-    content: "lully 1661 · Platform Recommendation · " counter(page) " / " counter(pages);
-    font-family: "Instrument Sans", sans-serif;
-    font-size: 9pt;
-    color: #7A746B;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-}
-@page :first {
   margin: 0;
-  @bottom-center { content: ""; }
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #F4EEDF;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
 
 body {
-  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 10.5pt;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Visual margins via padding so the paper cream fills edge-to-edge */
+.content {
+  padding: 22mm 18mm 22mm 18mm;
 }
 
 /* ---- Cover (first page) ---- */
@@ -103,10 +101,7 @@ body {
 }
 .cover .meta b { color: var(--ink); font-weight: 600; }
 
-/* ---- Body content ---- */
-.content {
-  padding: 0;
-}
+/* ---- Body content ---- (padding defined above) */
 .content h1 {
   font-family: var(--font-display);
   font-weight: 300;
