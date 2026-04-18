@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Platform Recommendation — lully 1661</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --paper:   #F4EEDF;
+  --paper-2: #EAE2CE;
+  --ink:     #1A1613;
+  --ink-2:   #3C342E;
+  --stone:   #7A746B;
+  --gold:    #A68A3E;
+  --ember:   #B8563D;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-serif-accent: "Instrument Serif", "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 22mm 18mm 20mm 18mm;
+  @bottom-center {
+    content: "lully 1661 · Platform Recommendation · " counter(page) " / " counter(pages);
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 9pt;
+    color: #7A746B;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+}
+@page :first {
+  margin: 0;
+  @bottom-center { content: ""; }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Cover (first page) ---- */
+.cover {
+  page: cover;
+  page-break-after: always;
+  height: 297mm;
+  padding: 40mm 22mm 24mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--paper);
+}
+.cover .wordmark {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 64pt;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.cover .wordmark em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.cover h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 40pt;
+  font-variation-settings: "opsz" 120, "SOFT" 100;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 12mm 0 6mm;
+  max-width: 24ch;
+}
+.cover h1 em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  color: var(--ember);
+  font-weight: 400;
+}
+.cover .subtitle {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 16pt;
+  color: var(--gold);
+  line-height: 1.3;
+  max-width: 40ch;
+}
+.cover .meta {
+  font-family: var(--font-body);
+  font-size: 9pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  line-height: 1.9;
+  border-top: 1px solid rgba(26,22,19,0.24);
+  padding-top: 6mm;
+}
+.cover .meta b { color: var(--ink); font-weight: 600; }
+
+/* ---- Body content ---- */
+.content {
+  padding: 0;
+}
+.content h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 28pt;
+  font-variation-settings: "opsz" 96, "SOFT" 80;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0 0 6mm;
+  color: var(--ink);
+  page-break-before: always;
+}
+.content > h1:first-of-type { page-break-before: avoid; }
+.content h1 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+
+.content h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16pt;
+  font-variation-settings: "opsz" 48;
+  letter-spacing: -0.005em;
+  margin: 9mm 0 3mm;
+  color: var(--ink);
+  border-top: 1px solid rgba(26,22,19,0.18);
+  padding-top: 4mm;
+}
+.content h2 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+
+.content h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 12pt;
+  font-variation-settings: "opsz" 36;
+  margin: 6mm 0 2mm;
+  color: var(--ink-2);
+}
+
+.content p {
+  margin: 0 0 3mm;
+  color: var(--ink-2);
+  orphans: 3;
+  widows: 3;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.content blockquote {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 13pt;
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 2px solid var(--gold);
+  padding-left: 6mm;
+  margin: 4mm 0 5mm;
+  page-break-inside: avoid;
+}
+.content blockquote strong { font-style: normal; font-family: var(--font-body); }
+
+.content ul, .content ol { margin: 0 0 4mm; padding-left: 6mm; }
+.content li { margin: 0 0 1.5mm; line-height: 1.5; color: var(--ink-2); }
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0 5mm;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+.content th, .content td {
+  border-bottom: 1px solid rgba(26,22,19,0.14);
+  padding: 2mm 3mm;
+  text-align: left;
+  vertical-align: top;
+}
+.content th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 8.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  border-bottom: 1.5px solid var(--ink);
+  background: transparent;
+}
+.content td { color: var(--ink-2); }
+.content tr:last-child td { border-bottom: none; }
+
+.content code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 9pt;
+  background: var(--paper-2);
+  padding: 1pt 3pt;
+  border-radius: 2pt;
+  color: var(--ink-2);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(26,22,19,0.18);
+  margin: 6mm 0;
+}
+
+a { color: var(--gold); text-decoration: none; }
+
+/* TL;DR highlight block */
+.content > blockquote:first-of-type {
+  background: var(--paper-2);
+  border-left: 3px solid var(--ember);
+  padding: 5mm 6mm;
+  margin: 4mm 0 6mm;
+  font-size: 12pt;
+  line-height: 1.45;
+}
+
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="wordmark">lully <em>1661</em></div>
+  <div>
+    <h1>Platform <em>Recommendation.</em></h1>
+    <div class="subtitle">Shopify, Shopify Markets, Stripe Multibanco — a 29-day route from brief to brunch-launch event.</div>
+  </div>
+  <div class="meta">
+    <b>Document</b> Platform Recommendation v0.1<br>
+    <b>Prepared</b> 2026-04-16<br>
+    <b>Status</b> Internal · Draft for client review<br>
+    <b>Launch target</b> 2026-05-15 (brunch press event)
+  </div>
+</section>
+
+<section class="content">
+<h1 id="platform-recommendation-lully-1661-website">Platform
+Recommendation — lully 1661 Website</h1>
+<p><strong>Status:</strong> Draft v0.1 — internal
+<strong>Prepared:</strong> 2026-04-16 <strong>Context:</strong> Client
+deferred Q3 to us (“open to alternatives”). This document is our
+recommendation, to present alongside sitemap v1.</p>
+<h2 id="recommendation-tldr">Recommendation (TL;DR)</h2>
+<blockquote>
+<p><strong>Shopify storefront, with a premium customizable theme,
+Shopify Markets for PT + EN, and Stripe for Multibanco + credit
+cards.</strong> Plan a Phase 2 upgrade path to Hydrogen (Shopify’s
+headless front-end) if editorial ambition grows after launch.</p>
+</blockquote>
+<p>Why this, in one paragraph: the client wants to launch
+<strong>ASAP</strong>, already runs three operating stores with
+staff-managed inventory, supplies copy and photography themselves, and
+has no formal brand guidelines beyond illustrations. Shopify collapses
+everything we need into one platform — multi-language, Multibanco, POS
+integration, order management, tax rules for Portugal,
+delivery/marketplace integrations for Phase 2 — and lets us concentrate
+our effort on visual craft (theme, typography, the Baroque-illustration
+motif) rather than rebuilding commerce primitives. The two French bakery
+reference sites the client admires (<code>liberte-paris.com</code>,
+<code>thefrenchbastards.fr</code>) run on Shopify-class stacks, which is
+direct evidence the aesthetic ceiling is high enough.</p>
+<h2 id="options-considered">Options considered</h2>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 9%" />
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 22%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Stack</th>
+<th>Time to launch</th>
+<th>Cost shape</th>
+<th>Design ceiling</th>
+<th>Fit for lully 1661</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A ✅</strong></td>
+<td><strong>Shopify + premium theme (e.g. Impulse, Pipeline, or a custom
+Dawn fork)</strong></td>
+<td>4–6 weeks</td>
+<td>Monthly subscription + one-off theme dev + ~2% gateway fees</td>
+<td>High — 90% of what a headless stack offers with a skilled designer +
+developer</td>
+<td><strong>Best overall fit</strong></td>
+</tr>
+<tr>
+<td>B</td>
+<td>Shopify Hydrogen (headless) with Next/Remix</td>
+<td>10–14 weeks</td>
+<td>2–3× of A in dev, same subscription</td>
+<td>Ceiling-free</td>
+<td>Overkill for phase 1; sensible phase 2 evolution</td>
+</tr>
+<tr>
+<td>C</td>
+<td>WordPress + WooCommerce</td>
+<td>6–8 weeks</td>
+<td>Hosting + WooCommerce + Multibanco plugin licenses</td>
+<td>Medium–High</td>
+<td>Weaker POS / multi-store inventory, plugin-dependent Multibanco</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Headless commerce (Medusa / Saleor) + Next.js</td>
+<td>14–20 weeks</td>
+<td>3–5× of A</td>
+<td>Ceiling-free</td>
+<td>Mismatched with timeline and copy-supplied-by-client reality</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Squarespace / Webflow + external commerce</td>
+<td>4 weeks</td>
+<td>Flat SaaS</td>
+<td>Medium (template-bound)</td>
+<td>Weak PT commerce integration; no native Multibanco</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-shopify-specifically">Why Shopify specifically</h2>
+<h3 id="what-matches-the-brief">What matches the brief</h3>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Shopify answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PT + EN, PT default, <code>/pt/</code> and <code>/en/</code>
+subpaths</td>
+<td>Shopify Markets gives native multi-market routing with subpath URLs;
+translation via Translate &amp; Adapt (free) or Weglot</td>
+</tr>
+<tr>
+<td>Multibanco (mandatory)</td>
+<td>Stripe is certified for Multibanco in PT and integrates natively
+with Shopify Payments; no custom plugin</td>
+</tr>
+<tr>
+<td>Credit cards</td>
+<td>Shopify Payments or Stripe, same checkout</td>
+</tr>
+<tr>
+<td>Click &amp; collect, staff-reconciled inventory</td>
+<td>“Local pickup” is a built-in fulfillment method; Shopify POS on an
+iPad lets staff reconcile inventory in-store daily without a custom
+admin</td>
+</tr>
+<tr>
+<td>3 stores already operating</td>
+<td>Shopify Locations (multi-location inventory) — store-locator app
+(e.g. Store Locator Plus) for the frontend</td>
+</tr>
+<tr>
+<td>Copy + images supplied by client</td>
+<td>Native CMS fields + Metafields for editorial page blocks; no
+separate CMS</td>
+</tr>
+<tr>
+<td>Phase 2 delivery (Uber Eats, Glovo)</td>
+<td>Both have direct Shopify connectors</td>
+</tr>
+<tr>
+<td>Phase 2 “our own payment system”</td>
+<td>Custom payment app route exists when/if needed</td>
+</tr>
+<tr>
+<td>Website live ASAP</td>
+<td>Largest saved-time factor — we skip commerce scaffolding
+entirely</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-shopify-will-push-back-and-our-mitigations">Where Shopify
+will push back (and our mitigations)</h3>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr>
+<th>Friction</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Themes have a common anatomy — we don’t want a “generic Shopify
+site”</td>
+<td>Start from a highly customizable theme (Dawn or Impulse), build 3–4
+bespoke sections for Home / Shop / Festive &amp; Bespoke in Liquid;
+invest design hours here rather than in commerce</td>
+</tr>
+<tr>
+<td>Shopify checkout is hard to deeply customize (pre-Checkout
+Extensibility)</td>
+<td>Use Checkout Extensibility (2024+) for branded-but-standard
+checkout; avoid custom checkout pages</td>
+</tr>
+<tr>
+<td>Editorial / long-form content patterns (journal, story pages)</td>
+<td>Use Online Store 2.0 flexible sections + Metaobjects for History /
+Festive / B2B pages — works well for our scope</td>
+</tr>
+<tr>
+<td>Locking us into Shopify long-term</td>
+<td>Hydrogen is the documented escape hatch: same back-end, new
+front-end. No migration if we ever go headless</td>
+</tr>
+</tbody>
+</table>
+<h2 id="phase-1-launch-vs-phase-2">Phase 1 (launch) vs Phase 2</h2>
+<h3 id="phase-1-launch-scope">Phase 1 — launch scope</h3>
+<ul>
+<li>Shopify plan: <strong>Shopify</strong> ($79/mo tier — enables
+Shopify Markets and standard reports). Keep Shopify Plus as a phase-3
+option.</li>
+<li>Payments: <strong>Stripe</strong> (Multibanco + Visa / Mastercard).
+Shopify Payments is an alternative if the client prefers single-provider
+consolidation.</li>
+<li>Languages: PT + EN via Shopify Markets; PT as primary market, EN as
+secondary.</li>
+<li>Fulfillment: Local pickup from 3 Lisbon stores,
+<strong>staff-reconciled inventory</strong> (no sync with external POS
+yet unless the client already runs Shopify POS — to confirm in F3
+follow-up).</li>
+<li>Reservations: The Fork embed on a Reservations page (public widget
+from The Fork’s business tools); email-contact fallback section
+below.</li>
+<li>B2B “Lully Inside”: a static editorial page + Shopify form.</li>
+<li>Careers: static page + form that emails HR inbox.</li>
+<li>Content: Home, History, Shop, Festive &amp; Bespoke Orders,
+Reservations, Lully Inside (B2B), Stores, Careers, Legal.</li>
+<li>Design: custom theme work — ~3 bespoke Home sections, custom product
+card, custom collection page header, store-locator page.</li>
+<li>Analytics: GA4 + Shopify native analytics. No ad pixels at launch
+(add when marketing picks up).</li>
+</ul>
+<h3 id="phase-2-post-launch-26-months-after">Phase 2 — post-launch (2–6
+months after)</h3>
+<ul>
+<li>Third-party delivery: Uber Eats and Glovo connectors (both direct
+Shopify apps). This does <strong>not</strong> require
+replatforming.</li>
+<li>Integrated payments: either expand Stripe with saved payment methods
++ subscriptions (for loyalty), or introduce the client’s “own payment
+system” as a Shopify Custom Payment App.</li>
+<li>Loyalty / gift cards (likely a holiday-2026 priority — gift cards
+are a Shopify native feature).</li>
+<li>Editorial “Journal” / recipe content if content volume grows.</li>
+<li>Optional Hydrogen migration if the team decides the Liquid ceiling
+is blocking design ambition.</li>
+</ul>
+<h2
+id="timeline-hard-deadline-2026-05-15-brunch-menu-launch-media-event">Timeline
+— hard deadline 2026-05-15 (brunch menu launch + media event)</h2>
+<p><strong>Client confirmed (F2):</strong> the website must be live
+before the May-15 brunch-menu launch event (media + influencers). Today
+is 2026-04-16 → <strong>29 days</strong>. This collapses the earlier 4–6
+week plan into a fixed 4-week sprint and forces a scope split.</p>
+<h3 id="scope-split-for-the-deadline">Scope split for the deadline</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><strong>v1.0 — live on 2026-05-15</strong></th>
+<th><strong>v1.1 — 10–14 days after launch</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>✅ Full design</td>
+<td>—</td>
+</tr>
+<tr>
+<td>About / History</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Brunch / menu</td>
+<td>✅ <strong>Priority for event</strong> — readable catalogue with PT
++ EN, prices, allergens, per-store availability</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Shop — Breads / Pastries / Desserts / Snacks / Drinks</td>
+<td>✅ Readable product pages (browsable catalogue)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Cart + checkout + pickup slot selector</strong></td>
+<td>⚠️ Target for v1.0 if QA allows; fallback to v1.1</td>
+<td>✅ If pushed, ship as a low-risk add-on with Multibanco + cards</td>
+</tr>
+<tr>
+<td>Stores (3 locations locator)</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Reservations (The Fork embed)</td>
+<td>✅ where The Fork is live; email fallback on the rest</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Festive &amp; Bespoke Orders</td>
+<td>✅ (static + enquiry form)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Lully Inside (B2B)</td>
+<td>✅ (descriptive-only, partners TBA)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Careers</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Legal / Contact</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Analytics + UTM for event traffic</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Why this split is safe: the event’s purpose is to <strong>drive
+brunch + press coverage</strong>, not to drive e-commerce revenue on day
+1. A readable menu + reservations + store locator covers 100% of the
+event narrative. Click-&amp;-collect adds real commercial value but is
+not on the event’s critical path, and the downside of shipping it broken
+on Day 1 is much worse than shipping it 10 days later.</p>
+<h3 id="week-sprint-calendar">4-week sprint calendar</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 29%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>Week</th>
+<th>Dates</th>
+<th>Milestones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2026-04-16 → 2026-04-22</td>
+<td>Shopify + Markets + Stripe provisioning · Theme base selected ·
+Brand kit (colors / type / vectorized sub-marks) · IA locked · Domain +
+DNS pointed · Content ingest begins (client brunch copy + product
+photos)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2026-04-23 → 2026-04-29</td>
+<td>Home + About + Brunch sections designed and built · Product data
+model + Shopify collections · Store locator data in from client · The
+Fork embed(s) verified</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-04-30 → 2026-05-06</td>
+<td>Shop collection + product templates · Festive &amp; Bespoke · Lully
+Inside · Careers · Legal · Full PT translation pass · Cart/checkout
+spike (for decision on v1.0 vs v1.1)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026-05-07 → 2026-05-13</td>
+<td>QA, accessibility pass, Lighthouse pass, multibanco sandbox,
+analytics wiring, staging freeze <strong>2026-05-13</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>2026-05-14</td>
+<td>Client sign-off + DNS cutover</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2026-05-15</strong></td>
+<td><strong>Go-live + brunch-menu event</strong></td>
+</tr>
+<tr>
+<td>+1</td>
+<td>2026-05-16 → 2026-05-29</td>
+<td><strong>v1.1</strong> — ship cart + pickup flow if it didn’t make
+v1.0. Post-event content refresh (press coverage, event photos).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="risks-against-the-deadline">Risks against the deadline</h3>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client content slips (copy or photos for brunch items)</td>
+<td>Hard content deadline <strong>2026-05-01</strong> (end of Week 2).
+Anything not in by then uses placeholders and updates post-launch.</td>
+</tr>
+<tr>
+<td>Vectorizing 3 Baroque sub-marks takes longer than expected</td>
+<td>Parallel track in Week 1 — either vectorize manually or commission a
+designer up-front. High-res raster is an acceptable fallback for hero
+use with careful masking.</td>
+</tr>
+<tr>
+<td>The Fork integration not live on all 3 stores</td>
+<td>Email-fallback block ships for stores without the widget; swap in
+the widget post-launch per store.</td>
+</tr>
+<tr>
+<td>Cart/checkout QA incomplete by 2026-05-13</td>
+<td>Ship v1.0 without cart; ship v1.1 on ~2026-05-25 with cart. Event
+narrative is unaffected.</td>
+</tr>
+<tr>
+<td>Translation quality (PT)</td>
+<td>Use native Portuguese translator on the team for the hero and legal
+copy; machine translation for shop/product copy as first pass, native
+reviewer on week 3.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gating-content-deliveries-client-owned">Gating content
+deliveries (client-owned)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 43%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Due date</th>
+<th>Deliverable</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-04-23</td>
+<td>Final logo pack decision (keep raster sub-marks or commission
+vector)</td>
+<td>Us → client</td>
+</tr>
+<tr>
+<td>2026-04-29</td>
+<td>Brunch copy (PT + EN), brunch product photography, 3 store
+photos</td>
+<td>Client</td>
+</tr>
+<tr>
+<td>2026-05-01</td>
+<td>All remaining copy (PT + EN), all product photography</td>
+<td>Client</td>
+</tr>
+<tr>
+<td>2026-05-06</td>
+<td>Legal text (T&amp;Cs, privacy, cookies, complaints book link)</td>
+<td>Client / their counsel</td>
+</tr>
+<tr>
+<td>2026-05-13</td>
+<td>Client sign-off on staging</td>
+<td>Client</td>
+</tr>
+</tbody>
+</table>
+<h2 id="estimated-cost-shape-rough-for-internal-discussion">Estimated
+cost shape (rough, for internal discussion)</h2>
+<ul>
+<li><strong>Shopify subscription</strong>: ~€79/mo (Shopify plan) + any
+app subscriptions (The Fork embed free; Weglot €15–49/mo if we don’t use
+Shopify’s free Translate &amp; Adapt).</li>
+<li><strong>Gateway fees</strong>: Stripe Multibanco ~1.5% per
+transaction (Portugal rate); card rates standard (1.4% + €0.25
+EEA).</li>
+<li><strong>One-time design + build</strong>: quoted separately by our
+team — main variable is how many bespoke sections we hand-build vs reuse
+theme defaults.</li>
+</ul>
+<h2 id="open-decisions-that-would-change-this">Open decisions that would
+change this</h2>
+<table>
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th>If client…</th>
+<th>…then reconsider</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Already operates Shopify POS in the 3 stores</td>
+<td>Tightest fit — no replatform. Verify in F3 follow-up.</td>
+</tr>
+<tr>
+<td>Already has a different POS (e.g., Lightspeed, SumUp, Square)</td>
+<td>Confirm integration — Shopify has connectors for all three, but
+inventory sync quality varies</td>
+</tr>
+<tr>
+<td>Moves timeline to 3–4 months</td>
+<td>Option B (Hydrogen) becomes plausible</td>
+</tr>
+<tr>
+<td>Says budget cap makes A infeasible</td>
+<td>Option E + a separate commerce widget is the cheap fallback, but we
+will lose Multibanco native support</td>
+</tr>
+<tr>
+<td>Decides B2B needs wholesale-ordering portal after all</td>
+<td>Shopify B2B (on Shopify Plus) — changes plan tier and adds 2–4
+weeks</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+
+</body>
+</html>
