@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Competitor Scan — lully 1661</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --paper:   #F4EEDF;
+  --paper-2: #EAE2CE;
+  --ink:     #1A1613;
+  --ink-2:   #3C342E;
+  --stone:   #7A746B;
+  --gold:    #A68A3E;
+  --ember:   #B8563D;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-serif-accent: "Instrument Serif", "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #F4EEDF;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visual margins via padding so the paper cream fills edge-to-edge */
+.content {
+  padding: 22mm 18mm 22mm 18mm;
+}
+
+/* ---- Cover (first page) ---- */
+.cover {
+  page: cover;
+  page-break-after: always;
+  height: 297mm;
+  padding: 40mm 22mm 24mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--paper);
+}
+.cover .wordmark {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 64pt;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.cover .wordmark em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.cover h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 40pt;
+  font-variation-settings: "opsz" 120, "SOFT" 100;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 12mm 0 6mm;
+  max-width: 24ch;
+}
+.cover h1 em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  color: var(--ember);
+  font-weight: 400;
+}
+.cover .subtitle {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 16pt;
+  color: var(--gold);
+  line-height: 1.3;
+  max-width: 40ch;
+}
+.cover .meta {
+  font-family: var(--font-body);
+  font-size: 9pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  line-height: 1.9;
+  border-top: 1px solid rgba(26,22,19,0.24);
+  padding-top: 6mm;
+}
+.cover .meta b { color: var(--ink); font-weight: 600; }
+
+/* ---- Body content ---- (padding defined above) */
+.content h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 28pt;
+  font-variation-settings: "opsz" 96, "SOFT" 80;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0 0 6mm;
+  color: var(--ink);
+  page-break-before: always;
+}
+.content > h1:first-of-type { page-break-before: avoid; }
+.content h1 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+
+.content h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16pt;
+  font-variation-settings: "opsz" 48;
+  letter-spacing: -0.005em;
+  margin: 9mm 0 3mm;
+  color: var(--ink);
+  border-top: 1px solid rgba(26,22,19,0.18);
+  padding-top: 4mm;
+}
+.content h2 em { font-family: var(--font-serif-accent); font-style: italic; color: var(--ember); font-weight: 400; }
+
+.content h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 12pt;
+  font-variation-settings: "opsz" 36;
+  margin: 6mm 0 2mm;
+  color: var(--ink-2);
+}
+
+.content p {
+  margin: 0 0 3mm;
+  color: var(--ink-2);
+  orphans: 3;
+  widows: 3;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content em {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.content blockquote {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 13pt;
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 2px solid var(--gold);
+  padding-left: 6mm;
+  margin: 4mm 0 5mm;
+  page-break-inside: avoid;
+}
+.content blockquote strong { font-style: normal; font-family: var(--font-body); }
+
+.content ul, .content ol { margin: 0 0 4mm; padding-left: 6mm; }
+.content li { margin: 0 0 1.5mm; line-height: 1.5; color: var(--ink-2); }
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0 5mm;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+.content th, .content td {
+  border-bottom: 1px solid rgba(26,22,19,0.14);
+  padding: 2mm 3mm;
+  text-align: left;
+  vertical-align: top;
+}
+.content th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 8.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  border-bottom: 1.5px solid var(--ink);
+  background: transparent;
+}
+.content td { color: var(--ink-2); }
+.content tr:last-child td { border-bottom: none; }
+
+.content code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 9pt;
+  background: var(--paper-2);
+  padding: 1pt 3pt;
+  border-radius: 2pt;
+  color: var(--ink-2);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(26,22,19,0.18);
+  margin: 6mm 0;
+}
+
+a { color: var(--gold); text-decoration: none; }
+
+/* TL;DR highlight block */
+.content > blockquote:first-of-type {
+  background: var(--paper-2);
+  border-left: 3px solid var(--ember);
+  padding: 5mm 6mm;
+  margin: 4mm 0 6mm;
+  font-size: 12pt;
+  line-height: 1.45;
+}
+
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="wordmark">lully <em>1661</em></div>
+  <div>
+    <h1>Competitor <em>Scan.</em></h1>
+    <div class="subtitle">Four Lisbon bakery + brunch competitors, and where lully 1661 sits in the landscape.</div>
+  </div>
+  <div class="meta">
+    <b>Document</b> Competitor Scan v0.1<br>
+    <b>Prepared</b> 2026-04-17<br>
+    <b>Status</b> Desk research · Pre-engagement discovery<br>
+    <b>Scope</b> Dear Breakfast · The Folks · doBeco · Padaria 110
+  </div>
+</section>
+
+<section class="content">
+<h1 id="competitor-scan-lisbon-bakery-brunch-landscape">Competitor Scan
+— Lisbon Bakery / Brunch Landscape</h1>
+<p><strong>Status:</strong> v0.1 — desk research pass
+<strong>Prepared:</strong> 2026-04-17 <strong>Source:</strong>
+client-provided shortlist (4 competitors) <strong>Scope:</strong> Lisbon
+bakery + brunch + specialty coffee market — direct and adjacent
+competitors</p>
+<h2 id="tldr-how-lully-1661-sits-in-the-landscape">TL;DR — How lully
+1661 sits in the landscape</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Where lully 1661 lands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scale</strong></td>
+<td>3 stores — <strong>middle of the pack</strong> (bigger than doBeco /
+Padaria 110; smaller than Dear Breakfast / The Folks)</td>
+</tr>
+<tr>
+<td><strong>Category</strong></td>
+<td>Bakery + brunch + café — <strong>broadest offering</strong> of the
+four; closest analogue is doBeco</td>
+</tr>
+<tr>
+<td><strong>Positioning</strong></td>
+<td><strong>Baroque heritage + 17th-century namesake</strong> — unique
+in this set; every competitor is some flavor of “modern minimalist”</td>
+</tr>
+<tr>
+<td><strong>Digital maturity (current)</strong></td>
+<td>Lowest — no live site, social-only</td>
+</tr>
+<tr>
+<td><strong>Digital maturity (post-launch)</strong></td>
+<td>Will jump ahead of doBeco and Padaria 110; pull level with Dear
+Breakfast; still behind The Folks on e-commerce depth</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strategic insight: the modern-minimalist look is commodity in
+Lisbon.</strong> Four of four competitors sit inside that aesthetic.
+lully 1661’s Baroque-contemporary direction (copperplate engravings +
+gold flourish + ink signature) is the only real differentiator in this
+set. That is a <em>real</em> brand moat, not just a design
+preference.</p>
+<h2 id="competitor-deep-dives">Competitor deep-dives</h2>
+<h3 id="dear-breakfast-dearbreakfast.com">1. Dear Breakfast — <a
+href="https://www.dearbreakfast.com/">dearbreakfast.com</a></h3>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>All-day brunch café (egg-centric)</td>
+</tr>
+<tr>
+<td><strong>Locations</strong></td>
+<td><strong>6</strong> — Chiado, Bica, Alfama, Santos, Príncipe Real,
+Marvila Bakehouse</td>
+</tr>
+<tr>
+<td><strong>Hours</strong></td>
+<td>8:00–16:00 most; Marvila Thu–Sun 11:00–22:00</td>
+</tr>
+<tr>
+<td><strong>Positioning</strong></td>
+<td>Modern minimalist — white-washed walls, Portuguese marble, exposed
+brick. “Properly cooked eggs, exquisite coffee and juice.”</td>
+</tr>
+<tr>
+<td><strong>Online order / delivery</strong></td>
+<td>Uber Eats delivery · reservation system built in · branded merch
+e-shop</td>
+</tr>
+<tr>
+<td><strong>Price visibility</strong></td>
+<td>Merch only (€12.50–€20); food menu is PDF download</td>
+</tr>
+<tr>
+<td><strong>Signature items</strong></td>
+<td>Benedict · caramel-banana pancakes · scrambled eggs with
+truffles</td>
+</tr>
+<tr>
+<td><strong>Languages</strong></td>
+<td>PT + EN (bilingual, PDFs in both)</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td><strong>Webflow</strong> (custom build)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Threat level to lully: medium-high.</strong> They own “Lisbon
+all-day brunch” in digital presence and have the scale to back it. Their
+brunch menu at Marvila Bakehouse is <em>exactly</em> the space lully
+Anjos is moving into on 2026-05-15.</p>
+<p><strong>What we learn:</strong> Bilingual PT/EN with downloadable
+menu PDFs is table stakes. Reservation + Uber Eats is table stakes.</p>
+<hr />
+<h3 id="the-folks-thefolks.pt">2. The Folks — <a
+href="https://thefolks.pt/">thefolks.pt</a></h3>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Specialty coffee + brunch + roastery</td>
+</tr>
+<tr>
+<td><strong>Locations</strong></td>
+<td><strong>6</strong> — Chiado, Alfama, Sé, Blue Street, Santos,
+Belém</td>
+</tr>
+<tr>
+<td><strong>Positioning</strong></td>
+<td>Community + quality — “spaces where people feel at home.”
+<strong>World’s Top 100 Coffee Shops 2025/26 (#88).</strong></td>
+</tr>
+<tr>
+<td><strong>Online order / delivery</strong></td>
+<td><strong>Full e-commerce</strong> — coffee beans, equipment, gift
+cards, B2B wholesale. Worldwide shipping (free &gt;€60).</td>
+</tr>
+<tr>
+<td><strong>Price visibility</strong></td>
+<td>Full — coffee beans €16–€30+, drip €3, gift cards €30–€250</td>
+</tr>
+<tr>
+<td><strong>Menu categories</strong></td>
+<td>Coffee origins · equipment · merch · gift cards · brunch (visible in
+menu, not fully detailed)</td>
+</tr>
+<tr>
+<td><strong>Signature positioning</strong></td>
+<td>“Exceptional coffee and amazing food, every day”</td>
+</tr>
+<tr>
+<td><strong>Languages</strong></td>
+<td>PT + EN</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td><strong>Shopify</strong> (<code>thefolks.pt/cdn/shop/</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Threat level to lully: medium.</strong> Different primary
+category (coffee-first vs. bakery-first), but same geographic footprint
+and clearly the <strong>benchmark for Shopify bakery/café e-commerce in
+Lisbon</strong>.</p>
+<p><strong>What we learn (big one):</strong> 1. <strong>Shopify works in
+this market</strong> — this is the closest direct validation for our
+platform choice. 2. <strong>The B2B wholesale pattern maps 1:1 onto
+lully’s “Lully Inside” section.</strong> Their page structure is worth a
+closer look. 3. <strong>Gift cards + worldwide shipping</strong> — both
+in our Phase 2 scope. We should sanity-check our v1.1 cutover against
+how The Folks handles these.</p>
+<hr />
+<h3 id="dobeco-do-beco.com-blocked-to-scrapers-info-via-press">3. doBeco
+— <a href="https://do-beco.com/">do-beco.com</a> · blocked to scrapers;
+info via press</h3>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Artisanal bakery + brunch + specialty coffee</td>
+</tr>
+<tr>
+<td><strong>Locations</strong></td>
+<td><strong>3</strong> — Estefânia (original, R. Passos Manuel 106A) ·
+Santos (R. São João Mata 18) · Casal Ribeiro</td>
+</tr>
+<tr>
+<td><strong>Positioning</strong></td>
+<td>Origin story — founded during pandemic lockdown in a garage by chef
+António José de Mello; French + American baking tradition</td>
+</tr>
+<tr>
+<td><strong>Online order / delivery</strong></td>
+<td>Site exists but was un-scrapable in the desk pass — needs manual
+browse</td>
+</tr>
+<tr>
+<td><strong>Menu signals</strong></td>
+<td>Ovos tornados (brioche + kimchi + omelet) · NY Popcorn roll · Sesame
+and Lime Danish · Passionfruit Amman Kouign · Codfish with Cream
+Croissant · Matcha and Strawberries Tart · bagels</td>
+</tr>
+<tr>
+<td><strong>Hours / volume</strong></td>
+<td>Claim to operate 24/7 for bakery production</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td>Unknown (blocked). Likely WordPress or Webflow.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Threat level to lully: high.</strong> <strong>Closest direct
+competitor</strong> — same scale (3 locations), same bakery + brunch
+positioning, same Lisbon geography. Their strong chef-driven pastry
+story is meaningful. Started during the pandemic → only 3 years old →
+they’re the “young upstart” vs. lully’s “2022 + 17th-century heritage”
+story.</p>
+<p><strong>Direct read-across:</strong> - <strong>Pricing
+position</strong>: fairly premium (full brunch plates, specialty
+pastries) - <strong>What they don’t have</strong>: the Baroque heritage
+narrative, the multi-store multi-role differentiation (Anjos flagship
+vs. satellite), festive/events line - <strong>What lully should
+do</strong>: own “heritage craft bakery + Anjos brunch room” as a
+position that doBeco can’t copy</p>
+<hr />
+<h3 id="padaria-110-110padaria-instagram-only">4. Padaria 110 — <a
+href="https://www.instagram.com/110padaria/"><span class="citation"
+data-cites="110padaria">@110padaria</span></a> · Instagram-only</h3>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Category</strong></td>
+<td>Neighborhood artisanal bakery (sourdough + viennoiserie)</td>
+</tr>
+<tr>
+<td><strong>Locations</strong></td>
+<td><strong>1</strong> — Rua Filipe Folque 28B, Picoas</td>
+</tr>
+<tr>
+<td><strong>Hours</strong></td>
+<td>Tue–Sat 8:00–15:00 — note the <strong>same 5-day pattern as
+Beato</strong></td>
+</tr>
+<tr>
+<td><strong>Positioning</strong></td>
+<td>“Padaria da redondeza — pão lento e viennoiserie das mãos francesas
+e portuguesas” (“Neighborhood bakery — slow bread and viennoiserie from
+French and Portuguese hands”)</td>
+</tr>
+<tr>
+<td><strong>Online order / delivery</strong></td>
+<td>None — no website</td>
+</tr>
+<tr>
+<td><strong>Menu signals</strong></td>
+<td>Sourdough (wheat, wheat + oat, gluten-free) · baguette tradition ·
+croissants (caramel-edged) · napolitanas · palmiers · honey/salt
+puffs</td>
+</tr>
+<tr>
+<td><strong>Rating</strong></td>
+<td>4.8 / 5 on Restaurant Guru (189 reviews)</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td><strong>None — Instagram-only (894 followers)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Threat level to lully: low.</strong> Different scale (1
+store, neighborhood-focused), no digital ambition, small audience. But
+their <strong>cult local reputation (4.8 / 5)</strong> suggests Lisbon
+rewards the “slow bread + French technique” pitch strongly — validation
+for lully’s 48h-fermented sourdough narrative.</p>
+<hr />
+<h2 id="the-positioning-map">The positioning map</h2>
+<pre><code>                 HIGH DIGITAL MATURITY
+                        │
+                        │
+                   The Folks ★
+                        │           (Shopify · e-commerce · roastery · B2B)
+                        │
+                  Dear Breakfast ★
+                        │           (Webflow · reservations + delivery · brand merch)
+                        │
+      BAKERY ────────── lully 1661 ── ─ ─ ─ ─ ─ ─ ─ ─ ── BRUNCH FIRST
+       FIRST                │            (Shopify · to-be-launched · 3 stores)
+                            │
+                        doBeco ★
+                            │           (3 stores · brunch · artisanal)
+                            │
+                     Padaria 110 ★
+                            │           (1 store · IG only · 4.8/5)
+                            │
+                       LOW DIGITAL MATURITY</code></pre>
+<p>Right after launch, lully 1661 jumps roughly to the level of Dear
+Breakfast on digital maturity — with a <strong>stronger brand
+identity</strong> (Baroque heritage) than any of the four.</p>
+<h2 id="implications-for-the-sow-build">Implications for the SOW /
+build</h2>
+<ol type="1">
+<li><strong>Shopify is the right platform.</strong> The Folks’ success
+on Shopify (ranked world top-100) is the closest benchmark. No
+Webflow/WordPress justification needed.</li>
+<li><strong>PDF menu downloads</strong> (à la Dear Breakfast) are a
+low-cost table-stakes addition — worth adding to v1.0 if client has menu
+PDFs ready.</li>
+<li><strong>Uber Eats delivery</strong> was flagged Phase 2 in our SOW.
+Given Dear Breakfast has it, we should keep it in Phase 2 but mention in
+the SOW discussion that it’s a known gap vs. direct competitors.</li>
+<li><strong>B2B wholesale page pattern</strong> — The Folks has a mature
+version; we should study it before finalizing the Lully Inside page
+structure.</li>
+<li><strong>Brand differentiation is already in hand.</strong> Four
+competitors, four variants of modern minimalism. The
+Baroque-contemporary visual direction is genuinely the clear lane.</li>
+<li><strong>Anjos flagship positioning</strong> — lean hard into “Anjos
+= the brunch room.” doBeco has no single flagship; Dear Breakfast has 6
+equal stores; the Anjos-as-flagship story is differentiated.</li>
+</ol>
+<h2 id="recommended-next-steps">Recommended next steps</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Manual browse doBeco site (can’t
+desk-scrape; needs real browser or manual screenshots) — see how they
+present their pastry chef-driven story; lully can counter-position with
+the 1661 heritage</label></li>
+<li><label><input type="checkbox" />Visit The Folks’ B2B wholesale page
+in detail before we design Lully Inside</label></li>
+<li><label><input type="checkbox" />Ask client whether the
+<strong>“padaria da redondeza”</strong> neighborhood positioning
+(Padaria 110) should be a conscious target for Campo de Ourique or Beato
+(both smaller, more residential than Anjos)</label></li>
+<li><label><input type="checkbox" />Check whether any competitor
+publishes their <strong>sourdough fermentation hours</strong> — if not,
+lully’s 48h claim is a genuine marketing hook</label></li>
+</ul>
+<h2 id="note-on-scope">Note on scope</h2>
+<p>This scan is <strong>discovery / pre-engagement work</strong>, not
+in-scope against the v1.0 or v1.1 build. It informs the visual
+direction, the SOW, and the sales conversation — but shouldn’t bill as a
+separate line item unless the client wants a follow-up deeper analysis
+(e.g. per-competitor screenshot audit, keyword/SEO benchmark,
+social-media analytics).</p>
+
+</section>
+
+</body>
+</html>
