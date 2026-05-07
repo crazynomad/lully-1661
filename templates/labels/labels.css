@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700&display=swap');
+
+:root {
+  --paper:   #FFFFFF;
+  --ink:     #1A1613;
+  --ink-2:   #3C342E;
+  --stone:   #7A746B;
+  --gold:    #A68A3E;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-serif-accent: "Instrument Serif", "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Label grid: 2 cols x 4 rows on A4 (210x297mm) */
+  --cell-w: 105mm;
+  --cell-h: 74.25mm;
+
+  /* Crop-mark geometry */
+  --crop-len: 4mm;
+  --crop-inset: 2mm;
+  --crop-thickness: 0.25mm;
+  --crop-color: #B8B0A4;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color: var(--ink-2);
+  font-family: var(--font-body);
+}
+
+.sheet {
+  width: 210mm;
+  height: 297mm;
+  display: grid;
+  grid-template-columns: var(--cell-w) var(--cell-w);
+  grid-template-rows: var(--cell-h) var(--cell-h) var(--cell-h) var(--cell-h);
+  page-break-after: always;
+}
+.sheet:last-child { page-break-after: auto; }
+
+/* ---- Single label cell ---- */
+.label {
+  position: relative;
+  width: var(--cell-w);
+  height: var(--cell-h);
+  padding: 9mm 11mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Crop marks — 4 L-shaped ticks per cell */
+.crop {
+  position: absolute;
+  width: var(--crop-len);
+  height: var(--crop-len);
+  pointer-events: none;
+}
+.crop.tl { top: var(--crop-inset);    left: var(--crop-inset);
+  border-top:    var(--crop-thickness) solid var(--crop-color);
+  border-left:   var(--crop-thickness) solid var(--crop-color); }
+.crop.tr { top: var(--crop-inset);    right: var(--crop-inset);
+  border-top:    var(--crop-thickness) solid var(--crop-color);
+  border-right:  var(--crop-thickness) solid var(--crop-color); }
+.crop.bl { bottom: var(--crop-inset); left: var(--crop-inset);
+  border-bottom: var(--crop-thickness) solid var(--crop-color);
+  border-left:   var(--crop-thickness) solid var(--crop-color); }
+.crop.br { bottom: var(--crop-inset); right: var(--crop-inset);
+  border-bottom: var(--crop-thickness) solid var(--crop-color);
+  border-right:  var(--crop-thickness) solid var(--crop-color); }
+
+/* Brand figurine slot at top of each label.
+   Drop the actual SVG/PNG at templates/labels/icons/figurine.svg
+   (currently a placeholder — see icons/figurine.svg). */
+.figurine {
+  height: 7mm;
+  width: 7mm;
+  margin: 0 auto 3mm;
+  background-image: url('icons/figurine.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+}
+
+/* Product name — Fraunces, all-caps display */
+.name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-variation-settings: "opsz" 96, "SOFT" 60;
+  font-size: 13pt;
+  letter-spacing: 0.18em;
+  line-height: 1.18;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  margin: 0 0 2mm;
+  max-width: 80mm;
+}
+
+/* Description — Instrument Serif italic */
+.description {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 10.5pt;
+  line-height: 1.3;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 78mm;
+}
+
+/* Bottom row: allergen icons (left) + price (right) */
+.foot {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2mm;
+}
+.allergens {
+  display: flex;
+  gap: 1.4mm;
+  align-items: center;
+}
+.allergens img {
+  width: 5mm;
+  height: 5mm;
+  display: block;
+}
+.price {
+  font-family: var(--font-serif-accent);
+  font-style: italic;
+  font-size: 12pt;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+/* Screen-only helpers (hidden in print) */
+@media screen {
+  body {
+    background: #E5DFD0;
+    padding: 12mm;
+  }
+  .sheet {
+    background: var(--paper);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    margin: 0 auto 12mm;
+  }
+}

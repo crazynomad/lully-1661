@@ -143,3 +143,8 @@ vite.config.ts.timestamp-*
 
 # Obsidian vault config
 .obsidian/
+
+# Python venv (label generator)
+.venv*/
+__pycache__/
+*.pyc
