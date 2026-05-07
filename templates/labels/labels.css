@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&display=swap');
 
 :root {
   --paper:   #FFFFFF;
-  --ink:     #1A1613;
-  --ink-2:   #3C342E;
-  --stone:   #7A746B;
-  --gold:    #A68A3E;
+  --label-grey:    #9C9690;  /* text color — sampled from original Plano etiquetas */
+  --figurine-grey: #8E8783;  /* slightly darker, used for the Pâtissière silhouette */
+  --icon-grey:     #7A746B;  /* allergen icon circles */
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-serif-accent: "Instrument Serif", "Fraunces", Georgia, serif;
-  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Adobe Garamond Pro is the original brand font for printed material.
+     EB Garamond is the open-source 1:1 metric/visual equivalent. The
+     client can swap by adding @font-face rules pointing to their licensed
+     Adobe Garamond Pro otf files if available. */
+  --font-display: "EB Garamond", "Adobe Garamond Pro", "Garamond", Georgia, serif;
+  --font-body:    "EB Garamond", "Adobe Garamond Pro", "Garamond", Georgia, serif;
 
   /* Label grid: 2 cols x 4 rows on A4 (210x297mm) */
   --cell-w: 105mm;
@@ -34,7 +36,7 @@ html, body {
   background: var(--paper);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
-  color: var(--ink-2);
+  color: var(--label-grey);
   font-family: var(--font-body);
 }
 
@@ -53,7 +55,7 @@ html, body {
   position: relative;
   width: var(--cell-w);
   height: var(--cell-h);
-  padding: 9mm 11mm;
+  padding: 14mm 14mm 8mm 14mm;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,41 +84,47 @@ html, body {
   border-bottom: var(--crop-thickness) solid var(--crop-color);
   border-right:  var(--crop-thickness) solid var(--crop-color); }
 
-/* Brand figurine slot at top of each label.
-   Drop the actual SVG/PNG at templates/labels/icons/figurine.svg
-   (currently a placeholder — see icons/figurine.svg). */
+/* La Pâtissière figurines — TWO per label, top-left + top-right corners. */
 .figurine {
-  height: 7mm;
+  position: absolute;
+  top: 6mm;
   width: 7mm;
-  margin: 0 auto 3mm;
+  height: 9mm;
   background-image: url('icons/figurine.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.85;
 }
+.figurine.left  { left:  16mm; }
+.figurine.right { right: 16mm; }
 
-/* Product name — Fraunces, all-caps display */
+/* Product name — Garamond, all-caps, wide letter-spacing.
+   Honours explicit line breaks (\n) in the source — bakery staff use
+   Alt+Enter in the Sheet cell to control where the title wraps. */
 .name {
   font-family: var(--font-display);
-  font-weight: 300;
-  font-variation-settings: "opsz" 96, "SOFT" 60;
-  font-size: 13pt;
-  letter-spacing: 0.18em;
-  line-height: 1.18;
-  color: var(--ink-2);
+  font-weight: 400;
+  font-size: 14pt;
+  letter-spacing: 0.28em;
+  line-height: 1.25;
+  color: var(--label-grey);
   text-transform: uppercase;
-  margin: 0 0 2mm;
-  max-width: 80mm;
+  white-space: pre-line;
+  margin: 0 0 3mm;
+  max-width: 76mm;
+  /* Trailing letter-spacing on each line's last char pushes the optical
+     centre off — leading text-indent compensates. */
+  text-indent: 0.28em;
 }
 
-/* Description — Instrument Serif italic */
+/* Description — Garamond italic */
 .description {
-  font-family: var(--font-serif-accent);
+  font-family: var(--font-body);
   font-style: italic;
-  font-size: 10.5pt;
-  line-height: 1.3;
-  color: var(--ink-2);
+  font-weight: 400;
+  font-size: 12pt;
+  line-height: 1.32;
+  color: var(--label-grey);
   margin: 0;
   max-width: 78mm;
 }
@@ -136,15 +144,16 @@ html, body {
   align-items: center;
 }
 .allergens img {
-  width: 5mm;
-  height: 5mm;
+  width: 5.5mm;
+  height: 5.5mm;
   display: block;
 }
 .price {
-  font-family: var(--font-serif-accent);
+  font-family: var(--font-body);
   font-style: italic;
-  font-size: 12pt;
-  color: var(--ink-2);
+  font-weight: 400;
+  font-size: 13pt;
+  color: var(--label-grey);
   white-space: nowrap;
 }
 

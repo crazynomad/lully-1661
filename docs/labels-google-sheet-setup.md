@@ -136,11 +136,32 @@ already filled in.
 3. Drop a 24×24 SVG into `templates/labels/icons/<slug>.svg`. Match the
    existing style: grey circle with a white symbol.
 
+## Forced line breaks in the title
+
+The original Plano etiquetas wraps product names at specific points
+(e.g. *GATEAU BASQUE* / *À LA PART*, *COOKIE* / *AU CHOCOLAT*). To keep
+that control, **the bakery uses Alt+Enter inside the `name_fr` cell** to
+insert a literal newline. The PDF respects it as a hard line break.
+
+If no `\n` is in the cell, the title renders on one line (or auto-wraps if
+truly too wide for the label).
+
+## Typography
+
+The original print template uses **Adobe Garamond Pro** (a licensed Adobe
+font). The build pipeline ships **EB Garamond** (Google Fonts, free,
+metrically/visually 1:1 with Adobe Garamond). If the bakery's Adobe CC
+licence covers Adobe Garamond Pro, drop the `.otf` files into
+`templates/labels/fonts/` and add an `@font-face` block at the top of
+`templates/labels/labels.css`; the existing `font-family` stack will pick
+it up first.
+
 ## What's still placeholder
 
 - All 6 allergen icons in `templates/labels/icons/*.svg` are simple shapes,
   not the EU-standard set. Swap in the proper CC0 icons before printing for
   real (food-labelling regulation issue).
-- `templates/labels/icons/figurine.svg` is a crude baroque-figure outline.
-  Replace with the real Lully sub-mark (likely vectorized from
-  `raw-requirements/logo-sub-*.jpeg`).
+- `templates/labels/icons/figurine.svg` is a hand-drawn outline of *La
+  Pâtissière* (the pastry sub-mark). It's recognisable but rough — ask the
+  designer to export the canonical silhouette SVG from the original
+  InDesign template. Drop it in place; no code changes needed.

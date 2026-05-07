@@ -29,7 +29,7 @@ const TAB = {
 // Header slugs — must match what scripts/build-labels.py reads.
 // Order in this array = on-sheet column order = on-label icon order for allergens.
 const COLUMNS = [
-  {key:'name_fr',        kind:'text',     width:220, note:'Nome do produto em francês — será impresso em maiúsculas'},
+  {key:'name_fr',        kind:'text',     width:220, note:'Nome do produto em francês — será impresso em maiúsculas. Use Alt+Enter para forçar quebra de linha no título.'},
   {key:'description_pt', kind:'text',     width:280, note:'Descrição curta em português — em itálico'},
   {key:'gluten',         kind:'checkbox', width: 70, note:'Contém glúten?'},
   {key:'milk',           kind:'checkbox', width: 70, note:'Contém leite?'},
@@ -42,15 +42,17 @@ const COLUMNS = [
 ];
 
 // 8 sample products from the original Plano etiquetas PDF.
+// The "\n" inside name_fr is a forced line break — bakery staff insert these
+// in their own data with Alt+Enter inside a Sheet cell.
 const SAMPLE_ROWS = [
-  ['GATEAU BASQUE À LA PART','tarte de massa sablé, creme de amêndoa, rum',  true, true, true, false, false, false, 4.20, true],
-  ['CANNELÉ BORDELAIS',      'cannele caramelizado, baunilha e rum',         true, true, true, false, false, false, 2.50, true],
-  ['CAKE AU CHOCOLAT',       'bolo de chocolate negro',                      true, true, true, true,  true,  true,  4.00, true],
-  ['FINANCIER',              'bolo de farinha de amêndoa, manteiga caramelizada', true, true, true, true, false, false, 2.80, true],
-  ['CAKE AU CITRON',         'bolo de citrinos',                             true, true, true, false, false, false, 3.50, true],
-  ['COOKIE AU CHOCOLAT',     'cookie de chocolate negro',                    true, true, true, true,  true,  true,  3.20, true],
-  ['BROWNIE',                'brownie de chocolate negro',                   true, true, true, true,  true,  true,  3.50, true],
-  ['GATEAU BASQUE ENTIER',   'tarte de massa sablé, creme de amêndoa, rum',  true, true, true, false, false, false, 28.00, true]
+  ['GATEAU BASQUE\nÀ LA PART','tarte de massa sablé, creme de amêndoa, rum',  true, true, true, false, false, false, 4.20, true],
+  ['CANNELÉ\nBORDELAIS',      'cannele caramelizado, baunilha e rum',         true, true, true, false, false, false, 2.50, true],
+  ['CAKE\nAU CHOCOLAT',       'bolo de chocolate negro',                      true, true, true, true,  true,  true,  4.00, true],
+  ['FINANCIER',               'bolo de farinha de amêndoa, manteiga caramelizada', true, true, true, true, false, false, 2.80, true],
+  ['CAKE AU CITRON',          'bolo de citrinos',                             true, true, true, false, false, false, 3.50, true],
+  ['COOKIE\nAU CHOCOLAT',     'cookie de chocolate negro',                    true, true, true, true,  true,  true,  3.20, true],
+  ['BROWNIE',                 'brownie de chocolate negro',                   true, true, true, true,  true,  true,  3.50, true],
+  ['GATEAU BASQUE\nENTIER',   'tarte de massa sablé, creme de amêndoa, rum',  true, true, true, false, false, false, 28.00, true]
 ];
 
 const HISTORY_HEADERS = [
@@ -155,6 +157,11 @@ function _applyValidations(sh, dataRows) {
       range.setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
     } else if (col.kind === 'number') {
       range.setNumberFormat('0.00');
+    }
+    // name_fr can contain forced line breaks (Alt+Enter); WRAP keeps the
+    // cell visually showing them. Description is also long, wrap helps too.
+    if (col.key === 'name_fr' || col.key === 'description_pt') {
+      range.setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP);
     }
   });
 }
