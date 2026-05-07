@@ -33,7 +33,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",    # read/write the Sheet
 ]
 PORT = 8765
-REDIRECT = f"http://127.0.0.1:{PORT}/callback"
+REDIRECT = f"http://localhost:{PORT}/callback"
 
 
 class _Catcher(http.server.BaseHTTPRequestHandler):
@@ -42,15 +42,20 @@ class _Catcher(http.server.BaseHTTPRequestHandler):
     def do_GET(self):  # noqa: N802 — http.server API
         qs = urllib.parse.urlparse(self.path).query
         params = dict(urllib.parse.parse_qsl(qs))
-        _Catcher.captured = params
+        # Only accept the real OAuth callback. Ignore favicons, preflights,
+        # browser preloads, leftover tabs from previous runs, etc.
+        if "code" in params and "state" in params:
+            _Catcher.captured = params
+            body = (b"<html><body style='font-family:sans-serif;text-align:center;"
+                    b"padding-top:40px'><h2>Got it.</h2><p>You can close this tab "
+                    b"and return to the terminal.</p></body></html>")
+        else:
+            print(f"  [debug] ignoring request to {self.path}", file=sys.stderr)
+            body = b"<html><body>(ignored - waiting for OAuth callback)</body></html>"
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
-        self.wfile.write(
-            b"<html><body style='font-family:sans-serif;text-align:center;"
-            b"padding-top:40px'><h2>Got it.</h2><p>You can close this tab "
-            b"and return to the terminal.</p></body></html>"
-        )
+        self.wfile.write(body)
 
     def log_message(self, *a, **kw):  # noqa: D401 — silence default logging
         pass
@@ -75,7 +80,7 @@ def main() -> int:
     })
 
     print(f"Opening browser for OAuth consent…\n  {auth_url}\n")
-    server = http.server.HTTPServer(("127.0.0.1", PORT), _Catcher)
+    server = http.server.HTTPServer(("localhost", PORT), _Catcher)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     webbrowser.open(auth_url)
 
