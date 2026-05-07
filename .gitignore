@@ -148,3 +148,4 @@ vite.config.ts.timestamp-*
 .venv*/
 __pycache__/
 *.pyc
+scripts/run-release-local.sh

@@ -19,20 +19,18 @@
           <span class="crop tl"></span><span class="crop tr"></span>
           <span class="crop bl"></span><span class="crop br"></span>
 
-          <div class="figurine left"  aria-hidden="true"></div>
-          <div class="figurine right" aria-hidden="true"></div>
+          <div class="figurine left"><img src="icons/figurine.svg" alt=""></div>
+          <div class="figurine right"><img src="icons/figurine.svg" alt=""></div>
 
           <div class="name">{{ item.name_fr }}</div>
           <div class="description">{{ item.description_pt }}</div>
 
-          <div class="foot">
-            <div class="allergens">
-              {%- for slug in item.allergens %}
-                <img src="icons/{{ slug }}.svg" alt="{{ slug }}">
-              {%- endfor %}
-            </div>
-            <div class="price">{{ item.price_str }}</div>
+          <div class="allergens">
+            {%- for slug in item.allergens %}
+              <img src="icons/{{ slug }}.svg" alt="{{ slug }}">
+            {%- endfor %}
           </div>
+          <div class="price">{{ item.price_str }}</div>
         </div>
       {%- endif %}
     {%- endfor %}

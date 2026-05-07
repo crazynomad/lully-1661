@@ -28,31 +28,38 @@ const TAB = {
 
 // Header slugs — must match what scripts/build-labels.py reads.
 // Order in this array = on-sheet column order = on-label icon order for allergens.
+// 5 allergens (gluten/milk/egg/peanut/nuts) match the source PDF exactly.
 const COLUMNS = [
   {key:'name_fr',        kind:'text',     width:220, note:'Nome do produto em francês — será impresso em maiúsculas. Use Alt+Enter para forçar quebra de linha no título.'},
   {key:'description_pt', kind:'text',     width:280, note:'Descrição curta em português — em itálico'},
   {key:'gluten',         kind:'checkbox', width: 70, note:'Contém glúten?'},
   {key:'milk',           kind:'checkbox', width: 70, note:'Contém leite?'},
   {key:'egg',            kind:'checkbox', width: 70, note:'Contém ovos?'},
-  {key:'nuts',           kind:'checkbox', width: 70, note:'Contém frutos secos?'},
   {key:'peanut',         kind:'checkbox', width: 70, note:'Contém amendoim?'},
-  {key:'soy',            kind:'checkbox', width: 70, note:'Contém soja?'},
+  {key:'nuts',           kind:'checkbox', width: 70, note:'Contém frutos secos?'},
   {key:'price',          kind:'number',   width: 90, note:'Use ponto como separador decimal — ex: 4.20'},
   {key:'active',         kind:'checkbox', width: 70, note:'Marque ✓ para incluir no próximo PDF'}
 ];
 
-// 8 sample products from the original Plano etiquetas PDF.
-// The "\n" inside name_fr is a forced line break — bakery staff insert these
-// in their own data with Alt+Enter inside a Sheet cell.
+// 8 sample products from the original Plano etiquetas PDF, in the same
+// row-by-row visual order as the source layout.
+// The "\n" inside name_fr / description_pt is a forced line break — bakery
+// staff insert these in their own data with Alt+Enter inside a Sheet cell.
+// Allergen flags reflect what's actually shown in each label of the source.
 const SAMPLE_ROWS = [
-  ['GATEAU BASQUE\nÀ LA PART','tarte de massa sablé, creme de amêndoa, rum',  true, true, true, false, false, false, 4.20, true],
-  ['CANNELÉ\nBORDELAIS',      'cannele caramelizado, baunilha e rum',         true, true, true, false, false, false, 2.50, true],
-  ['CAKE\nAU CHOCOLAT',       'bolo de chocolate negro',                      true, true, true, true,  true,  true,  4.00, true],
-  ['FINANCIER',               'bolo de farinha de amêndoa, manteiga caramelizada', true, true, true, true, false, false, 2.80, true],
-  ['CAKE AU CITRON',          'bolo de citrinos',                             true, true, true, false, false, false, 3.50, true],
-  ['COOKIE\nAU CHOCOLAT',     'cookie de chocolate negro',                    true, true, true, true,  true,  true,  3.20, true],
-  ['BROWNIE',                 'brownie de chocolate negro',                   true, true, true, true,  true,  true,  3.50, true],
-  ['GATEAU BASQUE\nENTIER',   'tarte de massa sablé, creme de amêndoa, rum',  true, true, true, false, false, false, 28.00, true]
+  // [name_fr, description_pt, gluten, milk, egg, peanut, nuts, price, active]
+  // row 1
+  ['GATEAU BASQUE\nÀ LA PART','tarte de massa sablé,\ncreme de amêndoa, rum',  true, true, true, false, false, 4.20, true],
+  ['CAKE AU CITRON',          'bolo de citrinos',                              true, true, true, false, false, 3.50, true],
+  // row 2
+  ['CAKE\nAU CHOCOLAT',       'bolo de chocolate negro',                       true, true, true, true,  true,  4.00, true],
+  ['BROWNIE',                 'brownie de chocolate negro',                    true, true, true, true,  true,  3.50, true],
+  // row 3
+  ['CANNELÉ\nBORDELAIS',      'cannele caramelizado,\nbaunilha e rum',         true, true, true, false, false, 2.50, true],
+  ['COOKIE\nAU CHOCOLAT',     'cookie de chocolate negro',                     true, true, true, true,  true,  3.20, true],
+  // row 4
+  ['FINANCIER',               'bolo de farinha de amêndoa,\nmanteiga caramelizada', true, true, true, false, true, 2.80, true],
+  ['GATEAU BASQUE\nENTIER',   'tarte de massa sablé,\ncreme de amêndoa, rum',  true, true, true, false, false, 28.00, true]
 ];
 
 const HISTORY_HEADERS = [

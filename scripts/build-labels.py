@@ -41,7 +41,9 @@ DEFAULT_SOURCE = ROOT / "data" / "labels-sample.csv"
 DEFAULT_OUT_DIR = ROOT / "dist"
 
 # Order matters — this is the order allergen icons render in the foot row.
-ALLERGEN_COLS = ["gluten", "milk", "egg", "nuts", "peanut", "soy"]
+# Matches the original Plano etiquetas PDF: gluten, milk, egg, peanut, nuts.
+# (The PDF has 5 unique allergen icons in this order; soy is not represented.)
+ALLERGEN_COLS = ["gluten", "milk", "egg", "peanut", "nuts"]
 
 LABELS_PER_SHEET = 8  # 2 columns × 4 rows
 
