@@ -144,8 +144,7 @@ vite.config.ts.timestamp-*
 # Obsidian vault config
 .obsidian/
 
-# Python venv (label generator)
+# Python
 .venv*/
 __pycache__/
 *.pyc
-scripts/run-release-local.sh
