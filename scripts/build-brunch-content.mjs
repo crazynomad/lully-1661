@@ -176,9 +176,9 @@ featured: ${FEATURED_SLUGS.has(item.slug) ? 'true' : 'false'}
 `;
 }
 
+await mkdir('content/weeklyMenuItem', { recursive: true });
 for (const item of items) {
-  const dir = `content/weeklyMenuItem/${item.slug}`;
-  await mkdir(dir, { recursive: true });
-  await writeFile(`${dir}/index.yaml`, entryYaml(item));
-  console.log(`wrote ${dir}/index.yaml`);
+  const file = `content/weeklyMenuItem/${item.slug}.yaml`;
+  await writeFile(file, entryYaml(item));
+  console.log(`wrote ${file}`);
 }

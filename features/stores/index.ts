@@ -1,6 +1,17 @@
-// Stores feature — public API.
-// Per-store URLs (`/lojas/anjos`, `/lojas/campo-de-ourique`, `/lojas/beato`)
-// each render LocalBusiness JSON-LD with unique @id per architecture.md § 6.4.
-//
-// Phase 2d stub. Populated in phase 3 with reader queries + JSON-LD assembly.
-export {};
+// Stores feature — public API. Pages outside this folder import only
+// from this index per architecture.md § 3.
+
+export {
+  type Store,
+  type WeekdayKey,
+  type StoreServiceKey,
+  listStoreSlugs,
+  getStore,
+  getAllStores,
+  getMenuItemsAvailableAt,
+  storeHeroImagePath,
+  atmosphereFor,
+  weekdayToSchema,
+} from './data';
+
+export { storePageJsonLd } from './jsonld';
