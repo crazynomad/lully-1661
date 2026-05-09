@@ -3,14 +3,20 @@ import { collection, config, fields, singleton } from '@keystatic/core';
 // =============================================================================
 // Storage gating
 // =============================================================================
-// Use GitHub storage only when Keystatic Cloud env vars are all set.
-// Otherwise fall back to local filesystem mode so dev and CI builds don't
-// fail on missing secrets. Per `docs/architecture.md` § 4.5.
+// This config is consumed by BOTH the route handler (server, has access to
+// KEYSTATIC_GITHUB_* secrets) AND the admin page (client component, sees
+// only NEXT_PUBLIC_* env vars). The decision must therefore be made on a
+// signal that both sides can read.
+//
+// We use NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG as the "github mode is
+// configured" flag. It's set on Vercel (where the GitHub App is wired up)
+// but not locally — so dev = local mode automatically, production = github
+// mode. The actual server-only GitHub App credentials (CLIENT_ID,
+// CLIENT_SECRET, SECRET) are read by the route handler at runtime; this
+// flag just decides which storage shape the config exports. Per
+// architecture.md § 4.5.
 
-const hasGithubAuth =
-  Boolean(process.env.KEYSTATIC_GITHUB_CLIENT_ID) &&
-  Boolean(process.env.KEYSTATIC_GITHUB_CLIENT_SECRET) &&
-  Boolean(process.env.KEYSTATIC_SECRET);
+const useGithubStorage = Boolean(process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG);
 
 // =============================================================================
 // Bilingual field helpers
@@ -703,7 +709,7 @@ const legalPage = collection({
 // =============================================================================
 
 export default config({
-  storage: hasGithubAuth
+  storage: useGithubStorage
     ? {
         kind: 'github',
         repo: {
