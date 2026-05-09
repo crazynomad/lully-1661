@@ -1,0 +1,41 @@
+{
+  "site": {
+    "name": "Lully 1661",
+    "tagline": "Boulangerie Renaissance"
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "journal": "Journal",
+    "festiveOrders": "Festive Orders",
+    "stores": "Stores",
+    "reservations": "Reservations",
+    "about": "About",
+    "lullyInside": "Lully Inside",
+    "careers": "Careers",
+    "legal": "Legal"
+  },
+  "actions": {
+    "reserveTable": "Book a table",
+    "visitStore": "Visit a store",
+    "explore": "Explore",
+    "viewMore": "View more",
+    "subscribe": "Subscribe",
+    "send": "Send"
+  },
+  "home": {
+    "heroTitle": "Bread baked better. Always, better than before.",
+    "scaffoldNotice": "Technical scaffold ready — design and content in progress."
+  },
+  "footer": {
+    "newsletterPrompt": "Get this week's menu",
+    "newsletterPlaceholder": "Your email",
+    "rightsReserved": "All rights reserved",
+    "instagram": "Follow us on Instagram"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundCta": "Back to home",
+    "generic": "Something went wrong. Please try again."
+  }
+}

@@ -148,3 +148,19 @@ vite.config.ts.timestamp-*
 .venv*/
 __pycache__/
 *.pyc
+
+# Vercel
+.vercel/
+
+# Sentry
+.sentryclirc
+
+# Keystatic local cache
+.keystatic/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Editor stray files
+Untitled.md

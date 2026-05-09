@@ -1,0 +1,41 @@
+{
+  "site": {
+    "name": "Lully 1661",
+    "tagline": "Boulangerie Renaissance"
+  },
+  "nav": {
+    "home": "Início",
+    "menu": "Menu",
+    "journal": "Diário",
+    "festiveOrders": "Encomendas",
+    "stores": "Lojas",
+    "reservations": "Reservas",
+    "about": "Sobre",
+    "lullyInside": "Lully Inside",
+    "careers": "Trabalha connosco",
+    "legal": "Legal"
+  },
+  "actions": {
+    "reserveTable": "Reservar mesa",
+    "visitStore": "Visitar uma loja",
+    "explore": "Explorar",
+    "viewMore": "Ver mais",
+    "subscribe": "Subscrever",
+    "send": "Enviar"
+  },
+  "home": {
+    "heroTitle": "Pão melhor cozido. Sempre, melhor que antes.",
+    "scaffoldNotice": "Estrutura técnica pronta — design e conteúdo em curso."
+  },
+  "footer": {
+    "newsletterPrompt": "Receba o cardápio da semana",
+    "newsletterPlaceholder": "O seu email",
+    "rightsReserved": "Todos os direitos reservados",
+    "instagram": "Siga-nos no Instagram"
+  },
+  "errors": {
+    "notFound": "Página não encontrada",
+    "notFoundCta": "Voltar ao início",
+    "generic": "Algo correu mal. Tente novamente."
+  }
+}
