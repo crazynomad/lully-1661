@@ -1,7 +1,15 @@
 # Platform Recommendation — lully 1661 Website
 
-**Status:** Draft v0.1 — internal
+**Status:** ⚠️ **Superseded for v1 — see [`platform-recommendation-v2.md`](./platform-recommendation-v2.md)**
 **Prepared:** 2026-04-16
+**Superseded:** 2026-05-09
+**Retain because:** the trade-off table (§ Options considered), the Phase-2 commerce path (§ Phase 1 vs Phase 2), and the Shopify-specific friction notes are still load-bearing for *Phase 2* when commerce returns to scope. Do not delete.
+
+> **What changed (2026-05-09):** Client dropped e-commerce from v1 ("electrical functions" in their phrasing) and asked for modular extensibility so features can be added separately later, with v1 success measured by SEO + local marketing rather than conversion. The brunch-event deadline (2026-05-15) was also pushed to TBD. With commerce out and SEO in, the Shopify recommendation below no longer applies for v1 — see v2 for the Next.js + Sanity stack. The commerce-return path (Shopify Storefront API or Stripe) is documented in v2 § Phase 2.
+
+---
+
+**Status (original):** Draft v0.1 — internal
 **Context:** Client deferred Q3 to us ("open to alternatives"). This document is our recommendation, to present alongside sitemap v1.
 
 ## Recommendation (TL;DR)
