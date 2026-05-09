@@ -1,0 +1,30 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: avocado-toast
+name:
+  pt: "Avocado Toast"
+  en: "Avocado Toast"
+localizedSlug:
+  pt: avocado-toast
+  en: avocado-toast
+description:
+  pt: |
+    Purê de abacate, tomates assados, cebola roxa em conserva, melaço de romã e ervas frescas. Servido no nosso pão Fâcheux.
+  en: |
+    Avocado purée, roasted tomatoes, conserved red onion, pomegranate molasses and fresh herbs. Served on our Fâcheux bread.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Avocado Toast — placeholder demo"
+    en: "Avocado Toast — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+suitableForDiet:
+  - vegan
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: true
+# Price (EUR): 8,50

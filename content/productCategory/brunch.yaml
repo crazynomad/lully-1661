@@ -1,0 +1,21 @@
+slug: brunch
+name:
+  pt: Brunch
+  en: Brunch
+localizedSlug:
+  pt: brunch
+  en: brunch
+description:
+  pt: |
+    O nosso brunch — servido apenas em Anjos. Receitas com tradição
+    portuguesa, francesa e turca, sempre com o pão Paillard ou Fâcheux
+    como base.
+  en: |
+    Our brunch — served only at Anjos. Portuguese, French, and Turkish
+    traditions, always built on our Paillard or Fâcheux bread.
+illustration:
+  file: ""
+  alt:
+    pt: ""
+    en: ""
+  decorative: true

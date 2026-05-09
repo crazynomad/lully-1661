@@ -1,0 +1,29 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: sopa-do-mes
+name:
+  pt: "Sopa do Mês"
+  en: "Soup of the Month"
+localizedSlug:
+  pt: sopa-do-mes
+  en: soup-of-the-month
+description:
+  pt: |
+    Sopa de ervilhas, caldo de legumes, hortelã, sumo de limão e leite de coco. Servida fria ou à temperatura ambiente.
+  en: |
+    Pea soup with vegetable stock, mint, lemon juice and coconut milk. Served cold or at room temperature.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Sopa do Mês — placeholder demo"
+    en: "Soup of the Month — placeholder demo"
+  decorative: false
+allergens: []
+suitableForDiet:
+  - vegetarian
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: false
+# Price (EUR): 6,50

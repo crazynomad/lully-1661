@@ -1,0 +1,32 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: ovos-florentine
+name:
+  pt: "Ovos Florentine"
+  en: "Eggs Florentine"
+localizedSlug:
+  pt: ovos-florentine
+  en: eggs-florentine
+description:
+  pt: |
+    Ovos escalfados, puré de espinafres, molho Holandês, pimenta preta, raspas de limão e ervas frescas. Servido no nosso pão Fâcheux.
+  en: |
+    Poached eggs, spinach purée, Hollandaise sauce, black pepper, lemon zest and fresh herbs. Served on our Fâcheux bread.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Ovos Florentine — placeholder demo"
+    en: "Eggs Florentine — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+  - dairy
+  - eggs
+suitableForDiet:
+  - vegetarian
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: false
+# Price (EUR): 10,50

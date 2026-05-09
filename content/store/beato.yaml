@@ -1,0 +1,55 @@
+# Lully 1661 — Beato (the original, opened December 2023).
+# Demo content seeded from public sources on 2026-05-09; see
+# raw-requirements/research/sources.md for citations and timestamps.
+slug: beato
+name: Lully 1661 — Beato
+neighborhood: Marvila / Beato
+address:
+  streetAddress: Rua do Grilo 12
+  addressLocality: Lisboa
+  postalCode: 1950-109
+  addressCountry: PT
+geo:
+  latitude: 38.7308
+  longitude: -9.1075
+phone: "+351962651755"
+openingHours:
+  - weekday: tuesday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: wednesday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: thursday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: friday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: saturday
+    opens: "08:00"
+    closes: "19:00"
+photo:
+  file: ../../public/content/store/beato/hero.jpg
+  alt:
+    pt: Vista interior da padaria Lully 1661 no Beato — placeholder demo
+    en: Lully 1661 Beato bakery interior — placeholder demo
+  decorative: false
+atmosphere:
+  pt: |
+    A primeira loja, no coração industrial de Marvila. Paredes de azulejos brancos,
+    móveis de madeira clara, três vitrines de vidro a separar viennoiseries, pães
+    especiais e a pequena selecção de sandes do dia. O forno é o centro da
+    boutique — quem está ao balcão vê o pão a sair, ainda quente, e por isso é
+    aqui que produzimos para as três lojas.
+  en: |
+    The first shop, in the industrial heart of Marvila. White-tiled walls,
+    light-wood furniture, and three glass cases separating viennoiserie, signature
+    breads and the small selection of sandwiches of the day. The oven is the
+    centrepiece of the boutique — from the counter you can see bread coming out
+    still warm, which is why all three stores are produced from here.
+services:
+  - pickup
+  - ovenVisible
+theForkUrl: ""
+pickupCutoff: ""

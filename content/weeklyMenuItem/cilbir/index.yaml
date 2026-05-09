@@ -1,0 +1,32 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: cilbir
+name:
+  pt: "Çılbır"
+  en: "Çılbır"
+localizedSlug:
+  pt: cilbir
+  en: cilbir
+description:
+  pt: |
+    Ovos escalfados, óleo de chili, iogurte de alho, ervas frescas. Servidos com pão Paillard torrado. O nível de picante e alho ajusta-se a gosto.
+  en: |
+    Poached eggs, chili oil, garlic yogurt and fresh herbs. Served with toasted Paillard bread. Spice and garlic levels adjusted to taste.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Çılbır — placeholder demo"
+    en: "Çılbır — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+  - dairy
+  - eggs
+suitableForDiet:
+  - vegetarian
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: false
+# Price (EUR): 8,50

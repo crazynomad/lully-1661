@@ -1,0 +1,31 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: ovos-benedict
+name:
+  pt: "Ovos Benedict"
+  en: "Eggs Benedict"
+localizedSlug:
+  pt: ovos-benedict
+  en: eggs-benedict
+description:
+  pt: |
+    Ovos escalfados, molho Holandês, mostarda, bacon, pimenta Urfa (İsot) e ervas frescas. Servido no nosso pão Fâcheux.
+  en: |
+    Poached eggs, Hollandaise sauce, mustard, bacon, Urfa chili (İsot) and fresh herbs. Served on our Fâcheux bread.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Ovos Benedict — placeholder demo"
+    en: "Eggs Benedict — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+  - dairy
+  - eggs
+suitableForDiet: []
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: true
+# Price (EUR): 12,00

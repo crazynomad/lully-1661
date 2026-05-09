@@ -1,0 +1,33 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: granola
+name:
+  pt: "Granola"
+  en: "Granola"
+localizedSlug:
+  pt: granola
+  en: granola
+description:
+  pt: |
+    Granola caseira com flocos de aveia, arroz tufado, sementes de abóbora, doce de figo, mel, melaço de romã, canela. Servida com iogurte, manteiga de amendoim, mirtilos e banana.
+  en: |
+    House-made granola with oats, rice puffs, pumpkin seeds, fig jam, honey, pomegranate molasses and cinnamon. Served with yogurt, peanut butter, blueberries and banana.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Granola — placeholder demo"
+    en: "Granola — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+  - dairy
+  - nuts
+  - peanuts
+suitableForDiet:
+  - vegetarian
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: false
+# Price (EUR): 5,50 / 7,00

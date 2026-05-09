@@ -1,0 +1,30 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: le-monsieur
+name:
+  pt: "Le Monsieur"
+  en: "Le Monsieur"
+localizedSlug:
+  pt: le-monsieur
+  en: le-monsieur
+description:
+  pt: |
+    Tosta em camadas, estilo lasanha, com fiambre, Comté e salada. Preparada com pão Paillard & Fâcheux fatiado fino.
+  en: |
+    Lasagna-style layered toast with ham, Comté and salad. Made with thin-sliced Paillard & Fâcheux bread.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Le Monsieur — placeholder demo"
+    en: "Le Monsieur — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+  - dairy
+suitableForDiet: []
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: false
+# Price (EUR): 11,00

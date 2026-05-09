@@ -1,0 +1,28 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: le-menuet
+name:
+  pt: "Le Menuet"
+  en: "Le Menuet"
+localizedSlug:
+  pt: le-menuet
+  en: le-menuet
+description:
+  pt: |
+    Frango frito com aioli caseiro, tomates secos, iogurte, salada e cebola roxa em conserva. Preparado com focaccia.
+  en: |
+    Fried chicken with house aioli, sun-dried tomatoes, yogurt, salad and conserved red onion. Served on focaccia.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Le Menuet — placeholder demo"
+    en: "Le Menuet — placeholder demo"
+  decorative: false
+allergens: []
+suitableForDiet: []
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: false
+# Price (EUR): 10,00

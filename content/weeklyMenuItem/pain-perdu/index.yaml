@@ -1,0 +1,32 @@
+# Brunch item — extracted from raw-requirements/menu-weekly-sample.pdf
+# Available at Anjos only. Demo content seeded 2026-05-09.
+slug: pain-perdu
+name:
+  pt: "Pain Perdu"
+  en: "Pain Perdu"
+localizedSlug:
+  pt: pain-perdu
+  en: pain-perdu
+description:
+  pt: |
+    O nosso French toast — natas batidas, mirtilos e framboesas. Feito com a colecção de pão envelhecido da casa.
+  en: |
+    Our French toast — chantilly cream, blueberries and raspberries. Made with our aged bread collection.
+category: brunch
+image:
+  file: image.jpg
+  alt:
+    pt: "Pain Perdu — placeholder demo"
+    en: "Pain Perdu — placeholder demo"
+  decorative: false
+allergens:
+  - gluten
+  - dairy
+  - eggs
+suitableForDiet:
+  - vegetarian
+availableAt:
+  - anjos
+weekOf: 2026-05-04
+featured: true
+# Price (EUR): 6,50

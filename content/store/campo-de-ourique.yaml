@@ -1,0 +1,56 @@
+# Lully 1661 — Campo de Ourique (third store, opened summer 2025).
+# The neighbourhood store; smaller, more intimate, with delivery via Uber Eats.
+# Demo content seeded from public sources on 2026-05-09; see
+# raw-requirements/research/sources.md for citations.
+slug: campo-de-ourique
+name: Lully 1661 — Campo de Ourique
+neighborhood: Campo de Ourique
+address:
+  streetAddress: Rua 4 de Infantaria 43
+  addressLocality: Lisboa
+  postalCode: 1350-135
+  addressCountry: PT
+geo:
+  latitude: 38.7195
+  longitude: -9.1668
+# Phone TBD — placeholder is the Anjos line until the client confirms.
+phone: "+351961816221"
+openingHours:
+  - weekday: tuesday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: wednesday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: thursday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: friday
+    opens: "08:00"
+    closes: "19:00"
+  - weekday: saturday
+    opens: "09:00"
+    closes: "19:00"
+photo:
+  file: ../../public/content/store/campo-de-ourique/hero.jpg
+  alt:
+    pt: Vista interior da padaria Lully 1661 em Campo de Ourique — placeholder demo
+    en: Lully 1661 Campo de Ourique bakery interior — placeholder demo
+  decorative: false
+atmosphere:
+  pt: |
+    A loja de bairro. Pequena, com luz quente e madeira, daquele tipo de espaço
+    em que se entra para um café e se acaba a ficar mais do que se planeou.
+    Recebemos clientes do bairro de manhã cedo e sábados à hora do brunch dos
+    outros — abrimos às nove para deixar os fins-de-semana respirar. Uber Eats
+    aqui é uma opção; em Beato e Anjos, não.
+  en: |
+    The neighbourhood store. Small, warm-lit, wooden — the kind of place where
+    you stop in for a coffee and end up staying longer than you'd planned.
+    We get the neighbourhood crowd from early morning, and on Saturdays we
+    open at nine so weekends get to breathe. Uber Eats delivery is available
+    here; not from Beato or Anjos.
+services:
+  - pickup
+theForkUrl: ""
+pickupCutoff: ""

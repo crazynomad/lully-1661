@@ -1,0 +1,61 @@
+# Lully 1661 — Anjos (second store, opened 2024).
+# This is the only outlet with brunch + dine-in service and the only one
+# open on Sundays. Demo content seeded from public sources on 2026-05-09;
+# see raw-requirements/research/sources.md for citations.
+slug: anjos
+name: Lully 1661 — Anjos
+neighborhood: Arroios / Anjos
+address:
+  streetAddress: Rua do Forno do Tijolo 46
+  addressLocality: Lisboa
+  postalCode: 1170-134
+  addressCountry: PT
+geo:
+  latitude: 38.7245
+  longitude: -9.1349
+phone: "+351961816221"
+openingHours:
+  - weekday: tuesday
+    opens: "08:30"
+    closes: "19:00"
+  - weekday: wednesday
+    opens: "08:30"
+    closes: "19:00"
+  - weekday: thursday
+    opens: "08:30"
+    closes: "19:00"
+  - weekday: friday
+    opens: "08:30"
+    closes: "19:00"
+  - weekday: saturday
+    opens: "08:30"
+    closes: "19:00"
+  - weekday: sunday
+    opens: "08:30"
+    closes: "15:00"
+photo:
+  file: ../../public/content/store/anjos/hero.jpg
+  alt:
+    pt: Vista interior da padaria Lully 1661 em Anjos — placeholder demo
+    en: Lully 1661 Anjos bakery interior — placeholder demo
+  decorative: false
+atmosphere:
+  pt: |
+    Na rua que dá nome à loja — Forno do Tijolo. É a única casa onde se serve
+    o brunch e onde se pode ficar à mesa: ovos benedict, pain perdu, granola
+    caseira, tudo com pão Paillard ou Fâcheux acabado de fatiar. Aos domingos
+    abre só para a manhã (até às 15h00), como pediam os bairros que valorizam
+    o ritual do pequeno-almoço lento.
+  en: |
+    On the street that named the shop — Forno do Tijolo, "the brick oven."
+    This is the only outlet that serves brunch and where you can stay at a
+    table: eggs Benedict, pain perdu, house granola, all with our freshly
+    sliced Paillard or Fâcheux bread. Sundays we open mornings only (until
+    3pm), the way neighbourhoods that still keep the slow-breakfast ritual
+    asked us to.
+services:
+  - dineIn
+  - brunch
+  - pickup
+theForkUrl: ""
+pickupCutoff: ""
