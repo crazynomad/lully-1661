@@ -1,4 +1,6 @@
+import { buttonClassName } from '@/components/Button';
 import { Container } from '@/components/Container';
+import { Eyebrow } from '@/components/Eyebrow';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { Section } from '@/components/Section';
@@ -145,11 +147,9 @@ export default async function StorePage({ params }: { params: Promise<Params> })
           />
         </div>
         <Container className="-mt-20 relative">
-          <div className="bg-[color:var(--color-bg)] px-8 py-10 max-w-3xl">
-            <p className="text-sm uppercase tracking-widest text-[color:var(--color-muted)]">
-              {store.neighborhood}
-            </p>
-            <h1 className="mt-3 text-5xl">{store.name}</h1>
+          <div className="bg-[color:var(--color-paper)] px-8 py-10 max-w-3xl">
+            <Eyebrow>{store.neighborhood}</Eyebrow>
+            <h1 className="display-md mt-3">{store.name.replace(/^Lully 1661 — /, '')}</h1>
           </div>
         </Container>
       </Section>
@@ -187,15 +187,12 @@ export default async function StorePage({ params }: { params: Promise<Params> })
                   href={googleMapsUrl(store)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-5 py-2.5 bg-[color:var(--color-fg)] text-[color:var(--color-bg)] hover:bg-[color:var(--color-accent)] transition-colors"
+                  className={buttonClassName({ variant: 'primary' })}
                 >
                   {locale === 'pt' ? 'Ver no mapa' : 'Get directions'}
                 </a>
                 {showReservations && (
-                  <LocalizedLink
-                    href="/reservas"
-                    className="inline-flex items-center justify-center px-5 py-2.5 border border-[color:var(--color-border)] hover:border-[color:var(--color-fg)] transition-colors"
-                  >
+                  <LocalizedLink href="/reservas" className={buttonClassName({ variant: 'ember' })}>
                     {t('actions.reserveTable')}
                   </LocalizedLink>
                 )}
