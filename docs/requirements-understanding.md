@@ -11,7 +11,7 @@
 ## 1. Brand at a glance
 
 - **Name:** *lully 1661* — cursive lowercase wordmark, double-L (per primary logo file and the `www.Lully1661.com` domain in the website brief).
-  - **`[CLARIFY]`** The repo was initially created as `lullly-1661` (triple L) following a verbal spelling. All materials use double-L. We recommend renaming the repo to `lully-1661` before any public link is shared. Please confirm.
+  - **`[CLARIFY]`** ✅ **Done 2026-05-09:** GitHub repo and local working directory renamed `lullly-1661` → `lully-1661` (triple-L was a transcription error from a verbal spelling). All brand-name references in the docs corrected to double-L on the same date.
 - **Category:** Artisanal French bakery + all-day brunch restaurant.
 - **Location (first outlet):** Lisbon, Portugal.
 - **Ambition:** Pan-European bakery brand, 5-year horizon, starting in Lisbon.
