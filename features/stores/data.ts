@@ -1,5 +1,5 @@
-import { reader } from '@/lib/keystatic/reader';
 import type { Locale } from '@/lib/i18n/routing';
+import { reader } from '@/lib/keystatic/reader';
 
 // Public read API for the stores feature. Pages outside this feature
 // fold call only what's re-exported from index.ts — see architecture.md § 3.
@@ -67,7 +67,10 @@ export function atmosphereFor(store: Store, locale: Locale): string {
 }
 
 // Schema.org weekday name from our internal weekday key.
-const WEEKDAY_TO_SCHEMA: Record<WeekdayKey, 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'> = {
+const WEEKDAY_TO_SCHEMA: Record<
+  WeekdayKey,
+  'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
+> = {
   monday: 'Monday',
   tuesday: 'Tuesday',
   wednesday: 'Wednesday',

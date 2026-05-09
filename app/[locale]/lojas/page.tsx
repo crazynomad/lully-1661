@@ -1,14 +1,14 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { Section } from '@/components/Section';
 import { type Store, getAllStores, storeHeroImagePath } from '@/features/stores';
-import { isLocale, type Locale } from '@/lib/i18n/routing';
+import { type Locale, isLocale } from '@/lib/i18n/routing';
 import { seo } from '@/lib/seo';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lully1661.com';
 
@@ -69,7 +69,7 @@ export default async function StoresHubPage({
           <p className="mt-6 max-w-2xl text-lg text-[color:var(--color-muted)]">
             {locale === 'pt'
               ? 'Três casas em Lisboa, três bairros, três horas do dia diferentes. O Beato é onde nasceu o forno; em Anjos servimos o brunch; Campo de Ourique é a loja de bairro.'
-              : "Three houses in Lisbon, three neighbourhoods, three different times of day. Beato is where the oven was born; Anjos serves brunch; Campo de Ourique is the neighbourhood store."}
+              : 'Three houses in Lisbon, three neighbourhoods, three different times of day. Beato is where the oven was born; Anjos serves brunch; Campo de Ourique is the neighbourhood store.'}
           </p>
         </Container>
       </Section>

@@ -1,23 +1,23 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { Section } from '@/components/Section';
 import {
   type Store,
+  type WeekdayKey,
   atmosphereFor,
   getAllStores,
   getMenuItemsAvailableAt,
   getStore,
   storeHeroImagePath,
   storePageJsonLd,
-  type WeekdayKey,
 } from '@/features/stores';
-import { isLocale, type Locale } from '@/lib/i18n/routing';
+import { type Locale, isLocale } from '@/lib/i18n/routing';
 import { seo } from '@/lib/seo';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 type Params = { locale: string; slug: string };
 
@@ -204,9 +204,7 @@ export default async function StorePage({ params }: { params: Promise<Params> })
 
             {/* Hours */}
             <div>
-              <h2 className="text-2xl mb-4">
-                {locale === 'pt' ? 'Horários' : 'Opening hours'}
-              </h2>
+              <h2 className="text-2xl mb-4">{locale === 'pt' ? 'Horários' : 'Opening hours'}</h2>
               <dl className="text-base">
                 {WEEKDAYS_ORDERED.map((day) => {
                   const h = hoursByDay.get(day);
@@ -252,9 +250,7 @@ export default async function StorePage({ params }: { params: Promise<Params> })
       {/* Atmosphere */}
       <Section spacing="md">
         <Container size="narrow">
-          <h2 className="text-2xl mb-6">
-            {locale === 'pt' ? 'A casa' : 'The house'}
-          </h2>
+          <h2 className="text-2xl mb-6">{locale === 'pt' ? 'A casa' : 'The house'}</h2>
           <div className="text-lg leading-relaxed whitespace-pre-line text-[color:var(--color-fg)]">
             {atmosphereFor(store, locale)}
           </div>
@@ -266,7 +262,7 @@ export default async function StorePage({ params }: { params: Promise<Params> })
         <Section spacing="md" className="border-t border-[color:var(--color-border)]">
           <Container>
             <h2 className="text-2xl mb-8">
-              {locale === 'pt' ? 'Em destaque esta semana' : "Featured this week"}
+              {locale === 'pt' ? 'Em destaque esta semana' : 'Featured this week'}
             </h2>
             <ul className="grid gap-8 md:grid-cols-3">
               {featuredOnly.map(({ slug: itemSlug, entry }) => (

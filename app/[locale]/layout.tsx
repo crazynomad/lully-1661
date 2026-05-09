@@ -1,3 +1,6 @@
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteNav } from '@/components/SiteNav';
+import { fontClassNames } from '@/lib/fonts';
 import { isLocale } from '@/lib/i18n/routing';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -34,10 +37,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={fontClassNames}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <SiteNav locale={locale} />
           {children}
+          <SiteFooter locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

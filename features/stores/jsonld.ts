@@ -1,5 +1,5 @@
-import { localBusinessJsonLd } from '@/lib/jsonld/localBusiness';
 import { breadcrumbJsonLd } from '@/lib/jsonld/breadcrumb';
+import { localBusinessJsonLd } from '@/lib/jsonld/localBusiness';
 import type { Store, WeekdayKey } from './data';
 import { weekdayToSchema } from './data';
 
@@ -51,7 +51,10 @@ export function storePageJsonLd({ store, pathFromRoot, locale, labels }: StorePa
 
   const breadcrumb = breadcrumbJsonLd([
     { name: labels.home, url: `${SITE_URL}/${locale}` },
-    { name: labels.stores, url: `${SITE_URL}/${locale}${pathFromRoot.split('/').slice(0, -1).join('/')}` },
+    {
+      name: labels.stores,
+      url: `${SITE_URL}/${locale}${pathFromRoot.split('/').slice(0, -1).join('/')}`,
+    },
     { name: store.name, url },
   ]);
 

@@ -1,5 +1,5 @@
-import type { MetadataRoute } from 'next';
 import { type Locale, routing } from '@/lib/i18n/routing';
+import type { MetadataRoute } from 'next';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lully1661.com';
 
