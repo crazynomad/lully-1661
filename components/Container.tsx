@@ -20,5 +20,7 @@ export function Container<T extends ElementType = 'div'>({
   ...props
 }: ContainerProps<T>) {
   const Tag = (as ?? 'div') as ElementType;
-  return <Tag className={cn('mx-auto px-10', sizes[size], className)} {...props} />;
+  // Mobile-first horizontal padding: 20px on phones, 32px on tablets,
+  // 40px on desktop (per the design-system spec for chrome width).
+  return <Tag className={cn('mx-auto px-5 sm:px-8 md:px-10', sizes[size], className)} {...props} />;
 }

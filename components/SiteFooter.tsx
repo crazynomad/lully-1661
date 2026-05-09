@@ -13,7 +13,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     locale === 'pt' ? 'Tradição, re-assinada em 2026.' : 'Tradition, re-signed in 2026.';
 
   return (
-    <footer className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-10 pt-14 pb-7">
+    <footer className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-5 sm:px-8 md:px-10 pt-14 pb-7">
       <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1.2fr] max-w-[1280px] mx-auto mb-8">
         <div>
           <Brand size="lg" surface="on-dark" />
@@ -103,7 +103,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="border-t border-[rgba(244,238,223,0.14)] pt-5 flex justify-between max-w-[1280px] mx-auto text-[11px] tracking-[0.1em] text-[rgba(244,238,223,0.45)]">
+      <div className="border-t border-[rgba(244,238,223,0.14)] pt-5 flex flex-col sm:flex-row sm:justify-between gap-2 max-w-[1280px] mx-auto text-[11px] tracking-[0.1em] text-[rgba(244,238,223,0.45)]">
         <span>
           © 2026 lully 1661 · Lisboa ·{' '}
           <a

@@ -214,7 +214,10 @@ export default async function BrunchPage({ params }: { params: Promise<{ locale:
                 {movement.items.map((item, idx) => (
                   <li
                     key={item.slug}
-                    className="grid gap-5 items-center py-3.5 grid-cols-[90px_1fr_auto]"
+                    // Mobile-first: smaller 64px image so name + price still
+                    // fit on a 375px viewport. Desktop keeps the original
+                    // 90px image.
+                    className="grid gap-3 sm:gap-5 items-center py-3.5 grid-cols-[64px_1fr_auto] sm:grid-cols-[90px_1fr_auto]"
                     style={{
                       borderBottom:
                         idx === movement.items.length - 1
@@ -227,11 +230,11 @@ export default async function BrunchPage({ params }: { params: Promise<{ locale:
                       alt=""
                       width={90}
                       height={70}
-                      className="w-[90px] h-[70px] object-cover"
+                      className="w-[64px] h-[52px] sm:w-[90px] sm:h-[70px] object-cover"
                     />
-                    <div>
+                    <div className="min-w-0">
                       <h4
-                        className="text-[21px] m-0 mb-1"
+                        className="text-[18px] sm:text-[21px] m-0 mb-1"
                         style={{ fontWeight: 400, fontVariationSettings: '"opsz" 48' }}
                       >
                         {item.entry.name[locale]}

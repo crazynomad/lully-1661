@@ -116,7 +116,7 @@ export function ReservationForm({ locale }: { locale: Locale }) {
         e.preventDefault();
         setStep('confirmed');
       }}
-      className="p-8 border border-[rgba(26,22,19,0.14)]"
+      className="p-5 sm:p-8 border border-[rgba(26,22,19,0.14)]"
       style={{ background: 'var(--color-paper-2)' }}
     >
       <Field label={t.fields.store} htmlFor="rsvp-store">
@@ -132,7 +132,7 @@ export function ReservationForm({ locale }: { locale: Locale }) {
         </select>
       </Field>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label={t.fields.date} htmlFor="rsvp-date">
           <input
             id="rsvp-date"
