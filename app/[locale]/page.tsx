@@ -1,6 +1,7 @@
 import { buttonClassName } from '@/components/Button';
 import { Container } from '@/components/Container';
 import { Eyebrow } from '@/components/Eyebrow';
+import { InstagramStrip } from '@/components/InstagramStrip';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { SectionTitle } from '@/components/SectionTitle';
@@ -280,6 +281,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           ))}
         </ul>
       </Container>
+
+      <InstagramStrip locale={locale} />
     </>
   );
 }

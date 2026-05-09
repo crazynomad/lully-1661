@@ -1,6 +1,4 @@
-// Reservations (`/reservas`) feature — public API.
-// Anjos-only in v1.0; The Fork widget swaps in once the client confirms.
-// Email fallback dispatches via server action → Resend.
-//
-// Phase 2d stub.
-export {};
+// Reservations feature — public API.
+// See architecture.md § 3 — pages outside this folder import only from this index.
+
+export { ReservationForm } from './components/ReservationForm';

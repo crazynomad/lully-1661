@@ -27,6 +27,15 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
           >
             {tagline}
           </p>
+          <a
+            href="https://www.instagram.com/lully1661_lisboa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 text-[12px] tracking-[0.18em] uppercase text-[color:var(--color-gold-2)] hover:text-[color:var(--color-paper)] transition-colors"
+          >
+            <InstagramGlyph />
+            <span>@lully1661_lisboa</span>
+          </a>
         </div>
 
         <div>
@@ -121,6 +130,28 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
     <h5 className="text-[11px] tracking-[0.2em] uppercase text-[color:var(--color-gold-2)] m-0 mb-3.5 font-medium">
       {children}
     </h5>
+  );
+}
+
+// Inline Instagram glyph — square camera. Stroke 1.5 to match the
+// design system § iconography spec for Lucide-style icons.
+function InstagramGlyph() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="4" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+    </svg>
   );
 }
 

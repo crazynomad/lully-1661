@@ -15,6 +15,7 @@ import {
   storePageJsonLd,
 } from '@/features/stores';
 import { type Locale, isLocale } from '@/lib/i18n/routing';
+import { directionsUrl, embedUrl } from '@/lib/maps';
 import { seo } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -95,9 +96,20 @@ const SERVICE_LABELS_EN = {
   wheelchair: 'Wheelchair access',
 } as const;
 
-function googleMapsUrl(store: Store): string {
-  const q = `${store.address.streetAddress}, ${store.address.postalCode ?? ''} ${store.address.addressLocality}`;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+// Build the per-store directions URL via the cross-platform helper —
+// opens Google Maps app on mobile, web view on desktop.
+function storeDirectionsUrl(store: Store): string {
+  return directionsUrl({
+    geo: store.geo,
+    address: store.address,
+  });
+}
+
+function storeEmbedUrl(store: Store): string {
+  return embedUrl({
+    geo: store.geo,
+    address: store.address,
+  });
 }
 
 export default async function StorePage({ params }: { params: Promise<Params> }) {
@@ -184,18 +196,35 @@ export default async function StorePage({ params }: { params: Promise<Params> })
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={googleMapsUrl(store)}
+                  href={storeDirectionsUrl(store)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={buttonClassName({ variant: 'primary' })}
                 >
-                  {locale === 'pt' ? 'Ver no mapa' : 'Get directions'}
+                  {locale === 'pt' ? 'Ver direcções' : 'Get directions'}
                 </a>
                 {showReservations && (
                   <LocalizedLink href="/reservas" className={buttonClassName({ variant: 'ember' })}>
                     {t('actions.reserveTable')}
                   </LocalizedLink>
                 )}
+              </div>
+
+              {/* Embedded Google Maps preview. Loads lazily so it doesn't
+                  block the LCP. The "Open in Maps" link above the iframe
+                  is the platform-aware path that launches the native app
+                  on mobile. */}
+              <div className="mt-10 border border-[rgba(26,22,19,0.14)]">
+                <iframe
+                  src={storeEmbedUrl(store)}
+                  title={locale === 'pt' ? `Mapa de ${store.name}` : `Map of ${store.name}`}
+                  width="100%"
+                  height="280"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block w-full"
+                  style={{ border: 0 }}
+                />
               </div>
             </div>
 
