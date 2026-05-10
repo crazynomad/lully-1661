@@ -92,6 +92,14 @@ body {
   margin: 0;
 }
 
+html {
+  /* Smooth-scroll for in-page anchors (legal TOC, future jump links).
+     scroll-padding-top accounts for the nav height (~73px desktop /
+     ~65px mobile) so anchored sections don't tuck under the chrome. */
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
   font-family: var(--font-body);
   font-size: 17px;
@@ -232,4 +240,78 @@ h4 em {
   font-variation-settings: "opsz" 96, "SOFT" 80;
   letter-spacing: var(--tracking-h);
   line-height: 1.08;
+}
+
+/* ============================================================
+   Motion — restrained, paper-not-glass.
+   Per design system § Animation: image scale on hover, color
+   crossfades on links, fade-in on first paint. No bounces, no
+   springs, no parallax, no opacity-on-hover. Default ease is
+   var(--ease-out) at 240ms.
+   ============================================================ */
+
+/* (1) Page-load rise. The wrapper carrying [data-page-rise] enters
+   the DOM on every client-side navigation, so this animation fires
+   per route — not just on hard reload. Opacity 0 → 1 with a 6px
+   translateY settle. 480ms feels like the bread leaving the oven. */
+@keyframes lully-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+[data-page-rise] {
+  animation: lully-rise 480ms var(--ease-out) both;
+}
+
+/* (2) Italic kicker stagger — the gold cursive line gets its own
+   slightly-delayed entry, evoking the "ink overlay" gesture from
+   the sub-marks. The kicker is the brand's signature swash; it
+   should land a beat after the headline. */
+@keyframes lully-kicker-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.kicker {
+  animation: lully-kicker-rise 600ms var(--ease-out) 240ms both;
+}
+
+/* (3) Mobile menu drawer slide-down. The fullscreen panel enters
+   from above instead of popping in, matching the calm of the rest
+   of the brand. */
+@keyframes lully-mobile-menu-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+[data-mobile-menu-panel] {
+  animation: lully-mobile-menu-down 280ms var(--ease-out) both;
+}
+
+/* (4) Reduced-motion override. Users who set "Reduce motion" in
+   their OS get all keyframe animations and transitions collapsed
+   to ~instant. Important for vestibular accessibility — the rise
+   animation is gentle but still motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -41,6 +41,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SiteNav locale={locale} />
+          {/* The page-rise animation lives in template.tsx (sibling of
+              this file), which Next.js remounts per navigation — that's
+              what makes the animation fire on every route change. */}
           {children}
           <SiteFooter locale={locale} />
         </NextIntlClientProvider>

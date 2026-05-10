@@ -208,27 +208,29 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               key={item.slug}
               className="bg-[color:var(--color-paper-2)] border border-[rgba(26,22,19,0.14)]"
             >
-              <div className="relative w-full aspect-[16/10] overflow-hidden">
-                <Image
-                  src={`/content/weeklyMenuItem/${item.slug}/image.jpg`}
-                  alt={item.entry.image.decorative ? '' : item.entry.image.alt[locale]}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-[18px]">
-                <Eyebrow className="text-[10px]">{locale === 'pt' ? 'Brunch' : 'Brunch'}</Eyebrow>
-                <h4
-                  className="mt-2 mb-1.5 text-[20px] leading-tight"
-                  style={{ fontWeight: 400, fontVariationSettings: '"opsz" 48' }}
-                >
-                  {item.entry.name[locale]}
-                </h4>
-                <p className="text-[13px] m-0 text-[color:var(--color-ink-2)] leading-[1.5]">
-                  {item.entry.description[locale]}
-                </p>
-              </div>
+              <LocalizedLink href="/menu/brunch" className="block group">
+                <div className="relative w-full aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={`/content/weeklyMenuItem/${item.slug}/image.jpg`}
+                    alt={item.entry.image.decorative ? '' : item.entry.image.alt[locale]}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    className="object-cover transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-[1.05]"
+                  />
+                </div>
+                <div className="p-[18px]">
+                  <Eyebrow className="text-[10px]">{locale === 'pt' ? 'Brunch' : 'Brunch'}</Eyebrow>
+                  <h4
+                    className="mt-2 mb-1.5 text-[20px] leading-tight transition-colors duration-[160ms] ease-[var(--ease-out)] group-hover:text-[color:var(--color-ember)]"
+                    style={{ fontWeight: 400, fontVariationSettings: '"opsz" 48' }}
+                  >
+                    {item.entry.name[locale]}
+                  </h4>
+                  <p className="text-[13px] m-0 text-[color:var(--color-ink-2)] leading-[1.5]">
+                    {item.entry.description[locale]}
+                  </p>
+                </div>
+              </LocalizedLink>
             </li>
           ))}
         </ul>

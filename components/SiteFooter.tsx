@@ -95,7 +95,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
           <input
             type="email"
             placeholder={locale === 'pt' ? 'o seu email' : 'your email address'}
-            className="bg-transparent border-0 border-b border-[rgba(244,238,223,0.4)] text-[color:var(--color-paper)] py-2 px-0 mt-2 font-[family-name:var(--font-body)] text-[14px] w-full outline-none placeholder:text-[rgba(244,238,223,0.45)]"
+            className="bg-transparent border-0 border-b border-[rgba(244,238,223,0.4)] text-[color:var(--color-paper)] py-2 px-0 mt-2 font-[family-name:var(--font-body)] text-[14px] w-full outline-none placeholder:text-[rgba(244,238,223,0.45)] transition-[border-color] duration-[160ms] ease-[var(--ease-out)] focus:border-[color:var(--color-gold-2)]"
             aria-label={
               locale === 'pt' ? 'Endereço de email para newsletter' : 'Email address for newsletter'
             }

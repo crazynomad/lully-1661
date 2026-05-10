@@ -62,8 +62,12 @@ export function MobileMenu({ items, locale, otherLocale }: MobileMenuProps) {
           // an aria-label is semantically richer than role="dialog" for
           // a navigation menu — it lets screen readers announce "Mobile
           // navigation" rather than treating it as a modal.
+          //
+          // data-mobile-menu-panel triggers the slide-down keyframe in
+          // globals.css (translateY -100% → 0 over 280ms ease-out).
           className="fixed inset-0 z-50 md:hidden flex flex-col bg-[color:var(--color-paper)]"
           aria-label="Mobile primary navigation"
+          data-mobile-menu-panel
         >
           {/* Top row: brand placeholder + close button. We render an
               empty span on the left to mirror the header height — the
