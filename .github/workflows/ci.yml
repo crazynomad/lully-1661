@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Allow manual trigger from the Actions tab. Useful for verifying the
+  # workflow itself runs in isolation, and for ad-hoc audit re-runs
+  # without needing a commit.
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
