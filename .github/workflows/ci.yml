@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Typecheck · Lint · Build
+    name: Typecheck · Lint · Audit · Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -32,6 +32,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      # Fail the build on any moderate-or-higher vulnerability in
+      # production dependencies. Catches things like the 2026-05 next /
+      # next-intl / postcss disclosures before they land on main.
+      # --prod skips devDeps (vitest/playwright noise), --audit-level
+      # below "moderate" would flag normal "low" CVEs that aren't worth
+      # blocking on.
+      - name: Audit production dependencies
+        run: pnpm audit --prod --audit-level=moderate
 
       - name: Typecheck
         run: pnpm typecheck
