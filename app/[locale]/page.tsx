@@ -148,43 +148,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </figure>
       </Container>
 
-      {/* PILLARS */}
-      <Container
-        as="section"
-        className="grid grid-cols-1 md:grid-cols-3 border-b border-[rgba(26,22,19,0.14)] p-0"
-      >
-        {pillars.map((p, i) => (
-          <div
-            key={p.title}
-            className={`px-8 py-12 text-center ${i < 2 ? 'md:border-r border-[rgba(26,22,19,0.14)]' : ''}`}
-          >
-            <Image
-              src={p.img}
-              alt={p.title}
-              width={140}
-              height={140}
-              className="w-[140px] h-auto mx-auto mb-4"
-            />
-            <h3
-              className="text-[28px] mb-2"
-              style={{ fontWeight: 400, fontVariationSettings: '"opsz" 72' }}
-            >
-              {p.title}
-            </h3>
-            <p className="text-[14px] text-[color:var(--color-ink-2)] mx-auto max-w-[28ch] leading-[1.5] mb-3.5">
-              {p.body}
-            </p>
-            <LocalizedLink
-              href={p.href}
-              className="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-gold)] hover:text-[color:var(--color-ember)] transition-colors"
-            >
-              {p.cta}
-            </LocalizedLink>
-          </div>
-        ))}
-      </Container>
-
-      {/* THIS WEEK */}
+      {/* THIS WEEK — sits directly under the hero so visitors see the
+          current bake first; the evergreen pillars (Pães / Pastelaria /
+          Bebidas) come next as the standing offer. */}
       <Container as="section" className="py-16 border-b border-[rgba(26,22,19,0.14)]">
         <div className="flex justify-between items-end mb-8 flex-wrap gap-4">
           <SectionTitle>
@@ -234,6 +200,42 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </li>
           ))}
         </ul>
+      </Container>
+
+      {/* PILLARS */}
+      <Container
+        as="section"
+        className="grid grid-cols-1 md:grid-cols-3 border-b border-[rgba(26,22,19,0.14)] p-0"
+      >
+        {pillars.map((p, i) => (
+          <div
+            key={p.title}
+            className={`px-8 py-12 text-center ${i < 2 ? 'md:border-r border-[rgba(26,22,19,0.14)]' : ''}`}
+          >
+            <Image
+              src={p.img}
+              alt={p.title}
+              width={140}
+              height={140}
+              className="w-[140px] h-auto mx-auto mb-4"
+            />
+            <h3
+              className="text-[28px] mb-2"
+              style={{ fontWeight: 400, fontVariationSettings: '"opsz" 72' }}
+            >
+              {p.title}
+            </h3>
+            <p className="text-[14px] text-[color:var(--color-ink-2)] mx-auto max-w-[28ch] leading-[1.5] mb-3.5">
+              {p.body}
+            </p>
+            <LocalizedLink
+              href={p.href}
+              className="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-gold)] hover:text-[color:var(--color-ember)] transition-colors"
+            >
+              {p.cta}
+            </LocalizedLink>
+          </div>
+        ))}
       </Container>
 
       {/* STORES TEASER */}
