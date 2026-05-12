@@ -21,8 +21,8 @@ export async function generateMetadata({
     title: locale === 'pt' ? 'Menu' : 'Menu',
     description:
       locale === 'pt'
-        ? 'Pães, pastelaria, bebidas, brunch — em quatro pilares. Atualizado todas as segundas-feiras.'
-        : 'Breads, pastry, drinks, brunch — in four pillars. Updated every Monday.',
+        ? 'Pães, pastelaria, bebidas. O nosso menu de loja, em três pilares. Atualizado todas as segundas-feiras.'
+        : 'Breads, pastry, drinks. Our in-store menu, in three pillars. Updated every Monday.',
     path: '/menu',
     locale,
   });
@@ -97,11 +97,11 @@ export default async function MenuHubPage({ params }: { params: Promise<{ locale
         <h1 className="display-lg mt-3.5 mb-4 max-w-[18ch]">
           {locale === 'pt' ? (
             <>
-              Quatro pilares, <em>uma só casa.</em>
+              Três pilares, <em>uma só casa.</em>
             </>
           ) : (
             <>
-              Four pillars, <em>one house.</em>
+              Three pillars, <em>one house.</em>
             </>
           )}
         </h1>
