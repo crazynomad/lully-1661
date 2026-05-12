@@ -165,3 +165,7 @@ test-results/
 # Editor stray files
 Untitled.md
 .vercel
+
+# Client confidential data — sales exports, generated analytics, raw briefs.
+# Repo is public; this directory must stay local-only.
+raw-requirements/data/
