@@ -443,6 +443,9 @@ def main() -> None:
     p.add_argument("--week-end", type=str, default=None,
                    help="last day of the week to report (DD-MM-YYYY). "
                         "Default: 04-05-2026 (matches client conversation).")
+    p.add_argument("--out-dir", type=Path, default=None,
+                   help="output directory (default: raw-requirements/data/"
+                        "zsbms-extract/analysis/).")
     args = p.parse_args()
 
     if args.week_end:
@@ -451,10 +454,12 @@ def main() -> None:
     else:
         week_end = date(2026, 5, 4)
 
+    out_dir = args.out_dir or OUT
+    out_dir.mkdir(parents=True, exist_ok=True)
     html = render_report(week_end)
     fname = f"weekly-{week_end.isoformat()}.html"
-    (OUT / fname).write_text(html, encoding="utf-8")
-    print(f"→ {fname}")
+    (out_dir / fname).write_text(html, encoding="utf-8")
+    print(f"→ {(out_dir / fname).relative_to(REPO)}")
 
 
 if __name__ == "__main__":
