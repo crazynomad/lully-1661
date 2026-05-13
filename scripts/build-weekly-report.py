@@ -140,8 +140,11 @@ def render_report(week_end: date) -> str:
         "mensuel_n1": mensuel_n1["ca_ht"],
         "anuel_cur": anuel_cur["ca_ht"],
         "anuel_n1": anuel_n1["ca_ht"],
-        "trafic_cur": anuel_cur["trafic"],
-        "trafic_n1": anuel_n1["trafic"],
+        # Cumul trafic is MONTHLY in the client's report (sits next to
+        # cumul mensuel HT, not cumul anuel). Matched against the
+        # reference PDF: 6 230 = trafic Apr 1-19 (current month).
+        "trafic_cur": mensuel_cur["trafic"],
+        "trafic_n1": mensuel_n1["trafic"],
     }
 
     # Render HTML
