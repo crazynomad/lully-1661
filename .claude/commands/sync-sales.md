@@ -1,7 +1,11 @@
 # /sync-sales — Lully weekly ZSBMS sales sync
 
-Pull the last ~14 days of sales from ZSBMS and merge into the canonical CSV at
-`raw-requirements/data/zsbms-extract/sales-canonical.csv` (gitignored — client revenue figures).
+Pull the last ~14 days of sales from ZSBMS in **two reports** and merge each into its canonical CSV (both gitignored):
+
+- `raw-requirements/data/zsbms-extract/sales-canonical.csv` — product-line detail (SKU × date × loja)
+- `raw-requirements/data/zsbms-extract/tickets-canonical.csv` — daily aggregates incl. ticket count (Trafic)
+
+Run the two reports back-to-back in the same browser session — the form is identical, only the route changes.
 
 ## When to run
 Mondays — picks up any retroactive corrections, voids, or late entries from the previous week. Safe to run multiple times; the merge dedupes by `(data, loja_num, codigo)` so re-syncing the same window is a no-op.
@@ -14,7 +18,7 @@ Call `mcp__claude-in-chrome__tabs_context_mcp`. Look for a tab on `zsbmsv2.zones
 - Then re-check tabs_context. The tab must be in the MCP-managed group (creating a new MCP tab works because `navigate` to zonesoft.org is allowed).
 
 ### 2 — Determine the sync window
-Read the canonical CSV last date:
+Read the canonical CSV last date (use whichever canonical you have — they should align):
 ```bash
 python3 -c "
 import pandas as pd
@@ -23,7 +27,7 @@ print(pd.to_datetime(df['data'], format='%d-%m-%Y').max().strftime('%d-%m-%Y'))"
 ```
 That's `LAST_DATE`. Sync window = (`LAST_DATE` - 14 days) → today, in `DD-MM-YYYY` format.
 
-### 3 — Open the report and set the window
+### 3 — Open the FIRST report (product-line) and set the window
 Navigate (via `javascript_tool` setting `location.hash`) to `#!/rpt-vv-evolucao-produto`.
 
 Set the date inputs using the native value-setter shim (required for Angular):
@@ -69,7 +73,29 @@ python3 scripts/merge-sales-csvs.py \
 ```
 **Order matters**: pass the canonical FIRST and the new chunk LAST — the merge keeps the later occurrence on conflict, so retroactive corrections from the new pull override the stale canonical row.
 
-### 7 — Report
+### 7 — Pull the SECOND report (daily aggregates with ticket count)
+Same form, different route. Navigate to `#!/rpt-vv-evolucao`, repeat steps 3–6 with:
+
+- Same date window
+- Same loja checkboxes
+- After Pré-visualizar opens the modal, grab the .xls URL the same way
+- Download to `raw-requirements/data/zsbms-extract/chunks-tickets/sync-<TODAY>.xls`
+- Parse with the **tickets parser**:
+  ```bash
+  python3 ~/Github/skills/zsbms-extract/scripts/parse-data-hora-xls.py \
+      raw-requirements/data/zsbms-extract/chunks-tickets/sync-<TODAY>.xls \
+      --lojas '{"1":"Beato","2":"Anjos","3":"Ourique"}' \
+      --out raw-requirements/data/zsbms-extract/chunks-tickets/sync-<TODAY>.csv
+  ```
+- Merge into the tickets canonical:
+  ```bash
+  python3 scripts/merge-tickets-csvs.py \
+      raw-requirements/data/zsbms-extract/tickets-canonical.csv \
+      raw-requirements/data/zsbms-extract/chunks-tickets/sync-<TODAY>.csv \
+      --out raw-requirements/data/zsbms-extract/tickets-canonical.csv
+  ```
+
+### 8 — Report
 Tell the user:
 - Old canonical date range vs new
 - New rows added

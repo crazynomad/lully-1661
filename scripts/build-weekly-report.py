@@ -70,25 +70,39 @@ def fr_date_range(start: date, end: date) -> str:
 
 
 # =========================================================================
-# Load data
+# Load data — two canonicals (product-level + daily-aggregate-with-tickets)
 # =========================================================================
-df = pd.read_csv(DATA / "sales-canonical.csv")
-df["data"] = pd.to_datetime(df["data"], format="%d-%m-%Y").dt.date
+sales_df = pd.read_csv(DATA / "sales-canonical.csv")
+sales_df["data"] = pd.to_datetime(sales_df["data"], format="%d-%m-%Y").dt.date
+
+tickets_df = pd.read_csv(DATA / "tickets-canonical.csv")
+tickets_df["data"] = pd.to_datetime(tickets_df["data"], format="%d-%m-%Y").dt.date
 
 # Client uses "Campo" for what we call "Ourique"
 LOJA_LABEL = {"Anjos": "Anjos", "Ourique": "Campo", "Beato": "Beato"}
 
 
 def window_totals(start: date, end: date, loja: str | None = None) -> dict:
-    """Aggregate canonical rows in [start, end] (inclusive) for one loja
-    or all stores combined. Returns dict with the metrics we can compute."""
-    sub = df[(df["data"] >= start) & (df["data"] <= end)]
+    """Aggregate both canonicals in [start, end] (inclusive) for one loja
+    or all stores combined. Sales-canonical drives CA TTC / CA HT (richer);
+    tickets-canonical drives Trafic (docs_emitidos) and the resulting
+    panier moyen TTC / HT."""
+    s = sales_df[(sales_df["data"] >= start) & (sales_df["data"] <= end)]
+    t = tickets_df[(tickets_df["data"] >= start) & (tickets_df["data"] <= end)]
     if loja:
-        sub = sub[sub["loja"] == loja]
+        s = s[s["loja"] == loja]
+        t = t[t["loja"] == loja]
+    ca_ttc = float(s["valor_total"].sum())
+    ca_ht = float(s["valor_sem_iva"].sum())
+    trafic = int(t["docs_emitidos"].sum())
+    panier_ttc = ca_ttc / trafic if trafic else 0.0
+    panier_ht = ca_ht / trafic if trafic else 0.0
     return {
-        "ca_ttc": float(sub["valor_total"].sum()),
-        "ca_ht": float(sub["valor_sem_iva"].sum()),
-        "n_lines": len(sub),  # not Trafic — placeholder marker
+        "ca_ttc": ca_ttc,
+        "ca_ht": ca_ht,
+        "trafic": trafic,
+        "panier": panier_ttc,
+        "panier_ht": panier_ht,
     }
 
 
@@ -117,11 +131,17 @@ def render_report(week_end: date) -> str:
         n1 = window_totals(n1_start, n1_end, loja)
         sections.append({"label": label, "cur": cur, "s1": s1, "n1": n1})
 
+    mensuel_cur = window_totals(month_start, week_end)
+    mensuel_n1 = window_totals(month_start_n1, n1_today)
+    anuel_cur = window_totals(year_start, week_end)
+    anuel_n1 = window_totals(year_start_n1, n1_today)
     cumul = {
-        "mensuel_cur": window_totals(month_start, week_end)["ca_ht"],
-        "mensuel_n1": window_totals(month_start_n1, n1_today)["ca_ht"],
-        "anuel_cur": window_totals(year_start, week_end)["ca_ht"],
-        "anuel_n1": window_totals(year_start_n1, n1_today)["ca_ht"],
+        "mensuel_cur": mensuel_cur["ca_ht"],
+        "mensuel_n1": mensuel_n1["ca_ht"],
+        "anuel_cur": anuel_cur["ca_ht"],
+        "anuel_n1": anuel_n1["ca_ht"],
+        "trafic_cur": anuel_cur["trafic"],
+        "trafic_n1": anuel_n1["trafic"],
     }
 
     # Render HTML
@@ -289,16 +309,24 @@ def pct_delta(cur: float, prev: float) -> tuple[str, str]:
     return (f"{sign}{fr_pct(delta, 2)}", "gain" if delta >= 0 else "loss")
 
 
+FILLED_KEYS = ("ca_ttc", "ca_ht", "trafic", "panier", "panier_ht")
+
+
 def metric_cell(key: str, vals: dict) -> str:
     """Render a single cell. Placeholders for missing fields."""
     if key in ("ca_ttc", "ca_ht"):
-        v = vals[key]
-        return f"<td>{fr_money(v)}</td>"
+        return f"<td>{fr_money(vals[key])}</td>"
+    if key == "trafic":
+        v = vals.get("trafic", 0)
+        return f"<td>{fr_int(v)}</td>" if v else '<td class="placeholder">—</td>'
+    if key in ("panier", "panier_ht"):
+        v = vals.get(key, 0)
+        return f"<td>{fr_money(v)}</td>" if v else '<td class="placeholder">—</td>'
     return '<td class="placeholder">—</td>'
 
 
 def delta_cell(key: str, cur_vals: dict, prev_vals: dict) -> str:
-    if key in ("ca_ttc", "ca_ht") and prev_vals[key]:
+    if key in FILLED_KEYS and prev_vals.get(key):
         s, cls = pct_delta(cur_vals[key], prev_vals[key])
         return f'<td class="{cls}">{s}</td>'
     return '<td class="placeholder">—</td>'
@@ -362,8 +390,10 @@ def render_html(week_start, week_end, s1_start, s1_end, n1_start, n1_end,
     </td>
     <td>
       <span class="label">Cumul trafic</span>
-      <span class="value placeholder">—</span>
-      <span class="compare">N-1 —</span>
+      <span class="value">{fr_int(cumul["trafic_cur"])}</span>
+      <span class="compare">N-1 {fr_int(cumul["trafic_n1"]) if cumul["trafic_n1"] else "—"}
+        {f'<span class="{pct_delta(cumul["trafic_cur"], cumul["trafic_n1"])[1]}">(' + pct_delta(cumul["trafic_cur"], cumul["trafic_n1"])[0] + ')</span>' if cumul["trafic_n1"] else ""}
+      </span>
     </td>
     <td>
       <span class="label">Pertes</span>
@@ -390,11 +420,12 @@ def render_html(week_start, week_end, s1_start, s1_end, n1_start, n1_end,
   {cumul_html}
 
   <p class="footnote">
-    <strong>v0 — données partielles.</strong> Les colonnes
-    <strong>CA TTC, CA HT</strong> et les cumuls HT viennent du POS ZSBMS
-    (sales-canonical.csv). <strong>Trafic, Glovo, UberEats, Pertes</strong>
-    nécessitent des rapports ZSBMS différents (tickets, Séries) qui ne sont
-    pas encore intégrés au pipeline — à venir dans la v1.
+    <strong>v1 — données POS complètes.</strong> Les colonnes
+    <strong>CA TTC, CA HT, Trafic, panier moyen</strong> et les cumuls
+    HT viennent du POS ZSBMS (sales-canonical + tickets-canonical).
+    Les colonnes <strong>Dont Glovo, Dont UberEats, Pertes</strong> restent
+    en placeholder — ZSBMS ne sépare pas les canaux de livraison (Séries =
+    "Todas" uniquement) et les pertes sont saisies manuellement.
   </p>
 </body>
 </html>

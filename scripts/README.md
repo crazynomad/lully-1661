@@ -3,17 +3,22 @@
 End-to-end pipeline for Lully 1661's POS data: extract from Zone Soft BMS, parse, accumulate into a canonical CSV, render brand-styled charts and trilingual HTML reports.
 
 ```
-ZSBMS Evolução de Vendas        (browser export, HTML-as-Excel)
-        │
-        ▼  parse-xls.py  (zsbms-extract skill)
-chunks/*.csv                    (one CSV per date window)
-        │
-        ▼  merge-sales-csvs.py
-sales-canonical.csv             (deduped, single source of truth)
-        │
-        ├─▶ analyse-sales.py        →  analysis/*.png + observations.md
-        └─▶ build-sales-report.py   →  analysis/report-{en,pt,fr}.html + index.html
+ZSBMS Evolução de Vendas        (browser exports, HTML-as-Excel)
+   │
+   ├──── por Produto ────▶ parse-xls.py            ▶ chunks/*.csv         ▶ merge-sales-csvs.py   ▶ sales-canonical.csv
+   │                                                                                                       │
+   └──── por Data/Hora ──▶ parse-data-hora-xls.py  ▶ chunks-tickets/*.csv ▶ merge-tickets-csvs.py ▶ tickets-canonical.csv
+                                                                                                           │
+                                                                                                           ▼
+                                              ┌────────────────┬──────────────────────┬─────────────────────────┐
+                                              ▼                ▼                      ▼                         ▼
+                                       analyse-sales.py  build-sales-report.py  build-weekly-report.py  (future analytics)
+                                       (charts + memo)   (EN/PT/FR HTML)        (FR client weekly)
 ```
+
+Two parallel ZSBMS reports because they give complementary slices:
+- **Por Produto** — SKU-level granularity (units, families, ABC analysis)
+- **Por Data/Hora** — daily-aggregate with ticket count (Trafic, panier moyen)
 
 Everything under `raw-requirements/data/zsbms-extract/` is **gitignored** — the repo is public; client revenue figures stay local.
 
@@ -120,9 +125,13 @@ Dedupe key: `(data, loja_num, codigo)`.
 
 ## Scripts
 
-### `merge-sales-csvs.py`
+### `merge-sales-csvs.py` / `merge-tickets-csvs.py`
 
-Concatenates N chunk CSVs, dedupes on `(data, loja_num, codigo)` keeping the LAST occurrence so retroactive corrections override earlier pulls.
+Same idempotent semantics, different schema:
+- `merge-sales-csvs.py` — product-line CSVs, dedupes on `(data, loja_num, codigo)`
+- `merge-tickets-csvs.py` — daily-aggregate CSVs, dedupes on `(data, loja_num)`
+
+Both keep the LAST occurrence on conflict so retroactive corrections override earlier pulls.
 
 ```bash
 python3 scripts/merge-sales-csvs.py \
@@ -132,6 +141,16 @@ python3 scripts/merge-sales-csvs.py \
 ```
 
 Argument order matters — pass older inputs first, newer last.
+
+### `build-weekly-report.py`
+
+Renders the French client weekly operational report (the `Feuille de calcul – semaine X` format). Reads BOTH canonicals: `sales-canonical.csv` for CA TTC/HT, `tickets-canonical.csv` for Trafic and panier moyen. Output HTML matches the client's layout — 4 sections (ALL STORES + 3 stores) × 3 time periods (current / S-1 / N-1), with WoW + YoY deltas color-coded.
+
+```bash
+python3 scripts/build-weekly-report.py --week-end 04-05-2026
+```
+
+Columns currently filled from POS data: CA TTC, CA HT, Trafic, panier moyen TTC/HT, cumul mensuel/annuel HT, cumul trafic. Placeholder columns (Dont Glovo, Dont UberEats, Pertes) need external data sources — Glovo/UberEats merchant portals and manual waste reports.
 
 ### `analyse-sales.py`
 
