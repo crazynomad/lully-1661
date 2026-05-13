@@ -1,6 +1,6 @@
 """Lully 1661 — trilingual HTML sales report (EN / PT / FR).
 
-Reads:  raw-requirements/data/zsbms-extract/evo-vendas-produto-90d.csv
+Reads:  raw-requirements/data/zsbms-extract/sales-canonical.csv
 Writes: raw-requirements/data/zsbms-extract/analysis/
             ├── report-en.html
             ├── report-pt.html
@@ -33,7 +33,7 @@ OUT.mkdir(exist_ok=True)
 # =========================================================================
 # 1. Load and clean the export (same trimming rules as analyse-sales.py)
 # =========================================================================
-df = pd.read_csv(DATA / "evo-vendas-produto-90d.csv")
+df = pd.read_csv(DATA / "sales-canonical.csv")
 df["data"] = pd.to_datetime(df["data"], format="%d-%m-%Y")
 df = df[df["valor_total"] > 0].copy()
 

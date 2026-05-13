@@ -1,16 +1,16 @@
 """Lully 1661 — sales analytics from the ZSBMS Evolução de Vendas export.
 
-Input:  raw-requirements/data/zsbms-extract/evo-vendas-produto-90d.csv
+Input:  raw-requirements/data/zsbms-extract/sales-canonical.csv
 Output: raw-requirements/data/zsbms-extract/analysis/{*.png, observations.md}
 
 Run:    python3 scripts/analyse-sales.py
 
-The CSV and outputs live under raw-requirements/data/ (gitignored — they
-contain client revenue figures). The script itself is tracked; the data
-is not. Re-run after every new ZSBMS export drop.
+Reads the canonical CSV (assembled by merge-sales-csvs.py from one-or-more
+ZSBMS export chunks). The CSV + outputs live under raw-requirements/data/
+(gitignored — client revenue figures). Scripts are tracked; data isn't.
+Re-run after each /sync-sales pull.
 
-Pairs with scripts/build-sales-report.py — that script consumes the same
-CSV and produces the trilingual HTML deliverable.
+Pairs with scripts/build-sales-report.py — same CSV, trilingual HTML.
 """
 
 from __future__ import annotations
@@ -51,7 +51,7 @@ def apply_brand_style(ax) -> None:
 
 
 # --- Load + normalise -----------------------------------------------------
-df = pd.read_csv(DATA / "evo-vendas-produto-90d.csv")
+df = pd.read_csv(DATA / "sales-canonical.csv")
 df["data"] = pd.to_datetime(df["data"], format="%d-%m-%Y")
 df["weekday"] = df["data"].dt.day_name()
 df["is_weekend"] = df["data"].dt.weekday >= 5  # Sat/Sun
