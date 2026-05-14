@@ -1,11 +1,12 @@
 # /sync-sales — Lully weekly ZSBMS sales sync
 
-Pull the last ~14 days of sales from ZSBMS in **two reports** and merge each into its canonical CSV (both gitignored):
+Pull the last ~14 days of sales from ZSBMS in **three reports** and merge each into its canonical CSV (all gitignored):
 
 - `raw-requirements/data/zsbms-extract/sales-canonical.csv` — product-line detail (SKU × date × loja)
 - `raw-requirements/data/zsbms-extract/tickets-canonical.csv` — daily aggregates incl. ticket count (Trafic)
+- `raw-requirements/data/zsbms-extract/payments-canonical.csv` — daily channel split (Dinheiro / Cartão / **Uber Eats** / **Glovo** / **Bolt Food** per loja per day)
 
-Run the two reports back-to-back in the same browser session — the form is identical, only the route changes.
+Run the three reports in the same browser session. The first two share the same form; the third has its own page and **must be run once per loja** (no "Todas" option).
 
 ## When to run
 Mondays — picks up any retroactive corrections, voids, or late entries from the previous week. Safe to run multiple times; the merge dedupes by `(data, loja_num, codigo)` so re-syncing the same window is a no-op.
@@ -95,7 +96,40 @@ Same form, different route. Navigate to `#!/rpt-vv-evolucao`, repeat steps 3–6
       --out raw-requirements/data/zsbms-extract/tickets-canonical.csv
   ```
 
-### 8 — Report
+### 8 — Pull the THIRD report (payments by channel)
+Navigate to `#!/rpt-ve-tipospagamento`. Two filters to set per run:
+
+- **Loja**: this dropdown has no "Todas" — you must run the report **three times**, once for each loja (Beato / Anjos / Ourique).
+- **Mode tab**: click **"Informação Diária"** (not "Valores Acumulados") so you get daily rows instead of a period summary.
+
+Date inputs use the same `model.dataI` / `model.dataF` ng-models as the other reports. Click `Pré-visualizar`, grab the .xls URL the usual way:
+
+```js
+Array.from(document.querySelectorAll('*'))
+  .map(el => [el.getAttribute('href'), el.getAttribute('src'), el.getAttribute('data-url')])
+  .flat()
+  .filter(u => u && /\.xls$/.test(u))
+```
+
+Download to `raw-requirements/data/zsbms-extract/chunks-payments/sync-<TODAY>-<loja>.xls` (one file per loja), then parse with the payments parser:
+
+```bash
+python3 ~/Github/skills/zsbms-extract/scripts/parse-payments-xls.py \
+    raw-requirements/data/zsbms-extract/chunks-payments/sync-<TODAY>-<loja>.xls \
+    --lojas '{"1":"Beato","2":"Anjos","3":"Ourique"}' \
+    --out raw-requirements/data/zsbms-extract/chunks-payments/sync-<TODAY>-<loja>.csv
+```
+
+After all three lojas, merge into the channel canonical:
+
+```bash
+python3 scripts/merge-payments-csvs.py \
+    raw-requirements/data/zsbms-extract/payments-canonical.csv \
+    raw-requirements/data/zsbms-extract/chunks-payments/sync-<TODAY>-*.csv \
+    --out raw-requirements/data/zsbms-extract/payments-canonical.csv
+```
+
+### 9 — Report
 Tell the user:
 - Old canonical date range vs new
 - New rows added

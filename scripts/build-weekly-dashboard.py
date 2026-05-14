@@ -171,6 +171,173 @@ chart("_avg", "Panier moyen (TTC)",
 
 
 # =========================================================================
+# 2b. Channel split (payments canonical) — online vs in-store
+# =========================================================================
+payments_path = DATA / "payments-canonical.csv"
+has_channels = payments_path.exists()
+channel_yoy: dict = {}
+channels_html_section = ""
+
+if has_channels:
+    payments = pd.read_csv(payments_path)
+    payments["data"] = pd.to_datetime(payments["data"], format="%d-%m-%Y").dt.date
+
+    ONLINE = {"Uber Eats", "Glovo", "Bolt Food", "iFood", "Deliverect"}
+
+    def channel_of(tipo: str) -> str:
+        return tipo if tipo in ONLINE else "Loja"
+
+    payments["canal"] = payments["tipo_pagamento"].apply(channel_of)
+
+    # Weekly channel rollup
+    channel_weekly: list[dict] = []
+    sun = first_sun
+    while sun <= last_sun:
+        mon = sun - dt.timedelta(days=6)
+        sub = payments[(payments["data"] >= mon) & (payments["data"] <= sun)]
+        row = {"week_end": sun}
+        for canal in ("Loja", "Uber Eats", "Glovo", "Bolt Food"):
+            row[canal] = float(sub[sub["canal"] == canal]["valor"].sum())
+        channel_weekly.append(row)
+        sun += dt.timedelta(days=7)
+    cw = pd.DataFrame(channel_weekly)
+
+    # Stacked area chart: weekly revenue by channel
+    fig, ax = plt.subplots(figsize=(11, 4.2), facecolor=PAPER)
+    canal_order = ["Loja", "Uber Eats", "Glovo", "Bolt Food"]
+    canal_colors = {"Loja": INK, "Uber Eats": EMBER, "Glovo": GOLD, "Bolt Food": INK_2}
+    canal_present = [c for c in canal_order if cw[c].sum() > 0]
+    ax.stackplot(
+        cw["week_end"],
+        [cw[c] for c in canal_present],
+        labels=canal_present,
+        colors=[canal_colors[c] for c in canal_present],
+        alpha=0.85,
+    )
+    ax.set_title("Répartition hebdomadaire par canal (TTC) — toutes boutiques — 2026 YTD",
+                 pad=14, fontsize=13, weight="bold")
+    ax.set_ylabel("Chiffre d'affaires (TTC)", color=INK_2, fontsize=10)
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+    ax.xaxis.set_major_locator(mdates.WeekdayLocator(byweekday=mdates.SU, interval=2))
+    apply_brand(ax)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"{int(v):,} €".replace(",", " ")))
+    ax.legend(loc="upper left", frameon=False, fontsize=9, ncol=4)
+    ax.grid(True, alpha=0.15, linestyle="--", linewidth=0.5)
+    plt.tight_layout()
+    plt.savefig(OUT / "chart-channel-mix.png", dpi=140, facecolor=PAPER, bbox_inches="tight")
+    plt.close()
+    print(f"→ chart-channel-mix.png", file=sys.stderr)
+
+    # YTD channel totals + per-loja split
+    canal_totals = payments.groupby("canal")["valor"].sum().sort_values(ascending=False)
+    channel_yoy["totals"] = canal_totals.to_dict()
+    channel_yoy["total"] = float(canal_totals.sum())
+
+    per_loja_channel = (
+        payments[payments["canal"] != "Loja"]
+        .groupby(["loja", "canal"])["valor"].sum().unstack(fill_value=0)
+    )
+    loja_totals_ttc = payments.groupby("loja")["valor"].sum()
+    channel_yoy["per_loja_total"] = loja_totals_ttc.to_dict()
+    channel_yoy["per_loja_online"] = per_loja_channel.to_dict()
+else:
+    print("note: payments-canonical.csv not found — skipping channel section",
+          file=sys.stderr)
+
+
+def fmt_money_simple(v: float) -> str:
+    return f"{int(round(v)):,} €".replace(",", " ")
+
+
+def fmt_pct_simple(v: float, decimals: int = 1) -> str:
+    s = f"{v:.{decimals}f}".replace(".", ",")
+    return f"{s} %"
+
+
+if has_channels:
+    canal_rows = []
+    canal_total = channel_yoy["total"]
+    for canal, val in sorted(channel_yoy["totals"].items(), key=lambda x: -x[1]):
+        pct = val / canal_total * 100 if canal_total else 0
+        label = "<strong>En boutique</strong>" if canal == "Loja" else canal
+        canal_rows.append(
+            f"<tr><td>{label}</td><td class='num'>{fmt_money_simple(val)}</td>"
+            f"<td class='num'>{fmt_pct_simple(pct)}</td></tr>"
+        )
+
+    # Per-loja online percentage
+    per_loja_html_rows = []
+    for loja in ("Anjos", "Ourique", "Beato"):
+        total = channel_yoy["per_loja_total"].get(loja, 0)
+        online = sum(
+            channel_yoy["per_loja_online"].get(c, {}).get(loja, 0)
+            for c in ("Uber Eats", "Glovo", "Bolt Food")
+        )
+        ue = channel_yoy["per_loja_online"].get("Uber Eats", {}).get(loja, 0)
+        glovo = channel_yoy["per_loja_online"].get("Glovo", {}).get(loja, 0)
+        bolt = channel_yoy["per_loja_online"].get("Bolt Food", {}).get(loja, 0)
+        online_pct = online / total * 100 if total else 0
+        store_label = "Campo" if loja == "Ourique" else loja
+        per_loja_html_rows.append(
+            f"<tr><td><strong>{store_label}</strong></td>"
+            f"<td class='num'>{fmt_money_simple(total)}</td>"
+            f"<td class='num'>{fmt_money_simple(ue)}</td>"
+            f"<td class='num'>{fmt_money_simple(glovo)}</td>"
+            f"{f'<td class=\"num\">{fmt_money_simple(bolt)}</td>' if bolt > 0 else '<td class=\"num\" style=\"color: var(--stone);\">—</td>'}"
+            f"<td class='num'>{fmt_money_simple(online)}</td>"
+            f"<td class='num'><strong>{fmt_pct_simple(online_pct)}</strong></td></tr>"
+        )
+
+    channels_html_section = f"""
+  <section>
+    <div class="shell">
+      <div class="eyebrow">Canaux de vente</div>
+      <h2 class="display">En boutique ou <em>en livraison ?</em></h2>
+      <p class="lead">
+        Répartition entre les <strong>3 boutiques</strong> (Dinheiro + Cartões = "En boutique") et les
+        <strong>plateformes en ligne</strong> (Uber Eats, Glovo). Source: ZSBMS — Pagamentos por Empregado,
+        information journalière. Aucune intégration directe Glovo/UberEats n'est nécessaire — toutes les
+        commandes en ligne sont enregistrées au comptoir via leur tipo de pagamento dédié.
+      </p>
+
+      <figure class="chart">
+        <img src="chart-channel-mix.png" alt="Répartition hebdomadaire par canal">
+        <figcaption>Évolution hebdomadaire de la répartition par canal (TTC) — toutes boutiques confondues</figcaption>
+      </figure>
+
+      <h3 style="margin-top: 32px; font-family: var(--font-display); font-weight: 400; font-size: 22px;">Total YTD par canal</h3>
+      <table class="weekly-table">
+        <thead>
+          <tr>
+            <th>Canal</th>
+            <th class="num">CA (TTC)</th>
+            <th class="num">% du total</th>
+          </tr>
+        </thead>
+        <tbody>{"".join(canal_rows)}</tbody>
+      </table>
+
+      <h3 style="margin-top: 32px; font-family: var(--font-display); font-weight: 400; font-size: 22px;">Part du online par boutique</h3>
+      <table class="weekly-table">
+        <thead>
+          <tr>
+            <th>Boutique</th>
+            <th class="num">CA total (TTC)</th>
+            <th class="num">Uber Eats</th>
+            <th class="num">Glovo</th>
+            <th class="num">Bolt Food</th>
+            <th class="num">Total online</th>
+            <th class="num">% online</th>
+          </tr>
+        </thead>
+        <tbody>{"".join(per_loja_html_rows)}</tbody>
+      </table>
+    </div>
+  </section>
+"""
+
+
+# =========================================================================
 # 3. Per-week detail HTMLs (subprocess)
 # =========================================================================
 print(f"\nGenerating {len(weeks)} per-week detail reports...", file=sys.stderr)
@@ -600,6 +767,7 @@ HTML = f"""<!doctype html>
       </figure>
     </div>
   </section>
+{channels_html_section}
 
   <section>
     <div class="shell">
